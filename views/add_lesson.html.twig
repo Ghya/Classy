@@ -1,0 +1,96 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Board{% endblock %}
+
+{% block nav %}{% include 'nav_options.html.twig' %}{% endblock %}
+
+{% block content %} 
+
+
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h2> Créez un cours </h2>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-12">
+
+             {{ form_start(lessonForm) }}
+
+                <!-- name form -->
+
+                <div class="form-group">
+                    {{ form_errors(lessonForm.title) }}
+                    {{ form_widget(lessonForm.title, { 'attr':  {
+                        'rows': '4',
+                        'class': 'form-control',
+                        'placeholder': 'Titre du cours'
+                    }}) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_errors(lessonForm.situation) }}
+                    {{ form_widget(lessonForm.situation, { 'attr':  {
+                        'rows': '4',
+                        'class': 'form-control',
+                        'placeholder': 'Situation'
+                    }}) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_errors(lessonForm.goal) }}
+                    {{ form_widget(lessonForm.goal, { 'attr':  {
+                        'rows': '4',
+                        'class': 'form-control',
+                        'placeholder': 'Objectif(s)'
+                    }}) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_errors(lessonForm.equipment) }}
+                    {{ form_widget(lessonForm.equipment, { 'attr':  {
+                        'rows': '4',
+                        'class': 'form-control',
+                        'placeholder': 'Matériel(s)'
+                    }}) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_errors(lessonForm.skill) }}
+                    {{ form_widget(lessonForm.skill, { 'attr':  {
+                        'rows': '4',
+                        'class': 'form-control',
+                        'placeholder': 'Compétences visées'
+                    }}) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_errors(lessonForm.time) }}
+                    {{ form_widget(lessonForm.time, { 'attr':  {
+                        'rows': '4',
+                        'class': 'form-control',
+                        'placeholder': 'Durée estimé du cours'
+                    }}) }}
+                </div>
+
+                <!-- submit form -->
+                    
+                <div class="form-group">
+                    <input type="submit" class="btn btn-primary" value="Enregistrer" />
+                </div>
+
+            {{ form_end(lessonForm) }}
+
+        </div>
+
+    </div>
+</div>
+
+    
+
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Board{% endblock %}
+
+{% block nav %}{% include 'nav_options.html.twig' %}{% endblock %}
+
+{% block content %} 
+
+
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h2> Créez ou selectionnez le chapitre de {{ subject.name }} du cours a créer </h2>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-6">
+            {% for chapter in chapters %}
+
+                <a href="{{ path('add_lesson', { 'idClass': class.id, 'idSub': subject.id, 'idChap': chapter.id  }) }}">
+                    <div id="user_comment_container">
+                        <strong>{{ chapter.name }}</strong>
+                    </div>
+                </a>
+
+            {% endfor %}
+                    
+        </div>
+
+        <div class="col-md-6">
+
+             {{ form_start(chapterForm) }}
+
+                <!-- name form -->
+
+                <h3>Ajouter un Chapitre</h3>
+
+                <div class="form-group">
+                    {{ form_errors(chapterForm.name) }}
+                    {{ form_widget(chapterForm.name, { 'attr':  {
+                        'rows': '4',
+                        'class': 'form-control',
+                        'placeholder': 'Nom du chapitre'
+                    }}) }}
+                </div>
+
+                <!-- submit form -->
+                    
+                <div class="form-group">
+                    <input type="submit" class="btn btn-primary" value="Enregistrer" />
+                </div>
+
+            {{ form_end(chapterForm) }}
+
+        </div>
+
+    </div>
+</div>
+
+    
+
+{% endblock %}

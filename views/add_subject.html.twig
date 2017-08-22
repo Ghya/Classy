@@ -1,0 +1,66 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Board{% endblock %}
+
+{% block nav %}{% include 'nav_options.html.twig' %}{% endblock %}
+
+{% block content %} 
+
+
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h2> Créez ou selectionnez la matière du cours a créer </h2>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-6">
+            {% for subject in subjects %}
+
+                <a href="{{ path('add_chapter', { 'idClass': class.id, 'idSub': subject.id  }) }}">
+                    <div id="user_comment_container">
+                        <strong>{{ subject.name }}</strong>
+                    </div>
+                </a>
+
+            {% endfor %}
+                    
+        </div>
+
+        <div class="col-md-6">
+
+             {{ form_start(subjectForm) }}
+
+                <!-- name form -->
+
+                <h3>Ajouter une Matière</h3>
+
+                <div class="form-group">
+                    {{ form_errors(subjectForm.name) }}
+                    {{ form_widget(subjectForm.name, { 'attr':  {
+                        'rows': '4',
+                        'class': 'form-control',
+                        'placeholder': 'Nom de la matière'
+                    }}) }}
+                </div>
+
+                <!-- submit form -->
+                    
+                <div class="form-group">
+                    <input type="submit" class="btn btn-primary" value="Enregistrer" />
+                </div>
+
+            {{ form_end(subjectForm) }}
+
+        </div>
+
+    </div>
+</div>
+
+    
+
+{% endblock %}

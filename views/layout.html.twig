@@ -1,0 +1,116 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{{ asset('/lib/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('/lib/css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('/lib/css/dashboard.css') }}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+
+    <title>Classy - {% block title %}{% endblock %}</title>
+</head>
+<body>
+
+<div id="throbber" style="display:none; min-height:120px;"></div>
+<div id="noty-holder"></div>
+<div id="wrapper">
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{{path('home')}}">
+                <img src="" alt="LOGO">
+            </a>
+        </div>
+        <!-- Top Menu Items -->
+        <ul class="nav navbar-right top-nav">
+            <li><a href="#" data-placement="bottom" data-toggle="tooltip" href="#" data-original-title="Stats"><i class="fa fa-bar-chart-o"></i>
+                </a>
+            </li>
+
+            {% if app.user and is_granted('ROLE_ADMIN') %}
+                <li class=""><a href=""><span style="margin-right:7px" class="glyphicon glyphicon-cog"></span> Administration</a></li>
+            {% endif %}
+
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <span style="margin-right:7px" class="glyphicon glyphicon-user"></span> Bonjour {{ app.user.username }} <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{ path('logout') }}">Se déconnecter</a></li>
+                        </ul>
+                </li>
+
+            {% else %}
+                            <li><a href="{{ path('login') }}">Connexion</a></li>
+                            <li><a href="{{ path('signin') }}">Inscription</a></li>
+            {% endif %}
+        </ul>
+        <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+
+        
+            
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav side-nav">
+
+                {% if app.user and is_granted('ROLE_ADMIN') %}
+
+                    <li>
+                        <a href="{{ path('board') }}"><i class="fa fa-fw fa-user-plus"></i> Accueil</a>
+                    </li>
+                    <li>
+                        <a href="#" data-toggle="collapse" data-target="#submenu-1"><i class="fa fa-fw fa-search"></i> CLASSE <i class="fa fa-fw fa-angle-down pull-right"></i></a>
+                        <ul id="submenu-1" class="collapse">
+
+                        {% for class in classes %}
+
+                            <li><a href="{{ path('class', { 'id': class.id }) }}"><i class="fa fa-angle-double-right"></i> {{class.lvl}}</a></li>
+
+                        {% endfor %}
+
+                        </ul>
+                    </li>
+
+                    {% block nav %}{% endblock %}
+
+                {% endif %}
+
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </nav>
+
+       
+    
+
+    <div id="main_content">{% block content %}{% endblock %}</div>
+
+
+    
+    
+    <!-- jQuery -->
+    <script src="{{ asset('/lib/jquery/jquery-3.2.1.min.js') }}"></script>
+    <!-- JavaScript Bootstrap plugin -->
+    <script src="{{ asset('/lib/bootstrap/js/bootstrap.min.js') }}"></script>
+    <!-- carousel plugin -->
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
+    <!-- TinyMCE plugin -->
+    <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+    <script>tinymce.init({ selector:'textarea.chapter' });</script>
+    <!-- Pagecontroller script -->
+    <script src="{{ asset('/lib/js/pageController.js') }}"></script>
+    <!-- View controller script -->
+    <script src="{{ asset('/lib/js/view.js') }}"></script>
+    <!-- Main script -->
+    <script src="{{ asset('/lib/js/main.js') }}"></script>
+</body>
+</html>

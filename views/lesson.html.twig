@@ -1,0 +1,69 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Board{% endblock %}
+
+{% block nav %}{% include 'nav_options.html.twig' %}{% endblock %}
+
+{% block content %} 
+
+
+
+<div class="container">
+
+    <div class="row">
+    
+        <div class="col-md-12">
+            <h3>Cours : {{ lesson.title }}</h3>
+            <p>Matière : {{ subject.name }}</p>
+            <p>Chapitre : {{ chapter.name }}</p>
+        </div>
+        
+    </div>
+
+    <div class="row">
+    
+        <div class="col-md-12">
+            <p>Situation : {{ lesson.situation }}</p>
+            <p>Objectif : {{ lesson.goal }}</p>
+            <p>Compétence : {{ lesson.skill }}</p>
+            <p>Matériel(s) : {{ lesson.equipment }}</p>
+        </div>
+        
+    </div>
+
+    <div class="row">
+    
+        <div class="col-md-12">
+            <h3>Etapes du cours</h3>
+            <div class="table-responsive">
+                <table class="table table-hover table-bordered table-condensed">
+                    <thead>
+                        <tr class="info">
+                            <th>No</th>
+                            <th>Titre</th>
+                            <th>Contenu</th>
+                            <th>Durée</th>
+                        </tr>
+                    </thead>
+
+                    {% for key, value in steps %}
+                        <tr>
+                            <td><p> {{ key }}</p></td>
+                            <td><h3>{{ value.name }}</h3></td>
+                            <td><p> {{ value.content }} </p></td>
+                            <td><p> {{ value.time }}</p></td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+        
+    </div>
+
+    
+
+</div>
+
+    
+
+{% endblock %}

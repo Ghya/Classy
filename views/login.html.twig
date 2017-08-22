@@ -1,0 +1,70 @@
+{% extends 'layout_base.html.twig' %}
+
+{% block title %}Connexion{% endblock %}
+
+{% block content %}
+<h2 class="text-center" style="margin-top:40px">{{ block('title') }}</h2>
+
+{% if error %}
+<div class="alert alert-danger">
+    <strong>Login failed!</strong> {{ error }}
+</div>
+{% endif %}
+
+<div class="container">    
+    <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
+        <div class="panel panel-info" >
+
+            <div class="panel-heading">
+                <div class="panel-title">Informations utilisateur</div>
+            </div>     
+
+            <div style="padding-top:30px" class="panel-body" >
+
+                <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12">
+
+                </div>
+                        
+                <form id="loginform" class="form-horizontal" role="form" action="{{ path('login_check') }}" method="post">
+                                
+                    <div style="margin-bottom: 25px" class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input type="text" name="_username" value="{{ last_username }}" class="form-control" placeholder="Nom d'utilisateur" required autofocus>                                        
+                    </div>
+                            
+                    <div style="margin-bottom: 25px" class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                        <input type="password" name="_password" class="form-control" placeholder="Mot de passe" required>
+                    </div>
+
+                    <div style="margin-top:10px" class="form-group">
+                        <!-- Button -->
+
+                        <div class="col-sm-12 controls">
+                            <button type="submit" class="btn btn-default btn-primary"><span class="glyphicon glyphicon-log-in"></span> Se connecter</button>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <div class="col-md-12 control">
+                            <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >
+                                Pas encore de compte ? 
+                                <a href="#">Inscrivez-vous ici >></a>
+                            </div>
+                        </div>
+
+                    </div>    
+                </form>     
+
+
+
+            </div>  
+
+        </div>  
+    </div>    
+</div>
+    
+
+{% endblock %}

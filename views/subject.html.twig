@@ -1,0 +1,66 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Board{% endblock %}
+
+{% block nav %}{% include 'nav_options.html.twig' %}{% endblock %}
+
+{% block content %} 
+
+
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-12">
+            <h3>Choisissez la matière</h3>
+        </div>
+        
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+
+            {% for subject in subjects %}
+
+                <a href="">
+                    <div id="user_comment_container">
+                        <strong>{{ subject.name }}</strong>
+                    </div>
+                </a>
+
+            {% endfor %}
+
+        </div>
+        
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <h3>Tout les cours</h3>
+        </div>
+        
+    </div>
+
+    <div class="row">
+        <div id="lesson_container" class="col-md-3">
+
+            {% for lesson in lessons %}
+
+                <a href="{{ path('lesson', { 'idClass': class.id, 'idLess': lesson.id  }) }}">
+                    <div id="user_comment_container">
+                        <strong>{{ lesson.title }}</strong>
+                        <p>{{ lesson.chapter.name}}</p>
+                    </div>
+                </a>
+
+            {% endfor %}
+
+        </div>
+        
+    </div>
+
+</div>
+
+    
+
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Board{% endblock %}
+
+{% block nav %}{% include 'nav_options.html.twig' %}{% endblock %}
+
+{% block content %} 
+
+
+
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-md-12">
+            <h3>Choisissez une évaluation</h3>
+
+            
+
+            {% for test in tests %}
+            
+                <a href="{{ path('test', { 'idClass': class.id, 'idTest': test.id }) }}">
+                    <div id="user_comment_container">
+                        <strong>{{ test.name }}</strong>
+                    </div>
+                </a>
+
+            {% endfor %}
+
+        </div>
+    </div>
+
+</div>
+
+    
+
+{% endblock %}

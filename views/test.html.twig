@@ -1,0 +1,61 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Board{% endblock %}
+
+{% block nav %}{% include 'nav_options.html.twig' %}{% endblock %}
+
+{% block content %} 
+
+
+
+<div class="container">
+
+    <div class="row">
+    
+        <div class="col-md-12">
+            <h3>Evaluation : {{ test.name }}</h3>
+        </div>
+        
+    </div>
+
+    <div class="row">
+    
+        <div class="col-md-12">
+            <p>Chapitre : {{ test.lesson.chapter.name }}</p>
+            <p>Séance : {{ test.lesson.title }}</p>
+        </div>
+        
+    </div>
+
+    <div class="row">
+    
+        <div class="col-md-12">
+            <h3>Notes de l'évaluation</h3>
+            <div class="table-responsive">
+                <table class="table table-hover table-bordered table-condensed">
+                    <thead>
+                        <tr class="info">
+                            <th>Elève</th>
+                            <th>Note</th>
+                        </tr>
+                    </thead>
+
+                    {% for mark in marks %}
+                        <tr>
+                            <td><p> {{ mark.student.name }} - {{ mark.student.firstname }} </p></td>
+                            <td><p> {{ mark.value }}</p></td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+        
+    </div>
+
+    
+
+</div>
+
+    
+
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Board{% endblock %}
+
+{% block nav %}{% include 'nav_options.html.twig' %}{% endblock %}
+
+{% block content %} 
+
+
+
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-md-12">
+            <h3>Créer une évaluation</h3>
+            <p>Choisissez un chapitre ou une séance</p>
+
+            {% for lesson in lessons %}
+            
+                <a id="user_comment_container" href="#" data-toggle="collapse" data-target="#{{lesson.id}}_sub">
+                    <i class="fa fa-fw fa-star"></i>{{ lesson.chapter.subject.name }}<i class="fa fa-fw fa-angle-down"></i>
+                </a>
+                    <ul id="{{lesson.id}}_sub" class="collapse">
+                        <a href="#" data-toggle="collapse" data-target="#{{lesson.id}}_chap">
+                            <i class="fa fa-fw fa-star"></i>{{ lesson.chapter.name }}<i class="fa fa-fw fa-angle-down"></i>
+                        </a>
+                            <ul id="{{lesson.id}}_chap" class="collapse">
+                                <a href="{{ path('board') }}">
+                                    <i class="fa fa-angle-double-right"></i> {{ lesson.title }} <a href="{{ path('add_test', { 'idClass': class.id, 'idLess': lesson.id  }) }}"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+                                </a>
+                            </ul>
+                    </ul>
+
+            {% endfor %}
+
+        </div>
+    </div>
+
+</div>
+
+    
+
+{% endblock %}

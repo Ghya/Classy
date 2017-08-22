@@ -1,0 +1,450 @@
+body { 
+    padding-top: 48px;
+    margin: 0;
+    font-family: 'Raleway'; 
+}
+
+#main_content {
+    min-height: calc(100vh - 200px);
+}
+
+.footer {
+    border-top: 1px solid #ccc;
+    padding: 50px;
+    height: 200px;
+    text-align: center;
+    background-color: #0B3C75;
+    color: white;
+}
+
+#lesson_container{
+    display: flex;
+}
+
+#social_block{
+    width: 100%;
+    padding: 0 70px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+}
+
+.hover1:hover {
+    background-color: #B7E0ED;
+}
+
+/*==== Landing Page ======*/ 
+
+#banner{
+    display: flex;
+    height: 700px;
+    background-image:url("/../img/landing_header.jpg");
+    background-size: 100%;
+    background-repeat:no-repeat;
+}
+
+#banner_text_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    color: white;
+    text-shadow: 2px 2px 2px black;
+}
+
+#banner_text_container p {
+    font-size: 18px;
+    margin-top: 30px;
+}
+
+#banner_btn_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+#banner_btn_container p {
+    margin: 0;
+    margin-left: 15px;
+    margin-right: 15px;
+    line-height: 15px;
+}
+
+#banner_btn_container p, a {
+    text-shadow: none;
+}
+
+#section_block {
+    padding: 70px;
+}
+
+#section_container {
+    display: flex;
+}
+
+#section_txt_container {
+    text-align: justify;
+    padding-left: 100px;
+    padding-top: 30px;
+}
+
+/*==== Navbar ======*/ 
+
+.navbar {
+    background-color: #0B3C75;
+}
+
+/*==== Board Page ======*/
+
+#board_blockpage {
+    padding-top: 50px;
+    background-color: rgb(240, 240, 240);
+}
+
+#board_header{
+    background-image: url('/../../img/img_board.jpg');
+    background-size: 110%;
+    background-repeat: no-repeat;
+    margin-bottom: 5px;
+    padding: 40px 0 20px 80px;
+    border-top-left-radius: 30px;
+}
+
+#board_chap_container {
+    background-color: #DCEDF2;
+    padding: 20px 30px 20px 30px;
+}
+
+.board_chapter_container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    border-radius: 10px;
+    margin-bottom: 40px;
+    margin-top: 20px;
+    border: 1px solid grey;
+    padding: 0 50px;
+    background-color: rgba(255, 255, 255, .6);
+    color: black;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.board_chapter_container p {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.board_chapter_container:hover {
+    background-color: #4BA6C4;
+    color: white;
+}
+
+#board_right_panel{
+    background-color: #4BA6C4;
+    padding: 30px 10px;
+    margin-bottom: 50px;
+}
+
+.panel_block_list li{
+    list-style: none;
+    padding-left: 0;
+}
+
+.panel_block_list{
+    padding-left: 0;
+    margin-bottom: 30px;
+}
+
+.block_list_unit{
+    padding: 10px 20px;
+    background-color: #1A728F;
+    margin-bottom: 5px;
+    width: 100%;
+}
+
+.panel_block_list a{
+    text-decoration: none;
+    color: white;
+}
+
+
+
+
+/*==== Chapter Page 2 ======*/
+
+#chap_blockpage{
+    padding-top: 50px;
+    background-color: rgb(240, 240, 240);
+}
+
+#chap_body{
+    background-color: white;
+}
+
+#chap_header{
+    background-color: white;
+    margin-bottom: 5px;
+    padding: 40px 0 20px 80px;
+    border-top-left-radius: 30px;
+}
+
+#page_container{
+    position: relative;
+    height: 600px;
+}
+
+.chapter_page{
+    padding: 50px;
+}
+
+.chapter_page p{
+    margin: 0;
+}
+
+#chap_right_panel{
+    background-color: #4BA6C4;
+    padding: 30px 10px;
+    margin-bottom: 50px;    
+}
+
+#page_marker {
+    display: flex;
+    justify-content: space-between;
+}
+
+#ico_marker {
+    display: none;
+    color: goldenrod;
+}
+
+/*==== Chapter Page ======*/
+
+
+
+#block_container {
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    background-position: 50% 0;
+    background-repeat: no-repeat;
+    margin-top: 15px;
+    padding: 60px;
+    padding-bottom: 0;
+    padding-top: 10px;
+}
+
+.chapter_page{
+    position: absolute;
+    text-align: justify;
+    padding-top: 0;
+    margin-top: 30px;
+}
+
+.chapter_img{
+    height: 150px;
+}
+
+#pagination_container {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.page_pagination {
+    width: 8%;
+    height: 50px;
+}
+
+#next_page,  #prev_page{
+    width: 15%;
+    height: 50px;
+}
+
+.page_activ {
+    background-color: grey;
+    color: white;
+}
+
+#block_page {
+    background-image: url('/../img/page_background.jpg');
+    background-position: 0 75%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+#comment_container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    margin-top: 50px;
+    background-color: #4BA6C4;
+    border-radius: 8px;
+    padding: 15px 30px;
+    margin-bottom: 50px
+}
+
+#add_comment_container{
+    color: black;
+    margin-top: 50px;
+    background-color: #4BA6C4;
+    border-radius: 8px;
+    padding: 15px 30px;
+    margin-bottom: 15px;
+}
+
+#user_comment_container{
+    border: 1px solid grey;
+    border-radius: 8px;
+    width: 100%;
+    margin-bottom: 20px;
+    background-color: #e6e6e6;
+    padding: 5px 15px;
+}
+
+.chapter_btn_container {
+    position: fixed;
+    margin-top: 50px;
+    margin-right: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 300px;
+    background-color: white;
+}
+
+/*==== Buttons ======*/
+
+#next_page, #prev_page, .page_pagination {
+  border: 1px solid black;
+  border-bottom: none;
+}
+
+/*==== Admin Page ======*/
+
+#admin_block_page {
+    padding-bottom: 80px;
+}
+
+#admin_block_page,
+#comment_show_block_page {
+    min-height: 650px;
+    padding-top: 50px;
+    background-color: rgb(240, 240, 240);
+}
+
+#admin_page_title,
+#comment_control_page_title{
+    background-color: white;
+    margin-bottom: 5px;
+    border-top-left-radius: 30px;
+}
+
+#comment_page_info_block{
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    margin-top: 5px;
+    padding: 20px 10%;
+}
+
+
+.adminTable {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#comment_block_content,
+#user_block_content {
+    display: none;
+}
+
+#control_page_block {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    padding: 0 5%;
+}
+
+#info_chapter_block {
+    margin: 20px 0;
+}
+
+#chapter_block_content,
+#comment_block_content,
+#user_block_content {
+    background-color: white;
+}
+
+
+.chapter_list_block{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid black;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    padding: 5px 50px;
+}
+
+.chapter_list_block:hover {
+    background-color: #FFE7C4;
+}
+
+.chapter_ref{
+    width: 80%;
+}
+
+.chapter_row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.comment_list_block{
+    border-radius: 3px;
+    margin: 10px;
+}
+
+.comment_list_block:hover {
+    background-color: #FFE7C4;
+}
+
+.user_list_block{
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid black;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    padding: 0px 50px;
+}
+
+.user_list_block:hover {
+    background-color: #FFE7C4;
+}
+
+#user_row_block{
+    padding: 0 50px;
+}
+
+#comment_detail_block {
+    margin-top: 5px;
+    background-color: white;
+}
+
+
+
+

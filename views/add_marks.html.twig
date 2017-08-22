@@ -1,0 +1,54 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Board{% endblock %}
+
+{% block nav %}{% include 'nav_options.html.twig' %}{% endblock %}
+
+{% block content %} 
+
+
+
+<div class="container">
+
+    <div class="row">
+
+        <h2>Notes de l'évaluation</h2>
+
+        {{ form_start(form) }}
+
+            <h3>Nom de l'évaluation {{form_row(form.name)}}</h3>
+
+            <div class="col-md-2">
+                    
+                
+                    {% for student in students %}
+                        <p style="line-height:27px; margin:0">{{ student.name }} - {{ student.firstname}}</p>
+                    {% endfor %}
+                
+                
+            </div>
+
+            <div class="col-md-10">
+                    
+                
+                    {% for mark in form.marks %}
+                        {{ form_row(mark.value) }}
+                    {% endfor %}
+                
+
+            </div>
+
+             <!-- submit form -->
+                        
+                <div class="form-group">
+                    <input type="submit" class="btn btn-primary" value="Enregistrer" />
+                </div>
+
+        {{ form_end(form) }}    
+    </div>    
+
+</div>
+
+    
+
+{% endblock %}
