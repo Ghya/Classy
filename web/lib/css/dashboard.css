@@ -34,7 +34,7 @@
 
 .top-nav>li {
     display: inline-block;
-    float: left;
+    /* float: left; */
 }
 
 .top-nav>li>a {
@@ -97,7 +97,7 @@
     .side-nav li a:hover,
     .side-nav li a:focus {
         outline: none;
-        background-color: #1a242f !important;
+        background-color: #1a242f;
     }
 }
 

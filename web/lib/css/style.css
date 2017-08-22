@@ -17,9 +17,22 @@ body {
     color: white;
 }
 
+
+/*==== CSS de Classy ======*/
+
 #lesson_container{
     display: flex;
 }
+
+#btn_class_board {
+    background-color:grey;
+}
+
+#btn_class_board:hover {
+    background-color:gray;
+}
+
+/*==== Fin CSS Classy ======*/
 
 #social_block{
     width: 100%;
@@ -33,7 +46,7 @@ body {
     background-color: #B7E0ED;
 }
 
-/*==== Landing Page ======*/ 
+ 
 
 #banner{
     display: flex;

@@ -62,6 +62,30 @@ class StudentDAO extends DAO
         return $students;
     }
 
+    /**
+     * Saves an student into the database.
+     *
+     * @param \Classy\Domain\student $student The student to save
+     */
+    public function save(Student $student) {
+        $studentData = array(
+                'stud_name' => $student->getName(),
+                'stud_firstname' => $student->getFirstName(),
+                'stud_class_id' => $student->getClass()->getId()         	
+            );
+
+        if ($student->getId()) {
+            // The student has already been saved : update it
+            $this->getDb()->update('student', $studentData);
+        } else {
+            // The student has never been saved : insert it
+            $this->getDb()->insert('student', $studentData);
+            // Get the id of the newly created student and set it on the entity.
+            $id = $this->getDb()->lastInsertId();
+            $student->setId($id);
+        }
+    }
+
     
 
     /**

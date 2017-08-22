@@ -13,10 +13,50 @@
 
         
         <div class="col-md-6">
+
+            {% for flashMessage in app.session.flashbag.get('success') %}
+                <div class="alert alert-success">
+                    {{ flashMessage }}
+                </div>
+            {% endfor %}
+
+
             <h3>Classy</h3>
             <p>Choisissez une classe dans le menu pour commencer la gestion</p>
-            <p>ou</p>
-            <a href="#">Créer une classe</a> 
+            <p>ou</p> 
+
+            {{ form_start(classForm) }}
+
+                    <!-- title form -->
+
+                    <h3>Créer une Classe</h3>
+
+                        <p>Choix du niveau</p>
+                        <div class="form-group">
+                            {{ form_errors(classForm.lvl) }}
+                            {{ form_widget(classForm.lvl, { 'attr':  {
+                                'class': 'form-control'
+                            }}) }}
+                        </div>
+                    
+                    <!-- content form -->
+
+                        <p>Nom de l'établissement</p>
+                        <div class="form-group">
+                            {{ form_errors(classForm.etab) }}
+                            {{ form_widget(classForm.etab, { 'attr':  {
+                                'class': 'form-control',
+                                'placeholder': 'Nom de l\'établissement'
+                            }}) }}
+                        </div>
+
+                    <!-- submit form -->
+                        
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-primary" value="Enregistrer" />
+                        </div>
+
+                    {{ form_end(classForm) }}
         </div>
         
 
@@ -31,7 +71,7 @@
                 
                     {% if memoForm %}
 
-                    <h3>Mémos :</h3>
+                    <h3>Mémos</h3>
 
                         {% for memo in memos %}
 

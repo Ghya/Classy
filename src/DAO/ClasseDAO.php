@@ -42,6 +42,29 @@ class ClasseDAO extends DAO
             throw new \Exception("No class matching id " . $id);
     }
 
+    /**
+     * Saves an class into the database.
+     *
+     * @param \Classy\Domain\class $class The class to save
+     */
+    public function save(Classe $class) {
+        $classData = array(
+            'class_lvl' => $class->getLvl(),
+            'class_etab' => $class->getEtab()           	
+            );
+
+        if ($class->getId()) {
+            // The class has already been saved : update it
+            $this->getDb()->update('class', $classData);
+        } else {
+            // The class has never been saved : insert it
+            $this->getDb()->insert('class', $classData);
+            // Get the id of the newly created class and set it on the entity.
+            $id = $this->getDb()->lastInsertId();
+            $class->setId($id);
+        }
+    }
+
 
     /**
      * Creates a Classe object based on a DB row.

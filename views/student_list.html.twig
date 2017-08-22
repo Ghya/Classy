@@ -4,25 +4,71 @@
 
 {% block nav %}{% include 'nav_options.html.twig' %}{% endblock %}
 
-{% block content %} 
+{% block content %}
 
-    <div class="table-responsive">
-        <table class="table table-hover table-condensed">
-            <thead>
-                <tr>
-                    <th>No</th>
-                    <th>Prénom</th>
-                    <th>Nom</th>  <!-- Actions column -->
-                </tr>
-            </thead>
-            {% for student in students %}
-            <tr>
-                <td><h3 class="student_id">{{ student.id }}</h3></td>
-                <td><p> {{ student.firstname }} </p></td>
-                <td><p> {{ student.name }}</p></td>
-            </tr>
-            {% endfor %}
-        </table>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                
+                {{ form_start(studentForm, { 'attr': {'class': 'form-vertical'} }) }}
+
+                <!-- title form -->
+
+                <h3>Ajouter un élève</h3>
+
+                    <div class="form-group">
+                        {{ form_errors(studentForm.name) }}
+                        {{ form_widget(studentForm.name, { 'attr':  {
+                            'class': 'form-control',
+                            'placeholder': 'Nom'
+                        }}) }}
+                    </div>
+                
+                <!-- content form -->
+
+                    <div class="form-group">
+                        {{ form_errors(studentForm.firstname) }}
+                        {{ form_widget(studentForm.firstname, { 'attr':  {
+                            'class': 'form-control',
+                            'placeholder': 'Prénom'
+                        }}) }}
+                    </div>
+
+                <!-- submit form -->
+                    
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-primary" value="Enregistrer" />
+                    </div>
+
+                {{ form_end(studentForm) }}
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <table class="table table-hover table-condensed">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Prénom</th>
+                                <th>Nom</th>  <!-- Actions column -->
+                            </tr>
+                        </thead>
+                        {% for student in students %}
+                        <tr>
+                            <td><h3 class="student_id">{{ student.id }}</h3></td>
+                            <td><p> {{ student.firstname }} </p></td>
+                            <td><p> {{ student.name }}</p></td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
+
+    
 
 {% endblock %}

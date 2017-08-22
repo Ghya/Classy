@@ -16,7 +16,7 @@ class Student
      *
      * @var string
      */
-    private $fistname;
+    private $firstname;
 
     /**
      * student name.

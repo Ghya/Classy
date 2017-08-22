@@ -6,11 +6,15 @@ use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;
 use Classy\Domain\User;
 use Classy\Domain\Memo;
+use Classy\Domain\Classe;
+use Classy\Domain\Student;
 use Classy\Domain\Subject;
 use Classy\Domain\Chapter;
 use Classy\Domain\Lesson;
 use Classy\Domain\Step;
 use Classy\Form\Type\UserType;
+use Classy\Form\Type\ClasseType;
+use Classy\Form\Type\StudentType;
 use Classy\Form\Type\MemoType;
 use Classy\Form\Type\SubjectType;
 use Classy\Form\Type\ChapterType;
@@ -45,17 +49,32 @@ class HomeController {
      * @param Application $app Silex application
      */
 
-    public function studentListAction($id, Application $app) {
+    public function studentListAction($id, Request $request,  Application $app) {
         
         $class = $app['dao.class']->find($id);
         $classes = $app['dao.class']->findAll();
-        $students = $app['dao.student']->findAllByClass($id);    
+        $students = $app['dao.student']->findAllByClass($id);
 
-            return $app['twig']->render('student_list.html.twig', array(
-                'class' => $class,
-                'students' => $students,
-                'classes' => $classes,
-            ));
+        $student = new Student();
+        $student->setClass($class);
+        $studentForm = $app['form.factory']->create(StudentType::class, $student);
+        $studentForm->handleRequest($request);
+        $studentFormView = $studentForm->createView();
+
+        if ($studentForm->isSubmitted() && $studentForm->isValid()) {
+            $app['dao.student']->save($student);
+
+             return $app->redirect($app['url_generator']->generate('list', array(
+                'id' => $class->getId()
+            )));
+        }   
+
+        return $app['twig']->render('student_list.html.twig', array(
+            'class' => $class,
+            'students' => $students,
+            'classes' => $classes,
+            'studentForm' => $studentFormView
+        ));
 
         
     }
@@ -127,7 +146,7 @@ class HomeController {
         $memo = new Memo();
         $memoForm = $app['form.factory']->create(MemoType::class, $memo);
         $memoForm->handleRequest($request);
-        $memoFormView = $memoForm->createView(); 
+        $memoFormView = $memoForm->createView();
 
         if ($memoForm->isSubmitted() && $memoForm->isValid()) {
             $app['dao.memo']->save($memo);
@@ -135,9 +154,24 @@ class HomeController {
              return $app->redirect($app['url_generator']->generate('board'));
         }
 
+        $class = new Classe();
+        $classForm = $app['form.factory']->create(ClasseType::class, $class);
+        $classForm->handleRequest($request);
+        $classFormView = $classForm->createView();
+
+        if ($classForm->isSubmitted() && $classForm->isValid()) {
+            $app['dao.class']->save($class);
+            $app['session']->getFlashBag()->add('success', 'La classe a bien été crée');
+
+             return $app->redirect($app['url_generator']->generate('board'));
+        } 
+
+        
+
         return $app['twig']->render('board.html.twig', array(
             'memos' => $memos,
             'classes' => $classes,
+            'classForm' => $classFormView,
             'memoForm' => $memoFormView
         ));
 
