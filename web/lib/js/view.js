@@ -2,20 +2,12 @@ var view = {
 
     listenEvent: function () {
 
-        //admin page controller
-        $('#show_chapter_content').click(function () {
-            $('.show_off_content').hide();
-            $('#chapter_block_content').show()
-        })
-
-        $('#show_comment_content').click(function () {
-            $('.show_off_content').hide();
-            $('#comment_block_content').show()
-        })
-
-        $('#show_user_content').click(function () {
-            $('.show_off_content').hide();
-            $('#user_block_content').show()
-        })
+        $('.lessson_panel_block').mouseover( function () {
+            $(this).find('.lessson_btn_panel').addClass('opacity_top')
+        });
+        
+        $('.lessson_panel_block').mouseout( function () {
+            $(this).find('.lessson_btn_panel').removeClass('opacity_top')
+        });
     }
 }

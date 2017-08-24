@@ -32,6 +32,101 @@ body {
     background-color:gray;
 }
 
+.panel_title_down:hover {
+    background-color: #E3F4FA
+}
+
+.panel > .panel-collapse {
+    background-image: none;
+    background-color: #B7E0ED;
+    color: white;
+}
+
+.panel_subject {
+    height: 50px;
+    background-color: #1A728F;
+    margin-top: 8px;
+    text-decoration: none;
+    color: white;
+}
+
+.panel_subject p {
+    line-height: 50px;
+}
+
+.back_panel {
+    background-color: #e0e0e0;
+    padding: 20px 0;
+}
+
+.chapter_panel {
+    height: 50px;
+    background-color: #4BA6C4;
+    margin-bottom: 5px;
+    text-decoration: none;
+    color: white;
+    border-radius: 5px;
+    padding: 0 25px;
+}
+
+.chapter_panel p {
+    line-height: 50px;
+}
+
+.lessson_panel_block {
+    display: flex;
+    justify-content: space-between;
+    height: 80px;
+    background-color: whitesmoke;
+    margin-bottom: 8px;
+    color: black;
+    border-radius: 5px;
+    padding: 15px 25px;
+}
+
+.lessson_panel_block:hover  {
+    background-color: #f0f0f0;
+}
+
+.lessson_title_panel {
+    width: 30%;
+}
+
+.lessson_test_panel {
+    display: flex;
+    flex-direction: column;
+}
+
+.lessson_test_panel p {
+    margin: auto;
+}
+
+.lessson_btn_panel i {
+    margin-left: 10px;
+    border: 1px solid grey;
+    border-radius: 7px;
+    padding: 10px;
+    background-color: white;    
+}
+
+.lessson_btn_panel i:hover {
+    background-color: #B7E0ED;    
+}
+
+.lessson_btn_panel {
+    opacity: 0;
+    display: flex;  
+}
+
+.opacity_top{
+    opacity: 1;
+}
+
+.lessson_panel_back:last-child {
+    margin-bottom: 20px;
+}
+
+
 /*==== Fin CSS Classy ======*/
 
 #social_block{

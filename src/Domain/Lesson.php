@@ -14,35 +14,35 @@ class Lesson
     /**
      * Lesson title.
      *
-     * @var integer
+     * @var string
      */
     private $title;
 
     /**
      * Lesson situation.
      *
-     * @var integer
+     * @var string
      */
     private $situation;
 
     /**
      * Lesson goal.
      *
-     * @var integer
+     * @var string
      */
     private $goal;
 
     /**
      * Lesson material.
      *
-     * @var integer
+     * @var string
      */
     private $equipment;
 
     /**
      * Lesson skill.
      *
-     * @var integer
+     * @var string
      */
     private $skill;
 

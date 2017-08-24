@@ -23,12 +23,14 @@ class SelectLessonController {
         $class = $app['dao.class']->find($id);
         $classes = $app['dao.class']->findAll();
         $subjects = $app['dao.subject']->findAllByClass($id);
+        $chapters = $app['dao.chapter']->findAllByClass($id);
         $lessons = $app['dao.lesson']->findAllByClass($id);
 
 
             return $app['twig']->render('subject.html.twig', array(
                 'class' => $class,
                 'subjects' => $subjects,
+                'chapters' => $chapters,
                 'lessons' => $lessons,
                 'classes' => $classes
             ));

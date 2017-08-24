@@ -4,41 +4,107 @@
 
 {% block nav %}{% include 'nav_options.html.twig' %}{% endblock %}
 
-{% block content %} 
-
-
-
-<div class="container">
-
-    <div class="row">
-
-        <div class="col-md-12">
-            <h3>Créer une évaluation</h3>
-            <p>Choisissez un chapitre ou une séance</p>
-
-            {% for lesson in lessons %}
-            
-                <a id="user_comment_container" href="#" data-toggle="collapse" data-target="#{{lesson.id}}_sub">
-                    <i class="fa fa-fw fa-star"></i>{{ lesson.chapter.subject.name }}<i class="fa fa-fw fa-angle-down"></i>
-                </a>
-                    <ul id="{{lesson.id}}_sub" class="collapse">
-                        <a href="#" data-toggle="collapse" data-target="#{{lesson.id}}_chap">
-                            <i class="fa fa-fw fa-star"></i>{{ lesson.chapter.name }}<i class="fa fa-fw fa-angle-down"></i>
-                        </a>
-                            <ul id="{{lesson.id}}_chap" class="collapse">
-                                <a href="{{ path('board') }}">
-                                    <i class="fa fa-angle-double-right"></i> {{ lesson.title }} <a href="{{ path('add_test', { 'idClass': class.id, 'idLess': lesson.id  }) }}"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
-                                </a>
-                            </ul>
-                    </ul>
-
-            {% endfor %}
-
-        </div>
-    </div>
-
-</div>
+{% block content %}    
 
     
+
+    <div class="container">
+
+        <div classs="row">
+            <div class="text-center col-md-12">
+                <h3>Table de Navigation</h3>
+            </div>
+        </div>
+
+        <div classs="row">
+
+            {% for subject in subjects %}
+
+                <a data-toggle="collapse" href="#collapse-sub{{subject.id}}">
+                    <div class="panel_subject col-md-12">
+                        <p>{{subject.name}}</p>
+                    </div>
+
+                    <div id="collapse-sub{{subject.id}}" class="collapse col-md-12 back_panel" >
+                        <div><!--grey panel-->
+
+                            {% for chapter in chapters %}
+
+                                {% if chapter.subject.id == subject.id  %}
+
+                                    <a style="text-decoration: none" data-toggle="collapse" href="#collapse-chap{{chapter.id}}" class="col-md-12">
+
+                                        <div  class="chapter_panel">
+                                            <p>{{chapter.name}}</p>
+                                        </div>
+
+                                    </a>
+
+                                    <div id="collapse-chap{{chapter.id}}" class="collapse col-md-12" >
+
+                                        {% for lesson in lessons %}
+
+                                            {% if lesson.chapter.id == chapter.id  %}
+
+                                                    <div class="lessson_panel_back col-md-12">
+                                                        <div  class="lessson_panel_block" >
+
+                                                            <div  class="lessson_title_panel" >
+                                                                <p style="font-size:1.1em"><strong>{{lesson.title}}</strong></p>
+                                                                <p><em style="font-size:12px">Durée : {{lesson.time}}</em></p>
+                                                            </div>
+
+                                                            <div  class="lessson_test_panel" >
+                                                                <p>Test Associé</p>
+                                                                <p>1</p>
+                                                            </div>
+
+                                                            <div  class="lessson_btn_panel">
+
+                                                                <div>
+                                                                    <a href=""><i class="glyphicon glyphicon-pencil"></i></a>
+                                                                </div>
+                                                                <div>
+                                                                    <a href="{{ path('lesson', { 'idClass': class.id, 'idLess': lesson.id  }) }}"><i class="glyphicon glyphicon-share"></i></a>
+                                                                </div>
+                                                                <div>
+                                                                    <a href="{{ path('add_test', { 'idClass': class.id, 'idLess': lesson.id  }) }}"><i class="glyphicon glyphicon-plus-sign"></i></a>
+                                                                </div>
+                                                                
+                                                                <div class="dropdown">
+
+                                                                    <a class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                        <i class="glyphicon glyphicon-folder-open"></i>
+                                                                    </a>
+                                                                    
+                                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                                        {% for test in tests %}
+                                                                        {% if test.lesson.id == lesson.id  %}
+                                                                            <a class="dropdown-item" href="{{ path('test', { 'idClass': class.id, 'idTest': test.id  }) }}">{{test.name}}</a>
+                                                                        {% endif %}
+                                                                        {% endfor %}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+
+                                            {% endif %}
+
+                                        {% endfor %}
+
+                                    </div>
+                                    
+
+                                {% endif %}
+                            {% endfor %}
+
+                        </div>
+                    </div>                
+                </a>
+            {% endfor %}
+        </div><!--/row-->
+    </div><!--/container-->
 
 {% endblock %}

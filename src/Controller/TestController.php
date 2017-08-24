@@ -42,12 +42,18 @@ class TestController {
         
         $class = $app['dao.class']->find($idClass);
         $classes = $app['dao.class']->findAll();
+        $subjects = $app['dao.subject']->findAllByClass($idClass);
+        $chapters = $app['dao.chapter']->findAllByClass($idClass);
         $lessons = $app['dao.lesson']->findAllByClass($idClass);
+        $tests = $app['dao.l_test']->findAllByClass($idClass);
 
             return $app['twig']->render('add_test_select.html.twig', array(
                 'class' => $class,
                 'classes' => $classes,
-                'lessons' => $lessons
+                'subjects' => $subjects,
+                'chapters' => $chapters,
+                'lessons' => $lessons,
+                'tests' => $tests
             ));
 
         
