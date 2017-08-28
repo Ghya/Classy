@@ -53,7 +53,27 @@ class HomeController {
         
         $class = $app['dao.class']->find($id);
         $classes = $app['dao.class']->findAll();
-        $students = $app['dao.student']->findAllByClass($id);
+        $students = $app['dao.student']->findAllByClassSimple($id);  
+
+        return $app['twig']->render('student_list.html.twig', array(
+            'class' => $class,
+            'students' => $students,
+            'classes' => $classes
+        ));
+
+        
+    }
+
+    /**
+     * Class page controller.
+     *
+     * @param Application $app Silex application
+     */
+
+    public function addStudentAction($id, Request $request,  Application $app) {
+        
+        $class = $app['dao.class']->find($id);
+        $classes = $app['dao.class']->findAll();
 
         $student = new Student();
         $student->setClass($class);
@@ -69,11 +89,32 @@ class HomeController {
             )));
         }   
 
-        return $app['twig']->render('student_list.html.twig', array(
+        return $app['twig']->render('add_student.html.twig', array(
             'class' => $class,
-            'students' => $students,
             'classes' => $classes,
             'studentForm' => $studentFormView
+        ));
+
+        
+    }
+
+    /**
+     * Class page controller.
+     *
+     * @param Application $app Silex application
+     */
+
+    public function studentAction($idClass, $idStud, Request $request,  Application $app) {
+        
+        $class = $app['dao.class']->find($idClass);
+        $classes = $app['dao.class']->findAll();
+        $student = $app['dao.student']->find($idStud);
+
+
+        return $app['twig']->render('student.html.twig', array(
+            'class' => $class,
+            'classes' => $classes,
+            'student' => $student
         ));
 
         

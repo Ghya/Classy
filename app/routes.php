@@ -24,6 +24,14 @@ $app->match('/class/{id}', "Classy\Controller\HomeController::classAction")
 $app->match('/class/{id}/list', "Classy\Controller\HomeController::studentListAction")
 ->bind('list');
 
+// Add Student
+$app->match('/class/{id}/add_student', "Classy\Controller\HomeController::addStudentAction")
+->bind('add_student');
+
+// Add Student
+$app->match('/class/{idClass}/student/{idStud}', "Classy\Controller\HomeController::studentAction")
+->bind('student');
+
 // Subject
 $app->match('/class/{id}/lessons', "Classy\Controller\SelectLessonController::subjectAction")
 ->bind('lessons');

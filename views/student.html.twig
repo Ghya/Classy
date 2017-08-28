@@ -1,0 +1,152 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Board{% endblock %}
+
+{% block nav %}{% include 'nav_options.html.twig' %}{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+
+        <div class="row">
+            <div id="student_container"  class="col-md-offset-1 col-md-10">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="header_stud_block">
+
+                            <div id="stud_img_name">
+                                {% if student.gender == 1 %}
+                                    <div id="header_img">
+                                        <img src="{{ asset('/img/boy_profil.png') }}" alt="photo de profil">
+                                    </div>
+                                {% else %}
+                                    <div id="header_img">
+                                        <img src="{{ asset('/img/girl_profil.png') }}" alt="photo de profil">
+                                    </div>
+                                {% endif %}
+
+                                <div id="header_name">
+                                    <div id="">
+                                        <h3>{{student.name}}</h3><h3>{{student.firstname}}</h3>
+                                    </div>
+                                    <div id="">
+                                        <p>{{student.birth}}</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="stud_annexe">
+                                <div id="stud_pull_right">
+                                    <div id="stud_coop">
+                                    <p>Coopérative : </p>
+                                    {% if student.coop == 1 %}
+                                        <p>Payé <i class="validate_green glyphicon glyphicon-ok-sign"></i></p>
+                                    {% else %}
+                                        <p>Non payé <i class="unvalidate_red glyphicon glyphicon-remove-sign"></i></p>
+                                    {% endif %}
+                                    </div>
+
+                                    <div id="stud_coop">
+                                    <p>Gouter Collectif : </p>
+                                    {% if student.coll == 1 %}
+                                        <p>Oui <i class="validate_green glyphicon glyphicon-ok-sign"></i></p>
+                                    {% else %}
+                                        <p>Non <i class="unvalidate_red glyphicon glyphicon-remove-sign"></i></p>
+                                    {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="parent_stud_block">
+                            <div id="parent_title">
+                                <p>Informations parents</p>
+                            </div>
+                            <div id="parent_info">
+                                <p><strong>Mère : </strong>{{ student.momName }}</p>
+                                <p><strong>Père : </strong>{{ student.dadName }}</p>
+                                <p><strong>Tel : </strong>{{ student.tel }}</p>
+                                <p><strong>Adresse : </strong>{{ student.adress }}</p>
+                                <p><strong>Code Postal : </strong>{{ student.cp }}</p>
+                                <p><strong>Ville : </strong>{{ student.city }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="detail_stud_block">
+                            <div id="detail_title">
+                                <p>A propos</p>
+                            </div>
+                            <div id="detail_info">
+                                <p>PPRE : 
+                                    {% if student.ppre == 1 %}
+                                    Oui</p>
+                                    <div id="ppre_note">
+                                        <p>{{student.ppreNote}}</p>
+                                    </div>
+                                    {% else %}
+                                    Non</p>
+                                    {% endif %}
+
+                                <p>RASED : 
+                                    {% if student.rased == 1 %}
+                                    Oui</p>
+                                    <div id="rased_note">
+                                        <p>{{student.rasedNote}}</p>
+                                    </div>
+                                    {% else %}
+                                    Non</p>
+                                    {% endif %}
+
+                                <p>PAI : 
+                                    {% if student.pai == 1 %}
+                                    Oui</p>
+                                    <div id="pai_note">
+                                        <p>{{student.paiNote}}</p>
+                                    </div>
+                                    {% else %}
+                                    Non</p>
+                                    {% endif %}
+
+                                <p>APC : 
+                                    {% if student.apc == 1 %}
+                                    Oui</p>
+                                    <div id="apc_note">
+                                        <p>{{student.apcNote}}</p>
+                                    </div>
+                                    {% else %}
+                                    Non</p>
+                                    {% endif %}
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="note_stud_block">
+                            <div id="note_title">
+                                <p>Remarque sur l'élève</p>
+                            </div>
+                            <div id="note_info">
+                                {{student.note}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+{% endblock %}

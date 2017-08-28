@@ -9,58 +9,33 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                
-                {{ form_start(studentForm, { 'attr': {'class': 'form-vertical'} }) }}
-
-                <!-- title form -->
-
-                <h3>Ajouter un élève</h3>
-
-                    <div class="form-group">
-                        {{ form_errors(studentForm.name) }}
-                        {{ form_widget(studentForm.name, { 'attr':  {
-                            'class': 'form-control',
-                            'placeholder': 'Nom'
-                        }}) }}
-                    </div>
-                
-                <!-- content form -->
-
-                    <div class="form-group">
-                        {{ form_errors(studentForm.firstname) }}
-                        {{ form_widget(studentForm.firstname, { 'attr':  {
-                            'class': 'form-control',
-                            'placeholder': 'Prénom'
-                        }}) }}
-                    </div>
-
-                <!-- submit form -->
-                    
-                    <div class="form-group">
-                        <input type="submit" class="btn btn-primary" value="Enregistrer" />
-                    </div>
-
-                {{ form_end(studentForm) }}
-
+                <h3>Registre des élèves</h3>
+                <a href="{{ path('add_student', { 'id': class.id}) }}">Ajouter un élève</a>
             </div>
         </div>
 
         <div class="row">
             <div class="col-md-12">
                 <div class="table-responsive">
-                    <table class="table table-hover table-condensed">
+                    <table class="table table-hover table-bordered">
                         <thead>
-                            <tr>
+                            <tr class="info">
                                 <th>No</th>
                                 <th>Prénom</th>
-                                <th>Nom</th>  <!-- Actions column -->
+                                <th>Nom</th>
+                                <th>Fiche élève</th>
                             </tr>
                         </thead>
                         {% for student in students %}
                         <tr>
-                            <td><h3 class="student_id">{{ student.id }}</h3></td>
-                            <td><p> {{ student.firstname }} </p></td>
-                            <td><p> {{ student.name }}</p></td>
+                            <td class="col-md-1"><p class="student_id">{{ student.id }}</p</td>
+                            <td class="col-md-5"><p> {{ student.firstname }} </p></td>
+                            <td class="col-md-5"><p> {{ student.name }}</p></td>
+                            <td class="col-md-1 text-center">
+                                <a href="{{ path('student', { 'idClass': class.id, 'idStud': student.id }) }}">
+                                    <i class="glyphicon glyphicon-share"></i>
+                                </a>
+                            </td>
                         </tr>
                         {% endfor %}
                     </table>

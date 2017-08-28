@@ -139,12 +139,21 @@ class TestController {
         $test = $app['dao.l_test']->find($idTest);
         $marks = $app['dao.l_mark']->findAllByTest($idTest);
 
+        $markStud = array();
+        $markValue = array();
+
+        foreach ($marks as $mark) {
+                array_push($markStud, $mark->getStudent()->getName());
+                array_push($markValue, $mark->getValue());
+        }
 
             return $app['twig']->render('test.html.twig', array(
                 'class' => $class,
                 'classes' => $classes,
                 'test' => $test,
-                'marks' => $marks
+                'marks' => $marks,
+                'markStud' => json_encode($markStud),
+                'markValue' => json_encode($markValue)
             ));
 
         

@@ -1,4 +1,4 @@
-var view = {
+var View = {
 
     listenEvent: function () {
 

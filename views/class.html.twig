@@ -4,8 +4,67 @@
 
 {% block nav %}{% include 'nav_options.html.twig' %}{% endblock %}
 
-{% block content %} 
+{% block content %}
 
-    <p>Tableau de bord de la classe de {{ class.lvl }}
+    <div class="container">
+
+        <div class="row">
+            <div class="text-center col-md-12">
+                <h2>Tableau de bord de la classe de {{ class.lvl }}</h2>
+                <p><em>Etablissemnt : {{class.etab}}</em></p>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="dash_block col-md-4">
+                <div class="hvr-push" id="add_lesson_block">
+                    <i class="fa fa-5x fa-pencil-square-o" aria-hidden="true"></i>
+                    <p>Créer un cours</p>
+                </div>
+            </div>
+
+            <div class="dash_block col-md-4">
+                <div class="hvr-push" id="add_lesson_block">
+                    <i class="fa fa-5x fa-tasks" aria-hidden="true"></i>
+                    <p>Navigation</p>
+                </div>
+            </div>
+
+            <div class="dash_block col-md-4">
+                <div class="hvr-push" id="add_lesson_block">
+                    <i class="fa fa-5x fa-users" aria-hidden="true"></i>
+                    <p>Registre</p>
+                </div>
+            </div>
+
+        </div>
+
+         <div class="row">
+
+            <div class="dash_block col-md-4">
+                <div id="add_lesson_block">
+                    <i class="fa fa-5x fa-pencil-square-o" aria-hidden="true"></i>
+                    <p>Créer un cours</p>
+                </div>
+            </div>
+
+            <div class="dash_block col-md-4">
+                <div id="add_lesson_block">
+                    <i class="fa fa-5x fa-tasks" aria-hidden="true"></i>
+                    <p>Navigation</p>
+                </div>
+            </div>
+
+            <div class="dash_block col-md-4">
+                <div id="add_lesson_block">
+                    <i class="fa fa-5x fa-users" aria-hidden="true"></i>
+                    <p>Registre</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
 
 {% endblock %}

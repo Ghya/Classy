@@ -10,12 +10,122 @@ body {
 
 .footer {
     border-top: 1px solid #ccc;
-    padding: 50px;
+    padding: 60px;
     height: 200px;
     text-align: center;
     background-color: #0B3C75;
     color: white;
 }
+
+/*==== Tableau de bord ======*/
+
+.dash_block {
+    padding: 0 70px;
+    margin-top: 20px;
+}
+
+.dash_block i {
+    margin-bottom: 30px;
+}
+
+.dash_block p {
+    font-size: 16px;
+}
+
+#add_lesson_block,
+#navigation_block,
+#list_block {
+    border: 2px solid #003399;
+    border-radius: 8px;
+    padding: 40px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #e6f7ff;
+    color: #003399;
+}
+
+#add_lesson_block:hover {
+    background-color: #cce6ff;
+}
+
+
+
+/*==== Fin Board ======*/
+
+
+
+
+/*==== Fiche élève ======*/
+
+.validate_green {
+    color: green;
+}
+
+.unvalidate_red {
+    color: orangered;
+}
+
+#student_container,
+#parent_stud_block,
+#detail_stud_block,
+#note_stud_block {
+    border: 1px solid black;
+    margin-bottom: 15px;
+}
+
+#header_stud_block {
+    display: flex;
+    justify-content: center;
+    padding: 30px 0;
+}
+
+#stud_img_name {
+    display: flex;
+    justify-content: flex-end;
+    width: 50%;
+}
+
+#header_img {
+    margin-right: 40px;
+    margin-top: 20px;
+}
+
+#stud_annexe {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    width: 50%;
+}
+
+#parent_title,
+#detail_title,
+#note_title {
+    background-color: #B7E0ED;
+    height: 40px;
+    padding-left: 15px;
+}
+
+#parent_title p,
+#detail_title p,
+#note_title p {
+    line-height: 40px;
+}
+
+#parent_info,
+#detail_info {
+    padding: 15px;
+}
+
+#note_info {
+    min-height: 100px;
+    padding: 15px;
+}
+
+/*==== Fin fiche élève ======*/
+
 
 
 /*==== CSS de Classy ======*/

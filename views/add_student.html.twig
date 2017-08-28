@@ -1,0 +1,243 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Board{% endblock %}
+
+{% block nav %}{% include 'nav_options.html.twig' %}{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+        <h3>Ajouter un élève</h3>
+
+        {{ form_start(studentForm) }}
+
+        <div class="row">
+            <div class="col-md-4">
+
+                <p>Détails élève</p> 
+
+                <div class="form-group">
+                    {{ form_label(studentForm.gender) }}
+                    {{ form_errors(studentForm.gender) }}
+                    {{ form_widget(studentForm.gender, { 'attr':  {
+                        'class': 'form-control',
+                        'placeholder': 'Nom'
+                    }}) }}
+                </div>             
+
+                <div class="form-group">
+                    {{ form_label(studentForm.name) }}
+                    {{ form_errors(studentForm.name) }}
+                    {{ form_widget(studentForm.name, { 'attr':  {
+                        'class': 'form-control',
+                        'placeholder': 'Nom'
+                    }}) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(studentForm.firstname) }}
+                    {{ form_errors(studentForm.firstname) }}
+                    {{ form_widget(studentForm.firstname, { 'attr':  {
+                        'class': 'form-control',
+                        'placeholder': 'Prénom'
+                    }}) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(studentForm.birth) }}
+                    {{ form_errors(studentForm.birth) }}
+                    {{ form_widget(studentForm.birth, { 'attr':  {
+                        'placeholder': 'format jj/mm/aaaa'
+                    }}) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(studentForm.prevEtab) }}
+                    {{ form_errors(studentForm.prevEtab) }}
+                    {{ form_widget(studentForm.prevEtab, { 'attr':  {
+                        'class': 'form-control',
+                        'placeholder': 'Etabissement précédent'
+                    }}) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(studentForm.coop) }}
+                    {{ form_errors(studentForm.coop) }}
+                    {{ form_widget(studentForm.coop, { 'attr':  {
+
+                    }}) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(studentForm.coll) }}
+                    {{ form_errors(studentForm.coll) }}
+                    {{ form_widget(studentForm.coll, { 'attr':  {
+
+                    }}) }}
+                </div>
+            </div>
+        
+
+        
+            <div class="col-md-4">
+
+                <p>Détails parents</p>
+
+                <div class="form-group">
+                    {{ form_label(studentForm.momName) }}
+                    {{ form_errors(studentForm.momName) }}
+                    {{ form_widget(studentForm.momName, { 'attr':  {
+                        'class': 'form-control',
+                        'placeholder': 'Nom de la mère'
+                    }}) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(studentForm.dadName) }}
+                    {{ form_errors(studentForm.dadName) }}
+                    {{ form_widget(studentForm.dadName, { 'attr':  {
+                        'class': 'form-control',
+                        'placeholder': 'Nom du père'
+                    }}) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(studentForm.tel) }}
+                    {{ form_errors(studentForm.tel) }}
+                    {{ form_widget(studentForm.tel, { 'attr':  {
+                        'class': 'form-control',
+                        'placeholder': 'Téléphone'
+                    }}) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(studentForm.adress) }}
+                    {{ form_errors(studentForm.adress) }}
+                    {{ form_widget(studentForm.adress, { 'attr':  {
+                        'class': 'form-control',
+                        'placeholder': 'Adresse'
+                    }}) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(studentForm.cp) }}
+                    {{ form_errors(studentForm.cp) }}
+                    {{ form_widget(studentForm.cp, { 'attr':  {
+                        'class': 'form-control',
+                        'placeholder': 'Code Postal'
+                    }}) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(studentForm.city) }}
+                    {{ form_errors(studentForm.city) }}
+                    {{ form_widget(studentForm.city, { 'attr':  {
+                        'class': 'form-control',
+                        'placeholder': 'Ville'
+                    }}) }}
+                </div>
+            </div>
+
+            <div class="col-md-4">
+        
+
+                <div class="form-group">
+                    {{ form_label(studentForm.ppre) }}
+                    {{ form_errors(studentForm.ppre) }}
+                    {{ form_widget(studentForm.ppre, { 'attr':  {
+                        
+                    }}) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(studentForm.ppreNote) }}
+                    {{ form_errors(studentForm.ppreNote) }}
+                    {{ form_widget(studentForm.ppreNote, { 'attr':  {
+                        'class': 'form-control',
+                        'placeholder': 'Note de PPRE'
+                    }}) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(studentForm.rased) }}
+                    {{ form_errors(studentForm.rased) }}
+                    {{ form_widget(studentForm.rased, { 'attr':  {
+
+                    }}) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(studentForm.rasedNote) }}
+                    {{ form_errors(studentForm.rasedNote) }}
+                    {{ form_widget(studentForm.rasedNote, { 'attr':  {
+                        'class': 'form-control',
+                        'placeholder': 'Note de RASED'
+                    }}) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(studentForm.pai) }}
+                    {{ form_errors(studentForm.pai) }}
+                    {{ form_widget(studentForm.pai, { 'attr':  {
+
+                    }}) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(studentForm.paiNote) }}
+                    {{ form_errors(studentForm.paiNote) }}
+                    {{ form_widget(studentForm.paiNote, { 'attr':  {
+                        'class': 'form-control',
+                        'placeholder': 'Note de PAI'
+                    }}) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(studentForm.apc) }}
+                    {{ form_errors(studentForm.apc) }}
+                    {{ form_widget(studentForm.apc, { 'attr':  {
+
+                    }}) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(studentForm.apcNote) }}
+                    {{ form_errors(studentForm.apcNote) }}
+                    {{ form_widget(studentForm.apcNote, { 'attr':  {
+                        'class': 'form-control',
+                        'placeholder': 'Note de APC'
+                    }}) }}
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-offset-1 col-md-10">
+
+                <div class="form-group">
+                    {{ form_label(studentForm.note) }}
+                    {{ form_errors(studentForm.note) }}
+                    {{ form_widget(studentForm.note, { 'attr':  {
+                        'class': 'form-control',
+                        'rows': '4'
+                    }}) }}
+                </div>
+
+            </div>
+        </div>
+
+            <!-- submit form -->
+                
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary" value="Enregistrer" />
+            </div>
+
+        
+        {{ form_end(studentForm) }}
+
+        
+    </div>
+
+    
+
+{% endblock %}
