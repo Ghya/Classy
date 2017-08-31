@@ -1,0 +1,144 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Board{% endblock %}
+
+{% block nav %}{% include 'nav_options.html.twig' %}{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+
+        <div class="row">
+            <div class="text-center col-md-12">
+                <h3>Calendrier de l'année scolaire</h3>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="text-center col-md-4">
+                <div class="calendar_block">
+                    <p>Zone A</p>
+                    <p>Académies :</p>
+                    <p>Besançon, Bordeaux, Clermont-Ferrand, Dijon, Grenoble, Limoges, Lyon, Poitiers</p>
+                </div>
+            </div>
+            <div class="text-center col-md-4">
+                <div class="calendar_block">
+                    <p>Zone B</p>
+                    <p>Académies :</p>
+                    <p>Aix-Marseille, Amiens, Caen, Lille, Nancy-Metz, Nantes, Nice, Orléans-Tours, Reims, Rennes, Rouen, Strasbourg</p>
+                </div>
+            </div>
+            <div class="text-center col-md-4">
+                <div class="calendar_block">
+                    <p>Zone C</p>
+                    <p>Académies :</p>
+                    <p>Créteil, Montpellier, Paris, Toulouse, Versailles</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="text-center col-md-12">
+                <div class="calendar_block">
+                    <p>Pré-rentrée des Enseignants</p>
+                    <p id="teacher_start"></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="text-center col-md-12">
+                <div class="calendar_block">
+                    <p>Rentrée des élèves</p>
+                    <p id="student_start"></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="text-center col-md-12">
+                <div class="calendar_block">
+                    <p>Vacances de la Toussaint</p>
+                    <p id="toussaint_start"></p>
+                    <p id="toussaint_end"></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="text-center col-md-12">
+                <div class="calendar_block">
+                    <p>Vacances de Noël</p>
+                    <p id="noel_start"></p>
+                    <p id="noel_end"></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="text-center col-md-4">
+                <div class="calendar_block">
+                    <p>Vacances d'hiver</p>
+                    <p>Zone A</p>
+                    <p id="A_hiver_start"></p>
+                    <p id="A_hiver_end"></p>
+                </div>
+            </div>
+            <div class="text-center col-md-4">
+                <div class="calendar_block">
+                    <p>Vacances d'hiver</p>
+                    <p>Zone B</p>
+                    <p id="B_hiver_start"></p>
+                    <p id="B_hiver_end"></p>
+                </div>
+            </div>
+            <div class="text-center col-md-4">
+                <div class="calendar_block">
+                    <p>Vacances d'hiver</p>
+                    <p>Zone C</p>
+                    <p id="C_hiver_start"></p>
+                    <p id="C_hiver_end"></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="text-center col-md-4">
+                <div class="calendar_block">
+                    <p>Vacances de printemps</p>
+                    <p>Zone A</p>
+                    <p id="A_spring_start"></p>
+                    <p id="A_spring_end"></p>
+                </div>
+            </div>
+            <div class="text-center col-md-4">
+                <div class="calendar_block">
+                    <p>Vacances de printemps</p>
+                    <p>Zone B</p>
+                    <p id="B_spring_start"></p>
+                    <p id="B_spring_end"></p>
+                </div>
+            </div>
+            <div class="text-center col-md-4">
+                <div class="calendar_block">
+                    <p>Vacances de printemps</p>
+                    <p>Zone C</p>
+                    <p id="C_spring_start"></p>
+                    <p id="C_spring_end"></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="text-center col-md-12">
+                <div class="calendar_block">
+                    <p>Vacances d'été</p>
+                    <p id="ete_start"></p>
+                </div>
+            </div>
+        </div>
+
+    </div>    
+
+{% endblock %}

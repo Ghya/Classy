@@ -50,11 +50,16 @@ body {
     background-color: #cce6ff;
 }
 
-
-
 /*==== Fin Board ======*/
 
+/*==== Calendrier ======*/
 
+.calendar_block {
+    border: 1px solid black;
+    margin-bottom: 20px;
+}
+
+/*==== Fin Calendrier ======*/
 
 
 /*==== Fiche élève ======*/

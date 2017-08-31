@@ -43,10 +43,12 @@
          <div class="row">
 
             <div class="dash_block col-md-4">
-                <div id="add_lesson_block">
-                    <i class="fa fa-5x fa-pencil-square-o" aria-hidden="true"></i>
-                    <p>Créer un cours</p>
-                </div>
+                <a href="{{ path('calendar', { 'idClass': class.id }) }}">
+                    <div id="add_lesson_block">
+                        <i class="fa fa-5x fa-pencil-square-o" aria-hidden="true"></i>
+                        <p>Calendrier</p>
+                    </div>
+                </a>
             </div>
 
             <div class="dash_block col-md-4">

@@ -71,3 +71,14 @@ $app->match('/class/{id}/test_select', "Classy\Controller\TestController::select
 // Show test 
 $app->match('/class/{idClass}/test/{idTest}/show_test', "Classy\Controller\TestController::showTestAction")
 ->bind('test');
+
+// Show test 
+$app->match('/class/{idClass}/calendar', "Classy\Controller\CalendarController::calendarAction")
+->bind('calendar');
+
+
+
+
+// route for different test 
+$app->match('testAPI', "Classy\Controller\TestController::testAPIAction")
+->bind('testAPI');
