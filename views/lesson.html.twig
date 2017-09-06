@@ -12,29 +12,58 @@
 
     <div class="row">
     
-        <div class="col-md-12">
-            <h3>Cours : {{ lesson.title }}</h3>
-            <p>Matière : {{ subject.name }}</p>
-            <p>Chapitre : {{ chapter.name }}</p>
+        <div id="lesson_block_title" class="page_block_title col-md-12">
+            <div>
+                <h3>Cours : {{ lesson.title }}</h3>
+                <p>Domaine : {{ subject.name }}</p>
+                <p>Séquence : {{ chapter.name }}</p>
+            </div>
+            <div style="margin-top:20px">
+                <p>Option de cours :</p>
+                <a href="{{ path('add_test', { 'idClass': class.id, 'idLess': lesson.id }) }}" class="btn btn-primary">
+                    <i style="margin-right:10px" class="fa fa-plus" aria-hidden="true"></i>
+                    Ajouter une évaluation
+                 </a>
+                 <a href="{{ path('snappy', { 'idClass': class.id, 'idLess': lesson.id }) }}" class="btn btn-info">
+                    <i style="margin-right:10px" class="glyphicon glyphicon-share"></i>
+                    Télécharger (pdf)
+                 </a>
+            </div>
+        </div>
+        
+    </div>
+
+    <div class="row">
+
+        <div style="margin-bottom:5px" class="page_block_content col-md-12">
+        
+            <div class="col-md-3">
+                <p><i style="margin-right:10px" class="fa fa-list-ul" aria-hidden="true"></i></i>Situation : </p>
+                <p> {{ lesson.situation }}</p>
+            </div>
+
+            <div class="col-md-3">
+                <p><i style="margin-right:10px" class="fa fa-bullseye" aria-hidden="true"></i>Objectif : </p>
+                <p>{{ lesson.goal }}</p>
+            </div>
+
+            <div class="col-md-3">
+                <p><i style="margin-right:10px" class="fa fa-check-circle" aria-hidden="true"></i>Compétence :</p>
+                <p> {{ lesson.skill }}</p>
+            </div>
+
+            <div class="col-md-3">
+                <p><i style="margin-right:10px" class="fa fa-pencil-square" aria-hidden="true"></i>Matériel(s) : </p>
+                <p>{{ lesson.equipment }}</p>
+            </div>
         </div>
         
     </div>
 
     <div class="row">
     
-        <div class="col-md-12">
-            <p>Situation : {{ lesson.situation }}</p>
-            <p>Objectif : {{ lesson.goal }}</p>
-            <p>Compétence : {{ lesson.skill }}</p>
-            <p>Matériel(s) : {{ lesson.equipment }}</p>
-        </div>
-        
-    </div>
-
-    <div class="row">
-    
-        <div class="col-md-12">
-            <h3>Etapes du cours</h3>
+        <div class="page_block_content col-md-12">
+            <h3>Etapes du cours<em style="font-size:14px; margin-left:10px">({{(steps | length)}})</em></h3>
             <div class="table-responsive">
                 <table class="table table-hover table-bordered table-condensed">
                     <thead>
@@ -49,7 +78,7 @@
                     {% for key, value in steps %}
                         <tr>
                             <td><p> {{ key }}</p></td>
-                            <td><h3>{{ value.name }}</h3></td>
+                            <td><p>{{ value.name }}</p></td>
                             <td><p> {{ value.content }} </p></td>
                             <td><p> {{ value.time }}</p></td>
                         </tr>

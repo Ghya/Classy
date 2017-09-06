@@ -89,8 +89,6 @@ class L_MarkDAO extends DAO
                 // The l_mark has already been saved : update it
                 $this->getDb()->update('l_mark', $l_markData);
             } else {
-                // set the right id in DB
-                $this->getDb()->exec('ALTER TABLE l_mark AUTO_INCREMENT = 1');
                 // The l_mark has never been saved : insert it
                 $this->getDb()->insert('l_mark', $l_markData);
                 // Get the id of the newly created l_mark and set it on the entity.
@@ -100,6 +98,25 @@ class L_MarkDAO extends DAO
             
         }
     }
+
+    /**
+    * Removes a l_mark by $id
+    *
+    * @param integer $id The id of the l_mark
+    */
+    public function delete($id) {
+        $this->getDb()->delete('l_mark', array('l_mark_id' => $id));
+    }
+
+    /**
+    * Removes all l_mark for a test
+    *
+    * @param $id The id of the test
+    */
+    public function deleteAllByTest($id) {
+        $this->getDb()->delete('l_mark', array('l_mark_test_id' => $id));
+    }
+    
 
 
 

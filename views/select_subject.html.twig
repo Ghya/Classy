@@ -1,0 +1,59 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Board{% endblock %}
+
+{% block nav %}{% include 'nav_options.html.twig' %}{% endblock %}
+
+{% block content %} 
+
+
+
+<div class="container">
+
+    <div class="row">
+        <div class="page_block_title col-md-12">
+            <h3>Création d'un cours</h3>
+            <p>Etape 1/4 : Selectionnez le domaine d'apprentissage</p>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="page_block_content col-md-12">
+
+            <div class="col-md-12">
+                <p>Liste de vos domaines</p>
+            </div>
+
+            {% for subject in subjects %}
+
+                <div class="col-md-3">
+                    <a href="{{ path('chapter', { 'idClass': class.id, 'idSub': subject.id }) }}">
+                        <div id="user_comment_container">
+                            <strong>{{ subject.name }}</strong>
+                        </div>
+                    </a>
+                </div>
+
+            {% else %}
+
+                <div class="page_block_content col-md-12">
+                    <div>
+                        <p>Vous n'avez pas encore de domaine enregistré</p>
+                    </div>
+                </div>
+
+                <div>
+                    <a href="{{ path('add_subject', { 'id': class.id }) }}"><button>Gestion des domaines</button></a>
+                </div>
+
+            {% endfor %}
+                    
+        </div>
+
+    </div>
+</div>
+
+    
+
+{% endblock %}

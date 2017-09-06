@@ -12,39 +12,44 @@
 
     <div class="row">
 
-        <h2>Notes de l'évaluation</h2>
+        <div class="page_block_title col-md-12">
+            <h3>Notes de l'évaluation</h3>
+            <p>Renseignez les différentes note</p>
+        </div>
 
-        {{ form_start(form) }}
+        <div class="page_block_content col-md-12">
+            {{ form_start(form) }}
 
-            <h3>Nom de l'évaluation {{form_row(form.name)}}</h3>
+                <h3 id="test_title_block">Nom de l'évaluation {{form_row(form.name)}}</h3>
 
-            <div class="col-md-2">
-                    
-                
-                    {% for student in students %}
-                        <p style="line-height:27px; margin:0">{{ student.name }} - {{ student.firstname}}</p>
-                    {% endfor %}
-                
-                
-            </div>
-
-            <div class="col-md-10">
-                    
-                
-                    {% for mark in form.marks %}
-                        {{ form_row(mark.value) }}
-                    {% endfor %}
-                
-
-            </div>
-
-             <!-- submit form -->
+                <div class="col-md-2">
                         
-                <div class="form-group">
-                    <input type="submit" class="btn btn-primary" value="Enregistrer" />
+                    
+                        {% for student in students %}
+                            <p style="line-height:27px; margin:0">{{ student.name }} - {{ student.firstname}}</p>
+                        {% endfor %}
+                    
+                    
                 </div>
 
-        {{ form_end(form) }}    
+                <div class="col-md-10">
+                        
+                    
+                        {% for mark in form.marks %}
+                            {{ form_row(mark.value) }}
+                        {% endfor %}
+                    
+
+                </div>
+
+                <!-- submit form -->
+                            
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-primary" value="Enregistrer" />
+                    </div>
+
+            {{ form_end(form) }}
+        </div>    
     </div>    
 
 </div>

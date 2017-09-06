@@ -1,0 +1,153 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Board{% endblock %}
+
+{% block nav %}{% include 'nav_options.html.twig' %}{% endblock %}
+
+{% block content %} 
+
+
+
+<div class="container">
+
+    <div class="row">
+    
+        <div class="page_block_title col-md-12">
+            <h3>Programme de l'année</h3>
+            <p>Voici les périodes de l'année pour la classe de {{class.lvl}}</p>
+            <p><em>Les dates correspondent à celle de la Zone {{class.zone}}</em></p>
+        </div>
+        
+    </div>
+
+        <div class="row">
+        
+            <div class="page_block_content col-md-12">
+                <a href="{{ path('show_programm', { 'idClass': class.id, 'idPeriod': 1 }) }}">
+                    <div style="margin-top:20px" class="programm_block">
+                        <p>Période 1 de la rentrée jusqu'au : <span id="toussaint_start"></span></p>
+                        <i class="glyphicon glyphicon-menu-right"></i>
+                    </div>
+                </a>            
+            </div>
+            
+        </div>
+
+        <div class="row">
+        
+            <div class="page_block_content col-md-12">
+                <a href="{{ path('show_programm', { 'idClass': class.id, 'idPeriod': 2 }) }}">
+                    <div class="programm_block">
+                        <p>Période 2 du <span id="toussaint_end"></span> jusqu'au : <span id="noel_start"></p>
+                        <i class="glyphicon glyphicon-menu-right"></i>
+                    </div>
+                </a>            
+            </div>
+            
+        </div>
+
+        <div class="row">
+        
+            <div class="page_block_content col-md-12">
+                <a href="{{ path('show_programm', { 'idClass': class.id, 'idPeriod': 3 }) }}">
+                    <div class="programm_block">
+                        <p>Période 3 du <span id="noel_end"></span> jusqu'au : 
+                        
+                        {% if class.zone == "A" %}
+                        <span id="A_hiver_start"></span></p>
+                        {% endif %}
+
+                        {% if class.zone == "B" %}
+                        <span id="B_hiver_start"></span></p>
+                        {% endif %}
+
+                        {% if class.zone == "C" %}
+                        <span id="C_hiver_start"></span></p>
+                        {% endif %}
+
+                        <i class="glyphicon glyphicon-menu-right"></i>
+                        
+                    </div>
+                </a>            
+            </div>
+            
+        </div>
+
+        <div class="row">
+        
+            <div class="page_block_content col-md-12">
+                <a href="{{ path('show_programm', { 'idClass': class.id, 'idPeriod': 4 }) }}">
+                    <div class="programm_block">
+                        <p>Période 4 du 
+                        
+                        {% if class.zone == "A" %}
+                        <span id="A_hiver_end"></span>
+                        {% endif %}
+
+                        {% if class.zone == "B" %}
+                        <span id="B_hiver_end"></span>
+                        {% endif %}
+
+                        {% if class.zone == "C" %}
+                        <span id="C_hiver_end"></span>
+                        {% endif %}
+                        
+                        jusqu'au : 
+
+                        {% if class.zone == "A" %}
+                        <span id="A_spring_start"></span></p>
+                        {% endif %}
+
+                        {% if class.zone == "B" %}
+                        <span id="B_spring_start"></span></p>
+                        {% endif %}
+
+                        {% if class.zone == "C" %}
+                        <span id="C_spring_start"></span></p>
+                        {% endif %}
+
+                        <i class="glyphicon glyphicon-menu-right"></i>
+
+                    </div>
+                </a>            
+            </div>
+            
+        </div>
+
+        <div class="row">
+        
+            <div class="page_block_content col-md-12">
+                <a href="{{ path('show_programm', { 'idClass': class.id, 'idPeriod': 5 }) }}">
+                    <div class="programm_block">
+                        <p>Période 5 du
+                        
+                        {% if class.zone == "A" %}
+                        <span id="A_spring_end"></span>
+                        {% endif %}
+
+                        {% if class.zone == "B" %}
+                        <span id="B_spring_end"></span>
+                        {% endif %}
+
+                        {% if class.zone == "C" %}
+                        <span id="C_spring_end"></span>
+                        {% endif %}
+                        
+                        jusqu'au : <span id="ete_start"></p>
+
+                        <i class="glyphicon glyphicon-menu-right"></i>
+
+                    </div>
+                </a>            
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+</div>
+
+    
+
+{% endblock %}

@@ -4,6 +4,8 @@ use Symfony\Component\Debug\ErrorHandler;
 use Symfony\Component\Debug\ExceptionHandler;
 use Symfony\Component\HttpFoundation\Request;
 
+use Knp\Snappy\Pdf;
+
 // =================================================
 
 // Register global error and exception handlers
@@ -121,4 +123,11 @@ $app['dao.l_mark'] = function ($app) {
     $l_markDAO = new Classy\DAO\L_MarkDAO($app['db']);
     $l_markDAO->setStudentDAO($app['dao.student']);
     return $l_markDAO;
+};
+
+$app['dao.prog'] = function ($app) {
+    $progDAO = new Classy\DAO\ProgDAO($app['db']);
+    $progDAO->setClassDAO($app['dao.class']);
+    $progDAO->setSubjectDAO($app['dao.subject']);
+    return $progDAO;
 };

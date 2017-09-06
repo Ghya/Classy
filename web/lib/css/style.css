@@ -1,11 +1,12 @@
 body { 
     padding-top: 48px;
     margin: 0;
-    font-family: 'Raleway'; 
+    font-family: 'Raleway';
+    background-color: #EFEFEF
 }
 
 #main_content {
-    min-height: calc(100vh - 200px);
+    
 }
 
 .footer {
@@ -17,11 +18,59 @@ body {
     color: white;
 }
 
+/*==== Class général ======*/
+
+.page_block_title {
+    background-color: white;
+    border-top-left-radius: 8px;
+    margin-bottom: 5px;
+    padding: 10px 30px;
+}
+
+.page_block_content {
+    padding: 20px;
+    background-color: white;
+}
+
+.page_block_content a {
+    text-decoration: none;
+    color: black;
+}
+
+#step_button_block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#test_title_block {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.vert_divider{
+    width: 1px;
+    height: 200px;
+    background-color: #E1E1E1;
+}
+
+#lesson_block_title{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.modal {
+    margin-top: 200px;
+}
+
+/*==== fin class général ======*/
+
 /*==== Tableau de bord ======*/
 
 .dash_block {
     padding: 0 70px;
-    margin-top: 20px;
 }
 
 .dash_block i {
@@ -60,6 +109,80 @@ body {
 }
 
 /*==== Fin Calendrier ======*/
+
+/*==== Sub management ======*/
+
+.subject_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #B3D1FA;
+    padding: 10px 5px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+.sub_btn_block {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.sub_btn_block a {
+    margin-right: 10px;
+}
+
+/*==== Fin sub manag ======*/
+
+/*==== Edit page ======*/
+
+.edit_btn_block {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 50%;
+    margin: auto;
+}
+
+.edit_btn_block a {
+    color: white;
+    margin-bottom: 10px;
+}
+
+.edit_btn_block button {
+    color: white;
+    margin-bottom: 10px;
+}
+
+.edit_btn_block i {
+    margin-right: 10px;
+}
+
+/*==== Fin Calendrier ======*/
+
+/*==== Programme ======*/
+
+.programm_block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #989898;
+    border-radius: 3px;
+    margin-bottom: 20px;
+    padding: 20px 15px;
+}
+
+.programm_block p {
+    margin: 0;
+}
+
+.programm_block:hover {
+    background-color: #EAEAEA
+}
+
+/*==== Fin Programme ======*/
 
 
 /*==== Fiche élève ======*/
@@ -133,7 +256,7 @@ body {
 
 
 
-/*==== CSS de Classy ======*/
+/*==== Table de navigation ======*/
 
 #lesson_container{
     display: flex;
@@ -158,6 +281,9 @@ body {
 }
 
 .panel_subject {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     height: 50px;
     background-color: #1A728F;
     margin-top: 8px;
@@ -175,6 +301,9 @@ body {
 }
 
 .chapter_panel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     height: 50px;
     background-color: #4BA6C4;
     margin-bottom: 5px;
@@ -186,6 +315,7 @@ body {
 
 .chapter_panel p {
     line-height: 50px;
+    width: 75%;
 }
 
 .lessson_panel_block {
@@ -230,7 +360,9 @@ body {
 
 .lessson_btn_panel {
     opacity: 0;
-    display: flex;  
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
 }
 
 .opacity_top{
@@ -242,7 +374,7 @@ body {
 }
 
 
-/*==== Fin CSS Classy ======*/
+/*==== Fin Navigation======*/
 
 #social_block{
     width: 100%;
@@ -525,11 +657,11 @@ body {
 
 #user_comment_container{
     border: 1px solid grey;
-    border-radius: 8px;
+    border-radius: 3px;
     width: 100%;
     margin-bottom: 20px;
-    background-color: #1A728F;
-    color: white;
+    background-color: #5C97AA;
+    color: #DDDDDD;
     padding: 5px 15px;
 }
 

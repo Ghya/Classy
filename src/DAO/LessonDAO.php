@@ -109,8 +109,6 @@ class LessonDAO extends DAO
             // The lesson has already been saved : update it
             $this->getDb()->update('lesson', $lessonData);
         } else {
-            // set the right id in DB
-            $this->getDb()->exec('ALTER TABLE lesson AUTO_INCREMENT = 1');
             // The lesson has never been saved : insert it
             $this->getDb()->insert('lesson', $lessonData);
             // Get the id of the newly created lesson and set it on the entity.
@@ -118,6 +116,25 @@ class LessonDAO extends DAO
             $lesson->setId($id);
         }
     }
+
+    /**
+    * Removes a lesson by $id
+    *
+    * @param integer $id The id of the lesson
+    */
+    public function delete($id) {
+        $this->getDb()->delete('lesson', array('less_id' => $id));
+    }
+
+    /**
+    * Removes all lessons for a chapter
+    *
+    * @param $id The id of the chapter
+    */
+    public function deleteAllByChapter($id) {
+        $this->getDb()->delete('lesson', array('less_chap_id' => $id));
+    }
+        
 
 
     /**

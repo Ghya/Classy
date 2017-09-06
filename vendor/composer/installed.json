@@ -1393,86 +1393,6 @@
         "homepage": "https://symfony.com"
     },
     {
-        "name": "monolog/monolog",
-        "version": "1.23.0",
-        "version_normalized": "1.23.0.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/Seldaek/monolog.git",
-            "reference": "fd8c787753b3a2ad11bc60c063cff1358a32a3b4"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/Seldaek/monolog/zipball/fd8c787753b3a2ad11bc60c063cff1358a32a3b4",
-            "reference": "fd8c787753b3a2ad11bc60c063cff1358a32a3b4",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.0",
-            "psr/log": "~1.0"
-        },
-        "provide": {
-            "psr/log-implementation": "1.0.0"
-        },
-        "require-dev": {
-            "aws/aws-sdk-php": "^2.4.9 || ^3.0",
-            "doctrine/couchdb": "~1.0@dev",
-            "graylog2/gelf-php": "~1.0",
-            "jakub-onderka/php-parallel-lint": "0.9",
-            "php-amqplib/php-amqplib": "~2.4",
-            "php-console/php-console": "^3.1.3",
-            "phpunit/phpunit": "~4.5",
-            "phpunit/phpunit-mock-objects": "2.3.0",
-            "ruflin/elastica": ">=0.90 <3.0",
-            "sentry/sentry": "^0.13",
-            "swiftmailer/swiftmailer": "^5.3|^6.0"
-        },
-        "suggest": {
-            "aws/aws-sdk-php": "Allow sending log messages to AWS services like DynamoDB",
-            "doctrine/couchdb": "Allow sending log messages to a CouchDB server",
-            "ext-amqp": "Allow sending log messages to an AMQP server (1.0+ required)",
-            "ext-mongo": "Allow sending log messages to a MongoDB server",
-            "graylog2/gelf-php": "Allow sending log messages to a GrayLog2 server",
-            "mongodb/mongodb": "Allow sending log messages to a MongoDB server via PHP Driver",
-            "php-amqplib/php-amqplib": "Allow sending log messages to an AMQP server using php-amqplib",
-            "php-console/php-console": "Allow sending log messages to Google Chrome",
-            "rollbar/rollbar": "Allow sending log messages to Rollbar",
-            "ruflin/elastica": "Allow sending log messages to an Elastic Search server",
-            "sentry/sentry": "Allow sending log messages to a Sentry server"
-        },
-        "time": "2017-06-19T01:22:40+00:00",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "2.0.x-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Monolog\\": "src/Monolog"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Jordi Boggiano",
-                "email": "j.boggiano@seld.be",
-                "homepage": "http://seld.be"
-            }
-        ],
-        "description": "Sends your logs to files, sockets, inboxes, databases and various web services",
-        "homepage": "http://github.com/Seldaek/monolog",
-        "keywords": [
-            "log",
-            "logging",
-            "psr-3"
-        ]
-    },
-    {
         "name": "symfony/monolog-bridge",
         "version": "v3.0.9",
         "version_normalized": "3.0.9.0",
@@ -2495,71 +2415,6 @@
             }
         ],
         "description": "With this component, a library can provide support for annotations via DocBlocks or otherwise retrieve information that is embedded in a DocBlock."
-    },
-    {
-        "name": "phpspec/prophecy",
-        "version": "v1.7.0",
-        "version_normalized": "1.7.0.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/phpspec/prophecy.git",
-            "reference": "93d39f1f7f9326d746203c7c056f300f7f126073"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/phpspec/prophecy/zipball/93d39f1f7f9326d746203c7c056f300f7f126073",
-            "reference": "93d39f1f7f9326d746203c7c056f300f7f126073",
-            "shasum": ""
-        },
-        "require": {
-            "doctrine/instantiator": "^1.0.2",
-            "php": "^5.3|^7.0",
-            "phpdocumentor/reflection-docblock": "^2.0|^3.0.2",
-            "sebastian/comparator": "^1.1|^2.0",
-            "sebastian/recursion-context": "^1.0|^2.0|^3.0"
-        },
-        "require-dev": {
-            "phpspec/phpspec": "^2.5|^3.2",
-            "phpunit/phpunit": "^4.8 || ^5.6.5"
-        },
-        "time": "2017-03-02T20:05:34+00:00",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "1.6.x-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "Prophecy\\": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Konstantin Kudryashov",
-                "email": "ever.zet@gmail.com",
-                "homepage": "http://everzet.com"
-            },
-            {
-                "name": "Marcello Duarte",
-                "email": "marcello.duarte@gmail.com"
-            }
-        ],
-        "description": "Highly opinionated mocking framework for PHP 5.3+",
-        "homepage": "https://github.com/phpspec/prophecy",
-        "keywords": [
-            "Double",
-            "Dummy",
-            "fake",
-            "mock",
-            "spy",
-            "stub"
-        ]
     },
     {
         "name": "phpunit/phpunit",
@@ -3815,6 +3670,410 @@
             "intl",
             "l10n",
             "localization"
+        ]
+    },
+    {
+        "name": "phpspec/prophecy",
+        "version": "v1.7.2",
+        "version_normalized": "1.7.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/phpspec/prophecy.git",
+            "reference": "c9b8c6088acd19d769d4cc0ffa60a9fe34344bd6"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/phpspec/prophecy/zipball/c9b8c6088acd19d769d4cc0ffa60a9fe34344bd6",
+            "reference": "c9b8c6088acd19d769d4cc0ffa60a9fe34344bd6",
+            "shasum": ""
+        },
+        "require": {
+            "doctrine/instantiator": "^1.0.2",
+            "php": "^5.3|^7.0",
+            "phpdocumentor/reflection-docblock": "^2.0|^3.0.2|^4.0",
+            "sebastian/comparator": "^1.1|^2.0",
+            "sebastian/recursion-context": "^1.0|^2.0|^3.0"
+        },
+        "require-dev": {
+            "phpspec/phpspec": "^2.5|^3.2",
+            "phpunit/phpunit": "^4.8 || ^5.6.5"
+        },
+        "time": "2017-09-04T11:05:03+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.7.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Prophecy\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Konstantin Kudryashov",
+                "email": "ever.zet@gmail.com",
+                "homepage": "http://everzet.com"
+            },
+            {
+                "name": "Marcello Duarte",
+                "email": "marcello.duarte@gmail.com"
+            }
+        ],
+        "description": "Highly opinionated mocking framework for PHP 5.3+",
+        "homepage": "https://github.com/phpspec/prophecy",
+        "keywords": [
+            "Double",
+            "Dummy",
+            "fake",
+            "mock",
+            "spy",
+            "stub"
+        ]
+    },
+    {
+        "name": "monolog/monolog",
+        "version": "1.23.0",
+        "version_normalized": "1.23.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Seldaek/monolog.git",
+            "reference": "fd8c787753b3a2ad11bc60c063cff1358a32a3b4"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Seldaek/monolog/zipball/fd8c787753b3a2ad11bc60c063cff1358a32a3b4",
+            "reference": "fd8c787753b3a2ad11bc60c063cff1358a32a3b4",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.0",
+            "psr/log": "~1.0"
+        },
+        "provide": {
+            "psr/log-implementation": "1.0.0"
+        },
+        "require-dev": {
+            "aws/aws-sdk-php": "^2.4.9 || ^3.0",
+            "doctrine/couchdb": "~1.0@dev",
+            "graylog2/gelf-php": "~1.0",
+            "jakub-onderka/php-parallel-lint": "0.9",
+            "php-amqplib/php-amqplib": "~2.4",
+            "php-console/php-console": "^3.1.3",
+            "phpunit/phpunit": "~4.5",
+            "phpunit/phpunit-mock-objects": "2.3.0",
+            "ruflin/elastica": ">=0.90 <3.0",
+            "sentry/sentry": "^0.13",
+            "swiftmailer/swiftmailer": "^5.3|^6.0"
+        },
+        "suggest": {
+            "aws/aws-sdk-php": "Allow sending log messages to AWS services like DynamoDB",
+            "doctrine/couchdb": "Allow sending log messages to a CouchDB server",
+            "ext-amqp": "Allow sending log messages to an AMQP server (1.0+ required)",
+            "ext-mongo": "Allow sending log messages to a MongoDB server",
+            "graylog2/gelf-php": "Allow sending log messages to a GrayLog2 server",
+            "mongodb/mongodb": "Allow sending log messages to a MongoDB server via PHP Driver",
+            "php-amqplib/php-amqplib": "Allow sending log messages to an AMQP server using php-amqplib",
+            "php-console/php-console": "Allow sending log messages to Google Chrome",
+            "rollbar/rollbar": "Allow sending log messages to Rollbar",
+            "ruflin/elastica": "Allow sending log messages to an Elastic Search server",
+            "sentry/sentry": "Allow sending log messages to a Sentry server"
+        },
+        "time": "2017-06-19T01:22:40+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.0.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Monolog\\": "src/Monolog"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Jordi Boggiano",
+                "email": "j.boggiano@seld.be",
+                "homepage": "http://seld.be"
+            }
+        ],
+        "description": "Sends your logs to files, sockets, inboxes, databases and various web services",
+        "homepage": "http://github.com/Seldaek/monolog",
+        "keywords": [
+            "log",
+            "logging",
+            "psr-3"
+        ]
+    },
+    {
+        "name": "tecnickcom/tcpdf",
+        "version": "6.2.13",
+        "version_normalized": "6.2.13.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/tecnickcom/TCPDF.git",
+            "reference": "95c5938aafe4b20df1454dbddb3e5005c0b26f64"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/tecnickcom/TCPDF/zipball/95c5938aafe4b20df1454dbddb3e5005c0b26f64",
+            "reference": "95c5938aafe4b20df1454dbddb3e5005c0b26f64",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.0"
+        },
+        "time": "2017-04-26T08:14:48+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "config",
+                "include",
+                "tcpdf.php",
+                "tcpdf_parser.php",
+                "tcpdf_import.php",
+                "tcpdf_barcodes_1d.php",
+                "tcpdf_barcodes_2d.php",
+                "include/tcpdf_colors.php",
+                "include/tcpdf_filters.php",
+                "include/tcpdf_font_data.php",
+                "include/tcpdf_fonts.php",
+                "include/tcpdf_images.php",
+                "include/tcpdf_static.php",
+                "include/barcodes/datamatrix.php",
+                "include/barcodes/pdf417.php",
+                "include/barcodes/qrcode.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "LGPLv3"
+        ],
+        "authors": [
+            {
+                "name": "Nicola Asuni",
+                "email": "info@tecnick.com",
+                "homepage": "http://nicolaasuni.tecnick.com"
+            }
+        ],
+        "description": "TCPDF is a PHP class for generating PDF documents and barcodes.",
+        "homepage": "http://www.tcpdf.org/",
+        "keywords": [
+            "PDFD32000-2008",
+            "TCPDF",
+            "barcodes",
+            "datamatrix",
+            "pdf",
+            "pdf417",
+            "qrcode"
+        ]
+    },
+    {
+        "name": "spipu/html2pdf",
+        "version": "v5.0.1",
+        "version_normalized": "5.0.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/spipu/html2pdf.git",
+            "reference": "bbfcde715c0458300af8bf7f56b040dcd666a0db"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/spipu/html2pdf/zipball/bbfcde715c0458300af8bf7f56b040dcd666a0db",
+            "reference": "bbfcde715c0458300af8bf7f56b040dcd666a0db",
+            "shasum": ""
+        },
+        "require": {
+            "php": "~5.4 || ~7.0",
+            "tecnickcom/tcpdf": "~6.2"
+        },
+        "require-dev": {
+            "phake/phake": "~2.0",
+            "phpunit/phpunit": "~4.0 || ~5.0",
+            "squizlabs/php_codesniffer": "~2"
+        },
+        "suggest": {
+            "ext-gd": "Allows to embed images into the PDF",
+            "fagundes/zff-html2pdf": "if you need to integrate Html2Pdf with Zend Framework 2 (zf2)"
+        },
+        "time": "2017-06-16T13:23:32+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Spipu\\Html2Pdf\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "OSL-3.0"
+        ],
+        "authors": [
+            {
+                "name": "Spipu",
+                "homepage": "https://github.com/spipu",
+                "role": "Developer"
+            }
+        ],
+        "description": "Html2Pdf is a HTML to PDF converter written in PHP5 (it uses TCPDF). OFFICIAL PACKAGE",
+        "homepage": "http://html2pdf.fr/",
+        "keywords": [
+            "html",
+            "html2pdf",
+            "pdf"
+        ]
+    },
+    {
+        "name": "phake/phake",
+        "version": "v2.3.2",
+        "version_normalized": "2.3.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/mlively/Phake.git",
+            "reference": "d5832f1a0dd2370e14d38bcbaeb6770e8546cff2"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/mlively/Phake/zipball/d5832f1a0dd2370e14d38bcbaeb6770e8546cff2",
+            "reference": "d5832f1a0dd2370e14d38bcbaeb6770e8546cff2",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.3",
+            "sebastian/comparator": "~1.1"
+        },
+        "require-dev": {
+            "codeclimate/php-test-reporter": "dev-master",
+            "doctrine/common": "2.3.*",
+            "ext-soap": "*",
+            "hamcrest/hamcrest-php": "1.1.*",
+            "phpunit/phpunit": "3.7.*"
+        },
+        "suggest": {
+            "doctrine/common": "Allows mock annotations to use import statements for classes.",
+            "hamcrest/hamcrest-php": "Use Hamcrest matchers."
+        },
+        "time": "2017-03-20T05:16:34+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "3.0.0-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Phake": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Mike Lively",
+                "email": "m@digitalsandwich.com"
+            }
+        ],
+        "description": "The Phake mock testing library",
+        "homepage": "https://github.com/mlively/Phake",
+        "keywords": [
+            "mock",
+            "testing"
+        ]
+    },
+    {
+        "name": "squizlabs/php_codesniffer",
+        "version": "2.9.1",
+        "version_normalized": "2.9.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
+            "reference": "dcbed1074f8244661eecddfc2a675430d8d33f62"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/dcbed1074f8244661eecddfc2a675430d8d33f62",
+            "reference": "dcbed1074f8244661eecddfc2a675430d8d33f62",
+            "shasum": ""
+        },
+        "require": {
+            "ext-simplexml": "*",
+            "ext-tokenizer": "*",
+            "ext-xmlwriter": "*",
+            "php": ">=5.1.2"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "~4.0"
+        },
+        "time": "2017-05-22T02:43:20+00:00",
+        "bin": [
+            "scripts/phpcs",
+            "scripts/phpcbf"
+        ],
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "CodeSniffer.php",
+                "CodeSniffer/CLI.php",
+                "CodeSniffer/Exception.php",
+                "CodeSniffer/File.php",
+                "CodeSniffer/Fixer.php",
+                "CodeSniffer/Report.php",
+                "CodeSniffer/Reporting.php",
+                "CodeSniffer/Sniff.php",
+                "CodeSniffer/Tokens.php",
+                "CodeSniffer/Reports/",
+                "CodeSniffer/Tokenizers/",
+                "CodeSniffer/DocGenerators/",
+                "CodeSniffer/Standards/AbstractPatternSniff.php",
+                "CodeSniffer/Standards/AbstractScopeSniff.php",
+                "CodeSniffer/Standards/AbstractVariableSniff.php",
+                "CodeSniffer/Standards/IncorrectPatternException.php",
+                "CodeSniffer/Standards/Generic/Sniffs/",
+                "CodeSniffer/Standards/MySource/Sniffs/",
+                "CodeSniffer/Standards/PEAR/Sniffs/",
+                "CodeSniffer/Standards/PSR1/Sniffs/",
+                "CodeSniffer/Standards/PSR2/Sniffs/",
+                "CodeSniffer/Standards/Squiz/Sniffs/",
+                "CodeSniffer/Standards/Zend/Sniffs/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Greg Sherwood",
+                "role": "lead"
+            }
+        ],
+        "description": "PHP_CodeSniffer tokenizes PHP, JavaScript and CSS files and detects violations of a defined set of coding standards.",
+        "homepage": "http://www.squizlabs.com/php-codesniffer",
+        "keywords": [
+            "phpcs",
+            "standards"
         ]
     }
 ]

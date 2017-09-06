@@ -50,7 +50,8 @@ class ClasseDAO extends DAO
     public function save(Classe $class) {
         $classData = array(
             'class_lvl' => $class->getLvl(),
-            'class_etab' => $class->getEtab()           	
+            'class_etab' => $class->getEtab(),
+            'class_zone' => $class->getZone()          	
             );
 
         if ($class->getId()) {
@@ -65,6 +66,15 @@ class ClasseDAO extends DAO
         }
     }
 
+    /**
+     * Removes a class by $id
+     *
+     * @param integer $id The id of the class
+     */
+     public function delete($id) {
+        $this->getDb()->delete('class', array('class_id' => $id));
+    }
+
 
     /**
      * Creates a Classe object based on a DB row.
@@ -77,6 +87,7 @@ class ClasseDAO extends DAO
         $class->setId($row['class_id']);
         $class->setLvl($row['class_lvl']);
         $class->setEtab($row['class_etab']);
+        $class->setZone($row['class_zone']);
         
         return $class;
     }

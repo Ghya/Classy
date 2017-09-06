@@ -105,14 +105,30 @@ class ChapterDAO extends DAO
             // The chapter has already been saved : update it
             $this->getDb()->update('chapter', $chapterData);
         } else {
-            // set the right id in DB
-            $this->getDb()->exec('ALTER TABLE chapter AUTO_INCREMENT = 1');
             // The chapter has never been saved : insert it
             $this->getDb()->insert('chapter', $chapterData);
             // Get the id of the newly created chapter and set it on the entity.
             $id = $this->getDb()->lastInsertId();
             $chapter->setId($id);
         }
+    }
+
+    /**
+    * Removes a chapter by $id
+    *
+    * @param integer $id The id of the chapter
+    */
+    public function delete($id) {
+        $this->getDb()->delete('chapter', array('chap_id' => $id));
+    }
+
+    /**
+     * Removes all chapters for a subject
+     *
+     * @param $id The id of the subject
+     */
+     public function deleteAllBySubject($id) {
+        $this->getDb()->delete('chapter', array('chap_sub_id' => $id));
     }
 
 

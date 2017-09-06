@@ -26,6 +26,15 @@ class ClasseType extends AbstractType
                 
             ))
 
+            ->add('zone', ChoiceType::class, array(
+                "choices" => array(
+                    "A" => "A",
+                    "B" => "B",
+                    "C" => "C"
+                )
+                
+            ))
+
             ->add('etab', TextType::class);
     }
 

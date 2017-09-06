@@ -22,8 +22,10 @@ class Charts {
         for(var i=0; i<n; i++) {
             somme += array[i];
         }
-                
-        return somme/n; 
+        
+        var average = somme/n;
+        var roundedAverage = Math.round(average*100)/100;
+        return roundedAverage; 
     }
 
     max(array)
@@ -146,18 +148,16 @@ class Charts {
         var myChart2 = echarts.init(document.getElementById('chart2'));
 
         var option2 = {
-            toolbox: {
-                feature: {
-                    restore: {},
-                    saveAsImage: {}
-                }
+            title: {
+                text: 'Minimum'
             },
+            toolbox: {},
             series: [
                 {
                     name: 'Notes',
                     type: 'gauge',
                     max: 10,
-                    data: [{value: markMin, name: 'Mini : ' + markMin}]
+                    data: [{value: markMin, name: markMin}]
                 }
             ]
         };
@@ -165,18 +165,16 @@ class Charts {
         var myChart3 = echarts.init(document.getElementById('chart3'));
 
         var option3 = {
-            toolbox: {
-                feature: {
-                    restore: {},
-                    saveAsImage: {}
-                }
+            title: {
+                text: 'Moyenne'
             },
+            toolbox: {},
             series: [
                 {
                     name: 'Notes',
                     type: 'gauge',
                     max: 10,
-                    data: [{value: markAvr, name: 'Moyenne : ' + markAvr}]
+                    data: [{value: markAvr, name: markAvr}]
                 }
             ]
         };
@@ -184,18 +182,17 @@ class Charts {
         var myChart4 = echarts.init(document.getElementById('chart4'));
 
         var option4 = {
+            title: {
+                text: 'Maximum'
+            },
             toolbox: {
-                feature: {
-                    restore: {},
-                    saveAsImage: {}
-                }
             },
             series: [
                 {
                     name: 'Notes',
                     type: 'gauge',
                     max: 10,
-                    data: [{value: markMax, name: 'Maxi : ' + markMax}]
+                    data: [{value: markMax, name: markMax}]
                 }
             ]
         };

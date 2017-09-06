@@ -44,7 +44,101 @@ class HomeController {
     }
 
     /**
-     * Class page controller.
+     * BOARD Controller.
+     *
+     * @param Application $app Silex application
+     */
+
+     public function boardAction(Request $request, Application $app) {
+        
+        $classes = $app['dao.class']->findAll();
+        $memos = $app['dao.memo']->findAll();
+
+        $memo = new Memo();
+        $memoForm = $app['form.factory']->create(MemoType::class, $memo);
+        $memoForm->handleRequest($request);
+        $memoFormView = $memoForm->createView();
+
+        if ($memoForm->isSubmitted() && $memoForm->isValid()) {
+            $app['dao.memo']->save($memo);
+
+                return $app->redirect($app['url_generator']->generate('board'));
+        }
+
+        $class = new Classe();
+        $classForm = $app['form.factory']->create(ClasseType::class, $class);
+        $classForm->handleRequest($request);
+        $classFormView = $classForm->createView();
+
+        if ($classForm->isSubmitted() && $classForm->isValid()) {
+            $app['dao.class']->save($class);
+            $app['session']->getFlashBag()->add('success', 'La classe a bien été crée');
+
+                return $app->redirect($app['url_generator']->generate('board'));
+        } 
+
+        
+
+        return $app['twig']->render('board.html.twig', array(
+            'memos' => $memos,
+            'classes' => $classes,
+            'classForm' => $classFormView,
+            'memoForm' => $memoFormView
+        ));
+
+        
+    }
+
+    /**
+     * Class dashboard page controller.
+     *
+     * @param Classs $id and Application $app Silex application
+     */
+
+     public function classAction($id, Application $app) {
+        
+        $class = $app['dao.class']->find($id);
+        $classes = $app['dao.class']->findAll();
+        $students = $app['dao.student']->findAllByClass($id);    
+
+            return $app['twig']->render('class.html.twig', array(
+                'class' => $class,
+                'students' => $students,
+                'classes' => $classes,
+            ));
+
+        
+    }
+
+    /**
+     * Navigation page Controller
+     *
+     * @param Application $app Silex application
+     */
+
+     public function navigationAction($idClass, Request $request, Application $app) {
+        
+        $class = $app['dao.class']->find($idClass);
+        $classes = $app['dao.class']->findAll();
+        $subjects = $app['dao.subject']->findAllByClass($idClass);
+        $chapters = $app['dao.chapter']->findAllByClass($idClass);
+        $lessons = $app['dao.lesson']->findAllByClass($idClass);
+        $tests = $app['dao.l_test']->findAllByClass($idClass);
+
+            return $app['twig']->render('navigation.html.twig', array(
+                'class' => $class,
+                'classes' => $classes,
+                'subjects' => $subjects,
+                'chapters' => $chapters,
+                'lessons' => $lessons,
+                'tests' => $tests
+            ));
+
+        
+    }
+
+    /**
+     * All Student List page controller.
      *
      * @param Application $app Silex application
      */
@@ -171,83 +265,16 @@ class HomeController {
             'title' => 'Inscription',
             'userForm' => $userForm->createView()));
     }
-
-
-    /**
-     * BOARD Controller.
-     *
-     * @param Application $app Silex application
-     */
-
-    public function boardAction(Request $request, Application $app) {
-
-        $classes = $app['dao.class']->findAll();
-        $memos = $app['dao.memo']->findAll();
-
-        $memo = new Memo();
-        $memoForm = $app['form.factory']->create(MemoType::class, $memo);
-        $memoForm->handleRequest($request);
-        $memoFormView = $memoForm->createView();
-
-        if ($memoForm->isSubmitted() && $memoForm->isValid()) {
-            $app['dao.memo']->save($memo);
-
-             return $app->redirect($app['url_generator']->generate('board'));
-        }
-
-        $class = new Classe();
-        $classForm = $app['form.factory']->create(ClasseType::class, $class);
-        $classForm->handleRequest($request);
-        $classFormView = $classForm->createView();
-
-        if ($classForm->isSubmitted() && $classForm->isValid()) {
-            $app['dao.class']->save($class);
-            $app['session']->getFlashBag()->add('success', 'La classe a bien été crée');
-
-             return $app->redirect($app['url_generator']->generate('board'));
-        } 
-
-        
-
-        return $app['twig']->render('board.html.twig', array(
-            'memos' => $memos,
-            'classes' => $classes,
-            'classForm' => $classFormView,
-            'memoForm' => $memoFormView
-        ));
-
-        
-    }
-
+    
 
     /**
-     * Class page controller.
+     * Subject management page controller.
      *
      * @param Application $app Silex application
+     * @param class $id
      */
 
-    public function classAction($id, Application $app) {
-        
-        $class = $app['dao.class']->find($id);
-        $classes = $app['dao.class']->findAll();
-        $students = $app['dao.student']->findAllByClass($id);    
-
-            return $app['twig']->render('class.html.twig', array(
-                'class' => $class,
-                'students' => $students,
-                'classes' => $classes,
-            ));
-
-        
-    }
-
-    /**
-     * add subject page controller.
-     *
-     * @param Application $app Silex application
-     */
-
-    public function addSubjectAction($id, Request $request, Application $app) {
+    public function subjectManagementAction($id, Request $request, Application $app) {
         
         $class = $app['dao.class']->find($id);
         $classes = $app['dao.class']->findAll();
@@ -268,7 +295,7 @@ class HomeController {
              ]));
         }   
 
-            return $app['twig']->render('add_subject.html.twig', array(
+            return $app['twig']->render('subject_manag.html.twig', array(
                 'class' => $class,
                 'subjects' => $subjects,
                 'classes' => $classes,
@@ -279,18 +306,42 @@ class HomeController {
     }
 
     /**
-     * add chapter page controller.
+     * add subject page controller.
      *
      * @param Application $app Silex application
      */
 
-    public function addChapterAction($idClass, $idSub, Request $request, Application $app) {
+     public function selectSubjectAction($idClass, Request $request, Application $app) {
         
         $class = $app['dao.class']->find($idClass);
-        $subject = $app['dao.subject']->find($idSub);
         $classes = $app['dao.class']->findAll();
-        $chapters = $app['dao.chapter']->findAllBySubject($idSub);
+        $subjects = $app['dao.subject']->findAllByClass($idClass);   
 
+            return $app['twig']->render('select_subject.html.twig', array(
+                'class' => $class,
+                'subjects' => $subjects,
+                'classes' => $classes
+            ));
+
+        
+    }
+
+    /**
+     * New Lesson -> Add chapter page controller.
+     *
+     * @param Application $app Silex application
+     * @param Class $id
+     * @param Subject $id
+     */
+
+     public function selectChapterAction($idClass, $idSub, Request $request, Application $app) {
+        
+        $class = $app['dao.class']->find($idClass);
+        $classes = $app['dao.class']->findAll();
+        $subjects = $app['dao.subject']->findAllByClass($idClass);
+        $subject = $app['dao.subject']->find($idSub);
+        $chapters =  $app['dao.chapter']->findAllBySubject($idSub);
+        
         $chapter = new Chapter();
         $chapter->setSubject($subject);
         $chapterForm = $app['form.factory']->create(ChapterType::class, $chapter);
@@ -300,19 +351,20 @@ class HomeController {
         if ($chapterForm->isSubmitted() && $chapterForm->isValid()) {
             $app['dao.chapter']->save($chapter);
 
-             return $app->redirect($app['url_generator']->generate('add_chapter', [
+             return $app->redirect($app['url_generator']->generate('chapter', [
                  "idClass" => $class->getId(),
                  "idSub" => $subject->getId()
              ]));
-        }   
+        } 
 
-            return $app['twig']->render('add_chapter.html.twig', array(
-                'class' => $class,
-                'classes' => $classes,
-                'subject' => $subject,
-                'chapters' => $chapters,
-                'chapterForm' => $chapterFormView
-            ));
+        return $app['twig']->render('select_chapter.html.twig', array(
+            'class' => $class,
+            'subjects' => $subjects,
+            'subject' => $subject,
+            'classes' => $classes,
+            'chapters' => $chapters,
+            'chapterForm' => $chapterFormView
+        ));
 
         
     }
@@ -400,6 +452,34 @@ class HomeController {
                 'step' => $step,
                 'steps' => $steps,
                 'stepForm' => $stepFormView
+            ));
+
+        
+    }
+
+    /**
+     * Lesson page controller.
+     *
+     * @param Application $app Silex application
+     */
+
+    public function lessonAction($idClass, $idLess,  Request $request, Application $app) {
+        
+        $lesson = $app['dao.lesson']->find($idLess);
+        $chapter = $lesson->getchapter();
+        $subject = $chapter->getSubject();
+        $class = $subject->getClass();
+        $classes = $app['dao.class']->findAll();
+        $steps = $app['dao.step']->findAllByLesson($idLess);
+
+
+            return $app['twig']->render('lesson.html.twig', array(
+                'class' => $class,
+                'classes' => $classes,
+                'subject' => $subject,
+                'lesson' => $lesson,
+                'chapter' => $chapter,
+                'steps' => $steps
             ));
 
         

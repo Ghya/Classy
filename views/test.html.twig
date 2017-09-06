@@ -12,16 +12,10 @@
 
     <div class="row">
     
-        <div class="col-md-12">
+        <div style="margin-bottom:5px" class="page_block_title col-md-12">
             <h3>Evaluation : {{ test.name }}</h3>
-        </div>
-        
-    </div>
-
-    <div class="row">
-    
-        <div class="col-md-12">
-            <p>Chapitre : {{ test.lesson.chapter.name }}</p>
+            <p>Domaine : {{ test.lesson.chapter.subject.name }}</p>
+            <p>Séquence : {{ test.lesson.chapter.name }}</p>
             <p>Séance : {{ test.lesson.title }}</p>
         </div>
         
@@ -29,7 +23,7 @@
 
     <div class="row">
     
-        <div class="col-md-12">
+        <div style="margin-bottom:5px" class="page_block_content col-md-12">
             <h3>Notes de l'évaluation</h3>
             <div class="table-responsive">
                 <table class="table table-hover table-bordered table-condensed">
@@ -51,27 +45,36 @@
         </div>
         
     </div>
+    
+    <div class="row">
+        <div style="margin-bottom:5px" class="page_block_content col-md-12">
+            <div id="chart1" style="width: 100%;height:400px;"></div>
+        </div>
+    </div>
 
+    <div style="margin-bottom:5px" class="page_block_content row">
+        <div style="margin-bottom:5px" class="page_block_content col-md-4">
+            <div id="chart2" style="width: 100%;height:200px;"></div>
+        </div>
+        <div style="margin-bottom:5px" class="page_block_content col-md-4">
+            <div id="chart3" style="width: 100%;height:300px;"></div>
+        </div>
+        <div style="margin-bottom:5px" class="page_block_content col-md-4">
+            <div id="chart4" style="width: 100%;height:200px;"></div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div style="margin-bottom:5px" class="page_block_content col-md-12">
+            <div id="chart5" style="width: 100%;height:400px;"></div>
+        </div>
+    </div>
     
 
 </div>
 
-<div id="chart1" style="width: 100%;height:400px;"></div>
-
-<div class="row">
-    <div class="col-md-4">
-        <div id="chart2" style="width: 100%;height:400px;"></div>
-    </div>
-    <div class="col-md-4">
-        <div id="chart3" style="width: 100%;height:400px;"></div>
-    </div>
-    <div class="col-md-4">
-        <div id="chart4" style="width: 100%;height:400px;"></div>
-    </div>
-</div>
 
 
-<div id="chart5" style="width: 100%;height:400px;"></div>
 
 <div id="markStud">{{markStud}}</div>
 <div id="markValue">{{markValue}}</div>

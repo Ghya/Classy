@@ -32,21 +32,21 @@ $app->match('/class/{id}/add_student', "Classy\Controller\HomeController::addStu
 $app->match('/class/{idClass}/student/{idStud}', "Classy\Controller\HomeController::studentAction")
 ->bind('student');
 
-// Subject
-$app->match('/class/{id}/lessons', "Classy\Controller\SelectLessonController::subjectAction")
-->bind('lessons');
-
 // Lesson
-$app->match('/class/{idClass}/lessons/{idLess}', "Classy\Controller\SelectLessonController::lessonAction")
+$app->match('/class/{idClass}/lessons/{idLess}', "Classy\Controller\HomeController::lessonAction")
 ->bind('lesson');
 
-// Add Subject
-$app->match('/class/{id}/subject', "Classy\Controller\HomeController::addSubjectAction")
+// Subject Management
+$app->match('/class/{id}/subject', "Classy\Controller\HomeController::subjectManagementAction")
 ->bind('add_subject');
 
-// Add Chapter
-$app->match('/class/{idClass}/subject/{idSub}/chapter', "Classy\Controller\HomeController::addChapterAction")
-->bind('add_chapter');
+// Select Subject
+$app->match('/class/{idClass}/subject/new_lesson', "Classy\Controller\HomeController::selectSubjectAction")
+->bind('new_lesson');
+
+// Select Chapter
+$app->match('/class/{idClass}/subject/{idSub}/new_lesson', "Classy\Controller\HomeController::selectChapterAction")
+->bind('chapter');
 
 // Add Lesson
 $app->match('/class/{idClass}/subject/{idSub}/chapter/{idChap}/add_lesson', "Classy\Controller\HomeController::addLessonAction")
@@ -56,8 +56,8 @@ $app->match('/class/{idClass}/subject/{idSub}/chapter/{idChap}/add_lesson', "Cla
 $app->match('/class/{idClass}/subject/{idSub}/chapter/{idChap}/lesson/{idLess}/add_step', "Classy\Controller\HomeController::addStepAction")
 ->bind('add_step');
 
-// Add test select
-$app->match('/class/{idClass}/add_test_select', "Classy\Controller\TestController::addTestSelectAction")
+// Navigation
+$app->match('/class/{idClass}/add_test_select', "Classy\Controller\HomeController::navigationAction")
 ->bind('add_test_select');
 
 // Add L_test
@@ -72,13 +72,61 @@ $app->match('/class/{id}/test_select', "Classy\Controller\TestController::select
 $app->match('/class/{idClass}/test/{idTest}/show_test', "Classy\Controller\TestController::showTestAction")
 ->bind('test');
 
-// Show test 
+// Calendar 
 $app->match('/class/{idClass}/calendar', "Classy\Controller\CalendarController::calendarAction")
 ->bind('calendar');
 
+// Programm 
+$app->match('/class/{idClass}/programm', "Classy\Controller\ProgrammController::programmAction")
+->bind('programm');
+
+// Show Programm 
+$app->match('/class/{idClass}/programm/{idPeriod}/periode', "Classy\Controller\ProgrammController::ShowProgrammAction")
+->bind('show_programm');
 
 
+//===============================
+//      Route for PDF
+//===============================
 
-// route for different test 
-$app->match('testAPI', "Classy\Controller\TestController::testAPIAction")
-->bind('testAPI');
+// Lesson PDF
+$app->match('/class/{idClass}/pdf/{idLess}', "Classy\Controller\TestController::pdfAction")
+->bind('snappy');
+
+
+//===============================
+//      Route for delete
+//===============================
+
+// Delete Sub
+$app->match('/class/{idClass}/subject/{idSub}', "Classy\Controller\DeleteController::deleteSubjectAction")
+->bind('delete_sub');
+
+// Delete Chap
+$app->match('/class/{idClass}/chapter/{idChap}', "Classy\Controller\DeleteController::deleteChapterAction")
+->bind('delete_chap');
+
+// Delete Lesson
+$app->match('/class/{idClass}/lesson/{idLess}', "Classy\Controller\DeleteController::deleteLessonAction")
+->bind('delete_lesson');
+
+// Delete Step
+$app->match('/class/{idClass}/step/{idStep}', "Classy\Controller\DeleteController::deleteStepAction")
+->bind('delete_step');
+
+// Delete Test
+$app->match('/class/{idClass}/subject/{idTest}', "Classy\Controller\DeleteController::deleteL_TestAction")
+->bind('delete_test');
+
+
+//===============================
+//      Route for edit
+//===============================
+
+// Edit Sub
+$app->match('/class/{idClass}/subject/{idSub}/edit', "Classy\Controller\EditController::editSubjectAction")
+->bind('edit_sub');
+
+// Edit chap
+$app->match('/class/{idClass}/subject/{idSub}/chapter/{idChap}/edit', "Classy\Controller\EditController::editChapterAction")
+->bind('edit_chap');

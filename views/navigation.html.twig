@@ -1,0 +1,170 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Board{% endblock %}
+
+{% block nav %}{% include 'nav_options.html.twig' %}{% endblock %}
+
+{% block content %}    
+
+    
+
+    <div class="container">
+
+        <div classs="row">
+            <div class="page_block_title col-md-offset-1 col-md-10">
+                <h3>Gestion des séances</h3>
+                <p>Retrouvez ici toutes les séances créées rangé par domaines et séquences</p>
+                <p>Pour ajouter une évaluation cliquez sur <i style="margin:10px" class="glyphicon glyphicon-plus-sign"></i></p>
+            </div>
+        </div>
+
+        <div classs="row">
+
+            {% for subject in subjects %}
+
+                <a data-toggle="collapse" href="#collapse-sub{{subject.id}}">
+                    <div class="panel_subject col-md-offset-1 col-md-10">
+                        <p>{{subject.name}}</p>  
+                        <i class="glyphicon glyphicon-chevron-down"></i>                                              
+                    </div>
+
+                    <div id="collapse-sub{{subject.id}}" class="collapse col-md-offset-1 col-md-10 back_panel" >
+                        <div><!--grey panel-->
+
+                            {% for chapter in chapters %}
+
+                                {% if chapter.subject.id == subject.id  %}
+
+                                    <a style="text-decoration: none" data-toggle="collapse" href="#collapse-chap{{chapter.id}}" class="col-md-12">
+
+                                        <div  class="chapter_panel">
+                                            <p>{{chapter.name}}</p>
+                                            <div style="width:25%">
+                                                <a href="#" class="btn btn-primary">Editer</a>
+                                                <button id="delete_chapter_btn" type="button" class="btn btn-danger btn-xs" title="Supprimer" data-toggle="modal" data-target="#chapterDelete{{ chapter.id }}"><span class="glyphicon glyphicon-trash"></span>
+                                                </button>
+                                            </div>
+
+                                                <div class="modal fade" id="chapterDelete{{ chapter.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                                <h4 class="modal-title" id="myModalLabel">Confirmation de suppression</h4>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                Voulez-vous vraiment supprimer la séquence {{chapter.name}}  ? </br>
+                                                                (Attention ! Cette action est irréversible)
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                                                                <a href="{{ path('delete_chap', { 'idClass': class.id, 'idChap': chapter.id }) }}" class="btn btn-danger">Confimer suppression</a>
+                                                            </div>
+                                                        </div><!-- /.modal-content -->
+                                                    </div><!-- /.modal-dialog -->
+                                                </div><!-- /.modal -->
+
+                                            
+
+                                            <i class="glyphicon glyphicon-chevron-down"></i> 
+                                        </div>
+
+                                    </a>
+
+                                    <div id="collapse-chap{{chapter.id}}" class="collapse col-md-12" >
+
+                                        {% for lesson in lessons %}
+
+                                            {% if lesson.chapter.id == chapter.id  %}
+
+                                                    <div class="lessson_panel_back col-md-12">
+                                                        <div  class="lessson_panel_block" >
+
+                                                            <div  class="lessson_title_panel" >
+                                                                <p style="font-size:1.1em"><strong>{{lesson.title}}</strong></p>
+                                                                <p><em style="font-size:12px">Durée : {{lesson.time}}</em></p>
+                                                            </div>
+
+                                                            <div  class="lessson_test_panel" >
+                                                                <p>Test Associé</p>
+                                                                <p>1</p>
+                                                            </div>
+
+                                                            <div  class="lessson_btn_panel">
+
+                                                                <div>
+                                                                    <a href=""><i class="glyphicon glyphicon-pencil"></i></a>
+                                                                </div>
+                                                                <div>
+                                                                    <a href="{{ path('lesson', { 'idClass': class.id, 'idLess': lesson.id  }) }}"><i class="glyphicon glyphicon-eye-open"></i></a>
+                                                                </div>
+                                                                <div>
+                                                                    <a href="{{ path('add_test', { 'idClass': class.id, 'idLess': lesson.id  }) }}"><i class="glyphicon glyphicon-plus-sign"></i></a>
+                                                                </div>
+                                                                
+                                                                <div class="dropdown">
+
+                                                                    <a type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                        <i class="glyphicon glyphicon-folder-open"></i>
+                                                                    </a>
+                                                                    
+                                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                                        {% for test in tests %}
+                                                                        {% if test.lesson.id == lesson.id  %}
+                                                                            <a class="dropdown-item" href="{{ path('test', { 'idClass': class.id, 'idTest': test.id  }) }}">{{test.name}}</a>
+                                                                        {% endif %}
+                                                                        {% endfor %}
+                                                                    </div>
+                                                                </div>
+
+                                                                <div style="margin-left:15px">
+                                                                    <button id="delete_chapter_btn" type="button" class="btn btn-danger btn-xs" title="Supprimer" data-toggle="modal" data-target="#lessonDelete{{ lesson.id }}"><span class="glyphicon glyphicon-trash"></span></button>
+                                                                </div>
+                                                                
+                                                                
+                                                                <div class="modal fade" id="lessonDelete{{ lesson.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                                    <div class="modal-dialog">
+                                                                        <div class="modal-content">
+                                                                            <div class="modal-header">
+                                                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                                                <h4 class="modal-title" id="myModalLabel">Confirmation de suppression</h4>
+                                                                            </div>
+                                                                            <div class="modal-body">
+                                                                                Voulez-vous vraiment supprimer la séquence : {{lesson.title}}  ? </br>
+                                                                                (Attention ! Cette action est irréversible et entrainera la suppression de tout les éléments associés a la séance)
+                                                                            </div>
+                                                                            <div class="modal-footer">
+                                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                                                                                <a href="{{ path('delete_lesson', { 'idClass': class.id, 'idLess': lesson.id }) }}" class="btn btn-danger">Confimer suppression</a>
+                                                                            </div>
+                                                                        </div><!-- /.modal-content -->
+                                                                    </div><!-- /.modal-dialog -->
+                                                                </div><!-- /.modal -->
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+
+                                            {% endif %}
+
+                                        {% endfor %}
+
+                                    </div>
+                                    
+
+                                {% endif %}
+                            {% endfor %}
+
+                        </div>
+                    </div>                
+                </a>
+            
+            {% else %}
+            <div class="page_block_content col-md-offset-1 col-md-10">
+                <p>Vous n'avez pas encore de domaine</p>
+            </div>
+            {% endfor %}
+        </div><!--/row-->
+    </div><!--/container-->
+
+{% endblock %}

@@ -106,14 +106,31 @@ class StepDAO extends DAO
             // The step has already been saved : update it
             $this->getDb()->update('step', $stepData);
         } else {
-            // set the right id in DB
-            $this->getDb()->exec('ALTER TABLE step AUTO_INCREMENT = 1');
             // The step has never been saved : insert it
             $this->getDb()->insert('step', $stepData);
             // Get the id of the newly created step and set it on the entity.
             $id = $this->getDb()->lastInsertId();
             $step->setId($id);
         }
+    }
+
+    /**
+     * Removes a step from the database.
+     *
+     * @param @param integer $id The step id
+     */
+     public function delete($id) {
+        // Delete the step
+        $this->getDb()->delete('step', array('step_id' => $id));
+    }
+
+    /**
+     * Removes all steps for a lesson
+     *
+     * @param integer $id The id of the lesson
+     */
+    public function deleteAllByLesson($id) {
+        $this->getDb()->delete('step', array('step_less_id' => $id));
     }
 
 
