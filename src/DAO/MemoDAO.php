@@ -94,10 +94,7 @@ class MemoDAO extends DAO
      * @param integer $id The memo id.
      */
     public function delete($id) {
-        // Delete the memo
         $this->getDb()->delete('memo', array('memo_id' => $id));
-        // Avoid auto increment fail
-        $this->getDb()->exec('ALTER TABLE memo AUTO_INCREMENT = 1');
     }
 
 

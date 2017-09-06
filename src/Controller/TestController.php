@@ -8,56 +8,9 @@ use Classy\Domain\L_Test;
 use Classy\Domain\L_Mark;
 use Classy\Form\Type\L_TestType;
 use Classy\Form\Type\L_MarkType;
+use Spipu\Html2Pdf\Html2Pdf;
 
 class TestController {
-
-    /**
-     * Class page controller.
-     *
-     * @param Application $app Silex application
-     */
-
-    public function classAction($id, Application $app) {
-        
-        $class = $app['dao.class']->find($id);
-        $classes = $app['dao.class']->findAll();
-        $students = $app['dao.student']->findAllByClass($id);    
-
-            return $app['twig']->render('class.html.twig', array(
-                'class' => $class,
-                'students' => $students,
-                'classes' => $classes,
-            ));
-
-        
-    }
-
-    /**
-     * select to add test page controller.
-     *
-     * @param Application $app Silex application
-     */
-
-    public function addTestSelectAction($idClass, Request $request, Application $app) {
-        
-        $class = $app['dao.class']->find($idClass);
-        $classes = $app['dao.class']->findAll();
-        $subjects = $app['dao.subject']->findAllByClass($idClass);
-        $chapters = $app['dao.chapter']->findAllByClass($idClass);
-        $lessons = $app['dao.lesson']->findAllByClass($idClass);
-        $tests = $app['dao.l_test']->findAllByClass($idClass);
-
-            return $app['twig']->render('add_test_select.html.twig', array(
-                'class' => $class,
-                'classes' => $classes,
-                'subjects' => $subjects,
-                'chapters' => $chapters,
-                'lessons' => $lessons,
-                'tests' => $tests
-            ));
-
-        
-    }
 
     /**
      * add subject page controller.
@@ -90,7 +43,7 @@ class TestController {
         if ($l_markForm->isSubmitted() && $l_markForm->isValid()) {
             $app['dao.l_test']->saveTestMarks($test, $test->getMarks());            
 
-             return $this->classAction($idClass, $app);
+             return $this->navigationAction($idClass, $request, $app);
         }
 
             return $app['twig']->render('add_marks.html.twig', array(
@@ -99,28 +52,6 @@ class TestController {
                 'test' => $test,
                 'students' => $students,
                 'form' => $l_markFormView
-            ));
-
-        
-    }
-
-    /**
-     * select page controller.
-     *
-     * @param Application $app Silex application
-     */
-
-    public function selectTestAction($id, Request $request, Application $app) {
-        
-        $class = $app['dao.class']->find($id);
-        $classes = $app['dao.class']->findAll();
-        $tests = $app['dao.l_test']->findAllByClass($id);
-
-
-            return $app['twig']->render('select_test.html.twig', array(
-                'class' => $class,
-                'tests' => $tests,
-                'classes' => $classes
             ));
 
         
@@ -159,40 +90,64 @@ class TestController {
     }
 
     /**
-     * Show test mark page controller.
+     * Navigation page Controller
      *
      * @param Application $app Silex application
+     * @param Class $id
      */
 
-    public function JSONTestData($idTest, Application $app) {
+     public function navigationAction($idClass, Request $request, Application $app) {
+        
+        $class = $app['dao.class']->find($idClass);
+        $classes = $app['dao.class']->findAll();
+        $subjects = $app['dao.subject']->findAllByClass($idClass);
+        $chapters = $app['dao.chapter']->findAllByClass($idClass);
+        $lessons = $app['dao.lesson']->findAllByClass($idClass);
+        $tests = $app['dao.l_test']->findAllByClass($idClass);
 
-        $test = $app['dao.l_test']->find($idTest);
-        $marks = $app['dao.l_mark']->findAllByTest($idTest);
-
-        $markStud = array();
-        $markValue = array();
-
-        foreach ($marks as $mark) {
-                array_push($markStud, $mark->getStudent()->getName());
-                array_push($markValue, $mark->getValue());
-        }
-
-        return json_encode($markStud) . json_encode($markValue);
+            return $app['twig']->render('navigation.html.twig', array(
+                'class' => $class,
+                'classes' => $classes,
+                'subjects' => $subjects,
+                'chapters' => $chapters,
+                'lessons' => $lessons,
+                'tests' => $tests
+            ));
 
         
     }
 
     /**
-     * Show test mark page controller.
+     * PDF page Controller
      *
      * @param Application $app Silex application
+     * @param Class $id
      */
 
-    public function testAPIAction() {
+     public function pdfAction($idClass, $idLess, Request $request, Application $app) {
 
-        $testapi = "test api";
+        $class = $app['dao.class']->find($idClass);
+        $lesson = $app['dao.lesson']->find($idLess);
+        $chapter = $lesson->getchapter();
+        $subject = $chapter->getSubject();
+        $classes = $app['dao.class']->findAll();
+        $steps = $app['dao.step']->findAllByLesson($idLess);
+
+        $html = $app['twig']->render('lesson_PDF.html.twig', array(
+            'lesson' => $lesson,
+            'steps' => $steps,
+            'subject' => $subject,
+            'chapter' => $chapter
+        ));
+
+        $idPDF = 'Seance' . $class->getId() .'-'. $lesson->getId() . '.pdf' ;
+
+        $pdf = new Html2Pdf('P', 'A4', 'fr');
+        $pdf->pdf->SetDisplayMode('fullpage');
+        $pdf->writeHTML($html);
+        $pdf->Output($idPDF);
+
         
-        return $testapi;
     }
 
 

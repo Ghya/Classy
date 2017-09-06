@@ -5,22 +5,20 @@
     </a>
 </li>
 <li>
-    <a href="{{ path('add_test_select', { 'idClass': class.id }) }}"><i class="fa fa-fw fa fa-question-circle"></i>Table de navigation</a>
-</li>
-<li>
-    <a href="#" data-toggle="collapse" data-target="#submenu-2"><i class="fa fa-fw fa-star"></i>COURS<i class="fa fa-fw fa-angle-down pull-right"></i></a>
+    <a href="#" data-toggle="collapse" data-target="#submenu-2"><i class="fa fa-fw fa-star"></i>Cours<i class="fa fa-fw fa-angle-down pull-right"></i></a>
     <ul id="submenu-2" class="collapse">
-        <li><a href="{{ path('add_subject', { 'id': class.id }) }}"><i class="fa fa-angle-double-right"></i> Créer</a></li>
-        <li><a href="{{ path('lessons', { 'id': class.id }) }}"><i class="fa fa-angle-double-right"></i> Afficher</a></li>
+        <li><a href="{{ path('add_subject', { 'id': class.id }) }}"><i class="fa fa-angle-double-right"></i> Gestion des domaines</a></li>
+        <li><a href="{{ path('add_test_select', { 'idClass': class.id }) }}"><i class="fa fa-angle-double-right"></i> Gestion des séances</a></li>
+        <li><a href="{{ path('new_lesson', { 'idClass': class.id }) }}"><i class="fa fa-angle-double-right"></i> Créer</a></li>
     </ul>
 </li>
 <li>
-    <a href="{{ path('list', { 'id': class.id }) }}"><i class="fa fa-fw fa-user-plus"></i> Registre</a>
-</li>
-<li>
-    <a href="#" data-toggle="collapse" data-target="#submenu-3"><i class="fa fa-fw fa-star"></i>Evaluation<i class="fa fa-fw fa-angle-down pull-right"></i></a>
+    <a href="#" data-toggle="collapse" data-target="#submenu-3"><i class="fa fa-fw fa-star"></i>Elève<i class="fa fa-fw fa-angle-down pull-right"></i></a>
     <ul id="submenu-3" class="collapse">
-        <li><a href=""><i class="fa fa-angle-double-right"></i> Ajouter</a></li>
-        <li><a href="{{ path('select_test', { 'id': class.id }) }}"><i class="fa fa-angle-double-right"></i> Afficher</a></li>
+        <li><a href="{{ path('list', { 'id': class.id }) }}"><i class="fa fa-angle-double-right"></i>Registre</a></li>
+        <li><a href="{{ path('add_student', { 'id': class.id}) }}"><i class="fa fa-angle-double-right"></i>Ajouter</a></li>
     </ul>
+</li>
+<li>
+    <a href="{{ path('programm', { 'idClass': class.id }) }}"><i class="fa fa-fw fa-user-plus"></i>Programme</a>
 </li>

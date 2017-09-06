@@ -6,13 +6,19 @@
 
 {% block content %}
 
-    <div class="container">
-        <h3>Ajouter un élève</h3>
+    <div class="page_block_content container">
+
+        <div class="row">
+            <div class="page_block_title col-md-12">
+                <h3>Ajouter un élève lol </h3>
+                <p>Renseignez le différentes informations de l'élève à ajouter</p>
+            </div>
+        </div>
 
         {{ form_start(studentForm) }}
 
         <div class="row">
-            <div class="col-md-4">
+            <div class="page_block_content col-md-4">
 
                 <p>Détails élève</p> 
 
@@ -79,7 +85,7 @@
         
 
         
-            <div class="col-md-4">
+            <div class="page_block_content col-md-4">
 
                 <p>Détails parents</p>
 
@@ -138,7 +144,7 @@
                 </div>
             </div>
 
-            <div class="col-md-4">
+            <div class="page_block_content col-md-4">
         
 
                 <div class="form-group">
@@ -212,7 +218,7 @@
         </div>
 
         <div class="row">
-            <div class="col-md-offset-1 col-md-10">
+            <div class="page_block_content col-md-12">
 
                 <div class="form-group">
                     {{ form_label(studentForm.note) }}

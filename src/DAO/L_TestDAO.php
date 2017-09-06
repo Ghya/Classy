@@ -90,9 +90,9 @@ class L_TestDAO extends DAO
     }
 
     /**
-     * Saves an l_test and l_mark into the database.
+     * Saves an l_test and l_mark associated into the database.
      *
-     * @param \Classy\Domain\l_test $l_test The l_test to save
+     * @param \Classy\Domain\l_test $l_test The l_test to save with associated marks
      */
     public function saveTestMarks(L_Test $l_test, $marks) {
         $l_testData = array(
@@ -132,6 +132,24 @@ class L_TestDAO extends DAO
                 }
             }
         }
+    }
+
+    /**
+    * Removes a l_test by $id
+    *
+    * @param integer $id The id of the l_test
+    */
+    public function delete($id) {
+        $this->getDb()->delete('l_test', array('l_test_id' => $id));
+    }
+
+    /**
+    * Removes all l_test for a lessons
+    *
+    * @param $id The id of the lessons
+    */
+    public function deleteAllByLesson($id) {
+        $this->getDb()->delete('l_test', array('l_test_less_id' => $id));
     }
 
 

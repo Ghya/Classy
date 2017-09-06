@@ -32,22 +32,28 @@ class StudentType extends AbstractType
                 'label' => 'Date de naissance'
             ))
             ->add('momName', TextType::class, array(
-                'label' => 'Nom complet de la mère'
+                'label' => 'Nom complet de la mère',
+                'required' => false
             ))
             ->add('dadName', TextType::class, array(
-                'label' => 'Nom complet du père'
+                'label' => 'Nom complet du père',
+                'required' => false
             ))
             ->add('tel', TextType::class, array(
-                'label' => 'Téléphone des parents'
+                'label' => 'Téléphone des parents',
+                'required' => false
             ))
             ->add('adress', TextType::class, array(
-                'label' => 'Adresse des parents'
+                'label' => 'Adresse des parents',
+                'required' => false
             ))
             ->add('cp', NumberType::class, array(
-                'label' => 'Code Postal'
+                'label' => 'Code Postal',
+                'required' => false
             ))
             ->add('city', TextType::class, array(
-                'label' => 'Ville'
+                'label' => 'Ville',
+                'required' => false
             ))
             ->add('prevEtab', TextType::class, array(
                 'label' => 'Etablissement précédent',

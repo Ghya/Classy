@@ -1,0 +1,126 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Board{% endblock %}
+
+{% block nav %}{% include 'nav_options.html.twig' %}{% endblock %}
+
+{% block content %} 
+
+
+
+<div class="container">
+
+    <div class="row">
+        <div class="page_block_title col-md-12">
+            <h3>Création d'un cours</h3>
+            <p>Etape 1/4 : Selectionnez le domaine d'apprentissage</p>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div style="margin-bottom:5px" class="page_block_content col-md-12">
+
+            <div class="col-md-12">
+                <p>Liste de vos domaines</p>
+            </div>
+
+            {% for subject in subjects %}
+
+                <div class="col-md-3">
+                    <a href="{{ path('chapter', { 'idClass': class.id, 'idSub': subject.id }) }}">
+                        <div id="user_comment_container">
+                            <strong>{{ subject.name }}</strong>
+                        </div>
+                    </a>
+                </div>
+
+            {% else %}
+
+                <div class="page_block_content col-md-12">
+                    <div>
+                        <p>Vous n'avez pas encore de domaine enregistré</p>
+                    </div>
+                </div>
+
+                <div>
+                    <a href="{{ path('add_subject', { 'id': class.id }) }}"><button>Gestion des domaines</button></a>
+                </div>
+
+            {% endfor %}
+                    
+        </div>
+
+    </div>
+
+    <div class="page_block_content row">
+        
+    
+
+        <div style="margin-bottom:5px" class="page_block_content col-md-6">
+
+            <div class="page_block_content">
+                <h4>Domaine : {{ subject.name }}</h4>
+                <p>Etape 2/4 : Selectionnez la séquence</p>
+            </div>
+
+            {% for chapter in chapters %}
+
+                <div class="col-md-6">
+                    <a href="{{ path('add_lesson', { 'idClass': class.id, 'idSub': subject.id, 'idChap': chapter.id }) }}">
+                        <div id="user_comment_container">
+                            <strong>{{ chapter.name }}</strong>
+                        </div>
+                    </a>
+                </div>
+
+                {% else %}
+
+                <div class="page_block_content col-md-12">
+                    <div>
+                        <p>Vous n'avez pas encore de séquence enregistré pour le domaine</p>
+                    </div>
+                </div>
+
+            {% endfor %}
+        </div> 
+
+        <div class="page_block_content col-md-1">
+            <div class="vert_divider">
+            </div>
+        </div>
+
+        <div class="page_block_content col-md-5">
+
+            {{ form_start(chapterForm) }}
+
+                <!-- name form -->
+
+                <h4>Ajouter une séquence</h4>
+
+                <div class="form-group">
+                    {{ form_errors(chapterForm.name) }}
+                    {{ form_widget(chapterForm.name, { 'attr':  {
+                        'rows': '4',
+                        'class': 'form-control',
+                        'placeholder': 'Nom de la séquence'
+                    }}) }}
+                </div>
+
+                <!-- submit form -->
+                    
+                <div class="form-group">
+                    <input type="submit" class="btn btn-primary" value="Enregistrer" />
+                </div>
+
+            {{ form_end(chapterForm) }}
+
+        </div>
+
+    </div>
+
+</div>
+
+    
+
+{% endblock %}

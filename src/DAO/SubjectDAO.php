@@ -81,16 +81,23 @@ class SubjectDAO extends DAO
 
         if ($subject->getId()) {
             // The subject has already been saved : update it
-            $this->getDb()->update('subject', $subjectData);
+            $this->getDb()->update('subject', $subjectData, array('sub_id' => $subject->getId()));
         } else {
-            // set the right id in DB
-            $this->getDb()->exec('ALTER TABLE subject AUTO_INCREMENT = 1');
             // The subject has never been saved : insert it
             $this->getDb()->insert('subject', $subjectData);
             // Get the id of the newly created subject and set it on the entity.
             $id = $this->getDb()->lastInsertId();
             $subject->setId($id);
         }
+    }
+
+    /**
+    * Removes a subject by $id
+    *
+    * @param integer $id The id of the subject
+    */
+    public function delete($id) {
+        $this->getDb()->delete('subject', array('sub_id' => $id));
     }
 
 

@@ -25,6 +25,13 @@ class Classe
      */
     private $etab;
 
+    /**
+     * Class zone
+     *
+     * @var string
+     */
+    private $zone;
+
     
 
     public function getId() {
@@ -51,6 +58,15 @@ class Classe
 
     public function setEtab($etab) {
         $this->etab = $etab;
+        return $this;
+    }
+
+    public function getZone() {
+        return $this->zone;
+    }
+
+    public function setZone($zone) {
+        $this->zone = $zone;
         return $this;
     }
 }

@@ -1,0 +1,51 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Board{% endblock %}
+
+{% block nav %}{% include 'nav_options.html.twig' %}{% endblock %}
+
+{% block content %} 
+
+
+
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-md-12">
+            <h3>Programmation pour la période {{period}}</h3>
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-12">
+
+                <div class="table-responsive">
+                <table class="table table-hover table-bordered table-condensed">
+                    <thead>
+                        <tr class="info">
+                            <th>Domaine</th>
+                            <th>Programmation</th>
+                        </tr>
+                    </thead>
+
+                    {% for prog in progs %}
+                        <tr>
+                            <td><p> {{ prog.subject.name }}</p></td>
+                            <td><p> {{ prog.content }}</p></td>
+                        </tr>
+                    {% endfor %}
+
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+    
+
+{% endblock %}

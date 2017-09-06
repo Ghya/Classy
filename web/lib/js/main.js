@@ -9,7 +9,7 @@ $(function () {
     
 
     // Charts    
-    // var charts = new Charts(JSON.parse($('#markStud').text()), JSON.parse($('#markValue').text()))
+    var charts = new Charts(JSON.parse($('#markStud').text()), JSON.parse($('#markValue').text()))
     
     
 

@@ -8,29 +8,30 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
+            <div class="page_block_title col-md-12">
                 <h3>Registre des élèves</h3>
-                <a href="{{ path('add_student', { 'id': class.id}) }}">Ajouter un élève</a>
+                <p>Retrouvez ici la liste de tout les élèves de la classe</p>
+                <p>Cliquez sur l'icone<i style="margin:10px" class="glyphicon glyphicon-share"></i> pour ouvir la fiche élève</p>
             </div>
         </div>
 
         <div class="row">
-            <div class="col-md-12">
+            <div class="page_block_content col-md-12">
                 <div class="table-responsive">
                     <table class="table table-hover table-bordered">
                         <thead>
                             <tr class="info">
                                 <th>No</th>
-                                <th>Prénom</th>
                                 <th>Nom</th>
+                                <th>Prénom</th>
                                 <th>Fiche élève</th>
                             </tr>
                         </thead>
                         {% for student in students %}
                         <tr>
                             <td class="col-md-1"><p class="student_id">{{ student.id }}</p</td>
-                            <td class="col-md-5"><p> {{ student.firstname }} </p></td>
-                            <td class="col-md-5"><p> {{ student.name }}</p></td>
+                            <td class="col-md-5"><p> {{ student.name }} </p></td>
+                            <td class="col-md-5"><p> {{ student.firstname }}</p></td>
                             <td class="col-md-1 text-center">
                                 <a href="{{ path('student', { 'idClass': class.id, 'idStud': student.id }) }}">
                                     <i class="glyphicon glyphicon-share"></i>
