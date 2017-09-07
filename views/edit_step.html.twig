@@ -12,8 +12,8 @@
 
     <div class="row">
         <div class="page_block_title col-md-12">
-            <h3>Création d'un cours</h3>
-            <p>Etape 4/4 : Ajout des différentes étapes du cours</p>
+            <h3>Gestion des étapes</h3>
+            <p>Renseignez les modifications à apporter à l'étape</p>
         </div>
     </div>
 
@@ -21,7 +21,7 @@
 
         <div style="margin-bottom:5px" class="page_block_content col-md-12">
 
-            <h4> Etapes {{(steps | length)+ 1}} : </h4>
+            <h4> Etapes à modifier : </h4>
 
              {{ form_start(stepForm) }}
 
@@ -57,46 +57,17 @@
                 <!-- submit form -->
                     
                 <div id="step_button_block" class="form-group">
-                    <input type="submit" class="btn btn-primary" value="Enregistrer l'étape" />
-                    <a href="{{ path('lesson', { 'idClass': class.id, 'idLess': step.lesson.id  }) }}" class="btn btn-success">Terminer</a>
+                    <input type="submit" class="btn btn-primary" value="Enregistrer les modifications" />
+                    <div>
+                        <a href="{{ path('lesson', { 'idClass': class.id, 'idSub': step.lesson.chapter.subject.id, 'idChap': step.lesson.chapter.id, 'idLess': step.lesson.id}) }}" class="btn btn-danger">Annuler</a>
+                                               
+                    </div>
                 </div>
 
             {{ form_end(stepForm) }}
 
         </div>
 
-    </div>
-
-    <div class="row">
-        <div class="page_block_title col-md-12">
-
-            <h3> Etapes  ({{steps | length}}) </h3>
-
-            <div class="table-responsive">
-                <table class="table table-hover table-bordered table-condensed">
-                    <thead>
-                        <tr class="info">
-                            <th>No</th>
-                            <th>Titre</th>
-                            <th>Contenu</th>
-                            <th>Durée</th>
-                        </tr>
-                    </thead>
-
-                    {% for key, value in steps %}
-                        <tr>
-                            <td style="width:8%"><p> {{ key }}</p></td>
-                            <td><p>{{ value.name }}</p></td>
-                            <td><p> {{ value.content }} </p></td>
-                            <td style="width:8%"><p> {{ value.time }}</p></td>
-                        </tr>
-                    {% endfor %}
-                </table>
-            </div>
-
-            
-
-        </div>
     </div>
 </div>
 

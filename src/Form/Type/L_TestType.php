@@ -16,7 +16,7 @@ class L_TestType extends AbstractType
     {
         $builder
             ->add('name',  Texttype::class, array(
-                'label' => false
+                'label' => 'Nom de l\'évaluation'
             ));
         
         $builder->add('marks', CollectionType::class, array(

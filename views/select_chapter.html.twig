@@ -29,8 +29,9 @@
 
                 <div class="col-md-3">
                     <a href="{{ path('chapter', { 'idClass': class.id, 'idSub': subject.id }) }}">
-                        <div id="user_comment_container">
+                        <div id="selecting_container">
                             <strong>{{ subject.name }}</strong>
+                            <i class="glyphicon glyphicon-chevron-right"></i>
                         </div>
                     </a>
                 </div>
@@ -68,8 +69,9 @@
 
                 <div class="col-md-6">
                     <a href="{{ path('add_lesson', { 'idClass': class.id, 'idSub': subject.id, 'idChap': chapter.id }) }}">
-                        <div id="user_comment_container">
+                        <div id="selecting_container">
                             <strong>{{ chapter.name }}</strong>
+                            <i class="glyphicon glyphicon-chevron-right"></i>
                         </div>
                     </a>
                 </div>

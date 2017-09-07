@@ -12,9 +12,9 @@
 
     <div class="row">
         <div class="page_block_title col-md-12">
-            <h3> Création d'un cours </h3>
-            <p>Etape 3/4 : Informations générale</p>
-            <p><strong>Domaine : </strong>{{chapter.subject.name}}<strong style="margin-left:20px">Séquence : </strong>{{chapter.name}}</p>
+            <h3> Modification de le séance : {{lesson.title}} </h3>
+            <p><strong>Domaine : </strong>{{lesson.chapter.subject.name}}<strong style="margin-left:20px">Séquence : </strong>{{lesson.chapter.name}}</p>
+            <p>Renseignez les différente modifications à apporter à la séance</p>
         </div>
     </div>
 
@@ -68,6 +68,7 @@
 
                 <div class="form-group">
                     <input type="submit" class="btn btn-primary" value="Enregistrer" />
+                    <a href="{{ path('lesson', { 'idClass': class.id, 'idSub': lesson.chapter.subject.id, 'idChap': lesson.chapter.id, 'idLess': lesson.id}) }}" class="btn btn-danger">Annuler</a>
                 </div>
 
             </div>

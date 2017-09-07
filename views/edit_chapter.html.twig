@@ -10,26 +10,26 @@
 
         <div class="row">
             <div class="page_block_title col-md-12">
-                <h3>Edition du domaine : {{ subject.name }}</h3>
-                <p>Appliquer les modifications au domaine selectionné</p>
+                <h3>Edition de la séquence : {{ chapter.name }}</h3>
+                <p>Appliquer les modifications à la séquence selectionnée</p>
             </div>
         </div>
 
         <div class="row page_block_content">
             <div class="col-md-6">
 
-                {{ form_start(subjectForm) }}
+                {{ form_start(chapterForm) }}
 
                     <!-- name form -->
 
-                    <h4>Modifier le nom du domaine</h4>
+                    <h4>Modifier le nom de la séquence</h4>
 
                     <div class="form-group">
-                        {{ form_errors(subjectForm.name) }}
-                        {{ form_widget(subjectForm.name, { 'attr':  {
+                        {{ form_errors(chapterForm.name) }}
+                        {{ form_widget(chapterForm.name, { 'attr':  {
                             'rows': '4',
                             'class': 'form-control',
-                            'placeholder': 'Nom du domaine'
+                            'placeholder': 'Nom de la séquence'
                         }}) }}
                     </div>
 
@@ -39,30 +39,30 @@
                         <input type="submit" class="btn btn-success" value="Enregistrer les modifications" />
                     </div>
 
-                {{ form_end(subjectForm) }}
+                {{ form_end(chapterForm) }}
 
             </div>
 
             <div class="col-md-6">
                 <div class="edit_btn_block">
-                    <a href="{{ path('chapter', { 'idClass': class.id, 'idSub': subject.id  }) }}" class="btn btn-primary">
+                    <a href="{{ path('add_lesson', { 'idClass': class.id, 'idSub': subject.id, 'idChap': chapter.id  }) }}" class="btn btn-primary">
                         <i class="glyphicon glyphicon-plus"></i>
                         Créer un cour
                     </a>
 
-                    <button type="button" class="btn btn-danger" title="Supprimer" data-toggle="modal" data-target="#subjectDialog{{ subject.id }}">
+                    <button type="button" class="btn btn-danger" title="Supprimer" data-toggle="modal" data-target="#chapterDialog{{ subject.id }}">
                         <i class="glyphicon glyphicon-trash"></i>
-                        Supprimer le domaine
+                        Supprimer la séquence
                     </button>
 
-                    <a href="{{ path('sub_manag', { 'id': class.id }) }}" class="btn btn-warning">
+                    <a href="{{ path('navigation', { 'idClass': class.id }) }}" class="btn btn-warning">
                         <i class="glyphicon glyphicon-remove"></i>
                         Annuler
                     </a>
                 </div>
             </div>
 
-            <div class="modal fade" id="subjectDialog{{ subject.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal fade" id="chapterDialog{{ subject.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -70,12 +70,12 @@
                             <h4 class="modal-title" id="myModalLabel">Confirmation de suppression</h4>
                         </div>
                         <div class="modal-body">
-                            Voulez-vous vraiment supprimer le domaine {{ subject.name }} ? </br>
-                            (Attention ! Cette action est irréversible et entrainera la suppression de tout les éléments associés au domaine)
+                            Voulez-vous vraiment supprimer la séquence {{ chapter.name }} ? </br>
+                            (Attention ! Cette action est irréversible et entrainera la suppression de tout les éléments associés à la séquence)
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
-                            <a href="{{ path('delete_sub', { 'idClass': class.id, 'idSub': subject.id  }) }}" class="btn btn-danger">Confimer suppression</a>
+                            <a href="{{ path('delete_chap', { 'idClass': class.id, 'idChap': chapter.id  }) }}" class="btn btn-danger">Confimer suppression</a>
                         </div>
                     </div><!-- /.modal-content -->
                 </div><!-- /.modal-dialog -->

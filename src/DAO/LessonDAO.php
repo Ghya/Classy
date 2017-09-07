@@ -107,7 +107,7 @@ class LessonDAO extends DAO
 
         if ($lesson->getId()) {
             // The lesson has already been saved : update it
-            $this->getDb()->update('lesson', $lessonData);
+            $this->getDb()->update('lesson', $lessonData, array('less_id' => $lesson->getId()));
         } else {
             // The lesson has never been saved : insert it
             $this->getDb()->insert('lesson', $lessonData);

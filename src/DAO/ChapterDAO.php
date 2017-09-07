@@ -103,7 +103,7 @@ class ChapterDAO extends DAO
 
         if ($chapter->getId()) {
             // The chapter has already been saved : update it
-            $this->getDb()->update('chapter', $chapterData);
+            $this->getDb()->update('chapter', $chapterData, array('chap_id' => $chapter->getId()));
         } else {
             // The chapter has never been saved : insert it
             $this->getDb()->insert('chapter', $chapterData);

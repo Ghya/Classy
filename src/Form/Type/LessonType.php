@@ -12,12 +12,24 @@ class LessonType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title', TextType::class)
-            ->add('situation', TextType::class)
-            ->add('goal', TextAreaType::class)
-            ->add('equipment', TextAreaType::class)
-            ->add('skill', TextAreaType::class)
-            ->add('time', TextType::class);
+            ->add('title', TextType::class, array(
+                'label' => 'Titre de la séance'
+            ))
+            ->add('situation', TextType::class, array(
+                'label' => 'Situation dans l\'enseignement'
+            ))
+            ->add('goal', TextAreaType::class, array(
+                'label' => 'Objectif(s)'
+            ))
+            ->add('equipment', TextType::class, array(
+                'label' => 'Matériel'
+            ))
+            ->add('skill', TextAreaType::class, array(
+                'label' => 'Compétence(s) visée(s)'
+            ))
+            ->add('time', TextType::class, array(
+                'label' => 'Durée'
+            ));
     }
 
     public function getName()

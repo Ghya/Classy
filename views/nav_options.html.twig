@@ -7,8 +7,8 @@
 <li>
     <a href="#" data-toggle="collapse" data-target="#submenu-2"><i class="fa fa-fw fa-star"></i>Cours<i class="fa fa-fw fa-angle-down pull-right"></i></a>
     <ul id="submenu-2" class="collapse">
-        <li><a href="{{ path('add_subject', { 'id': class.id }) }}"><i class="fa fa-angle-double-right"></i> Gestion des domaines</a></li>
-        <li><a href="{{ path('add_test_select', { 'idClass': class.id }) }}"><i class="fa fa-angle-double-right"></i> Gestion des séances</a></li>
+        <li><a href="{{ path('sub_manag', { 'id': class.id }) }}"><i class="fa fa-angle-double-right"></i> Gestion des domaines</a></li>
+        <li><a href="{{ path('navigation', { 'idClass': class.id }) }}"><i class="fa fa-angle-double-right"></i>Navigation</a></li>
         <li><a href="{{ path('new_lesson', { 'idClass': class.id }) }}"><i class="fa fa-angle-double-right"></i> Créer</a></li>
     </ul>
 </li>
@@ -20,5 +20,16 @@
     </ul>
 </li>
 <li>
-    <a href="{{ path('programm', { 'idClass': class.id }) }}"><i class="fa fa-fw fa-user-plus"></i>Programme</a>
+    <a href="#" data-toggle="collapse" data-target="#submenu-5"><i class="fa fa-fw fa-star"></i>Evaluation<i class="fa fa-fw fa-angle-down pull-right"></i></a>
+    <ul id="submenu-5" class="collapse">
+        <li><a href="{{ path('list', { 'id': class.id }) }}"><i class="fa fa-angle-double-right"></i>Registre</a></li>
+        <li><a href="{{ path('add_student', { 'id': class.id}) }}"><i class="fa fa-angle-double-right"></i>Ajouter</a></li>
+    </ul>
+</li>
+<li>
+    <a href="#" data-toggle="collapse" data-target="#submenu-4"><i class="fa fa-fw fa-star"></i>Promgramme<i class="fa fa-fw fa-angle-down pull-right"></i></a>
+    <ul id="submenu-4" class="collapse">
+        <li><a href="{{ path('programm', { 'idClass': class.id }) }}"><i class="fa fa-angle-double-right"></i>Périodes</a></li>
+        <li><a href="{{ path('calendar', { 'idClass': class.id }) }}"><i class="fa fa-angle-double-right"></i>Calendrier</a></li>
+    </ul>
 </li>

@@ -15,19 +15,79 @@
         <div id="lesson_block_title" class="page_block_title col-md-12">
             <div>
                 <h3>Cours : {{ lesson.title }}</h3>
-                <p>Domaine : {{ subject.name }}</p>
-                <p>Séquence : {{ chapter.name }}</p>
+                <p>Domaine : {{ lesson.chapter.subject.name }}</p>
+                <p>Séquence : {{ lesson.chapter.name }}</p>
             </div>
-            <div style="margin-top:20px">
-                <p>Option de cours :</p>
-                <a href="{{ path('add_test', { 'idClass': class.id, 'idLess': lesson.id }) }}" class="btn btn-primary">
-                    <i style="margin-right:10px" class="fa fa-plus" aria-hidden="true"></i>
-                    Ajouter une évaluation
-                 </a>
-                 <a href="{{ path('snappy', { 'idClass': class.id, 'idLess': lesson.id }) }}" class="btn btn-info">
-                    <i style="margin-right:10px" class="glyphicon glyphicon-share"></i>
-                    Télécharger (pdf)
-                 </a>
+            <div id="lesson_block_btn">
+
+                <div id="lesson_block_btn_1">
+                    <a href="{{ path('add_test', { 'idClass': class.id, 'idLess': lesson.id }) }}" class="btn btn-primary" style="margin-right:5px">
+                        <i style="margin-right:10px" class="fa fa-plus" aria-hidden="true"></i>
+                        Ajouter évaluation
+                    </a>
+                    <div class="dropdown show">
+                        <a class="btn btn-primary dropdown-toggle" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i style="margin-right:10px" class="glyphicon glyphicon-chevron-down"></i>
+                            Afficher évaluation
+                        </a>
+
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+
+                            <div id="drop_menu_lesson">
+
+                                {% for test in tests %}
+
+                                    <div id="drop_menu_lesson_item">
+                                        <a class="dropdown-item" href="{{ path('test', { 'idClass': class.id, 'idTest': test.id  }) }}">
+                                            {{test.name}}
+                                            <i style="" class="glyphicon glyphicon-chevron-right"></i>
+                                        </a>
+                                    </div>
+                                    
+                                {% endfor %}
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div id="lesson_block_btn_2">
+                    <a href="{{ path('edit_less', { 'idClass': class.id, 'idLess': lesson.id }) }}" class="btn btn-info">
+                        <i style="margin-right:20px" class="glyphicon glyphicon-pencil"></i>
+                        Modifier
+                    </a>
+                    <a href="{{ path('lesson_PDF', { 'idClass': class.id, 'idLess': lesson.id }) }}" class="btn btn-info" style="margin-left:5px">
+                        <i style="margin-right:10px" class="glyphicon glyphicon-print"></i>
+                        Imprimer (pdf)
+                    </a>
+                </div>
+
+                <div id="lesson_block_btn_3">
+                    <button id="delete_chapter_btn" type="button" class="btn btn-danger" title="Supprimer" data-toggle="modal" data-target="#lessonDelete{{ lesson.id }}">
+                        <i class="glyphicon glyphicon-trash"></i>
+                        Supprimer
+                    </button>
+                </div>
+
+                <div class="modal fade" id="lessonDelete{{ lesson.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <h4 class="modal-title" id="myModalLabel">Confirmation de suppression</h4>
+                            </div>
+                            <div class="modal-body">
+                                Voulez-vous vraiment supprimer la séance : {{lesson.title}}  ? </br>
+                                (Attention ! Cette action est irréversible et entrainera la suppression de tout les éléments associés a la séance)
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                                <a href="{{ path('delete_lesson', { 'idClass': class.id, 'idLess': lesson.id }) }}" class="btn btn-danger">Confimer suppression</a>
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->                
+
             </div>
         </div>
         
@@ -63,7 +123,14 @@
     <div class="row">
     
         <div class="page_block_content col-md-12">
-            <h3>Etapes du cours<em style="font-size:14px; margin-left:10px">({{(steps | length)}})</em></h3>
+            <div id="step_title_block">
+                <h3>Etapes du cours<em style="font-size:14px; margin-left:10px">({{(steps | length)}})</em></h3>
+                <div>
+                    <a style="color:white" href="{{ path('add_step', { 'idClass': class.id, 'idSub': lesson.chapter.subject.id, 'idChap': lesson.chapter.id, 'idLess': lesson.id}) }}" class="btn btn-primary btn-xs">
+                        Ajouter une étape
+                    </a>
+                </div>
+            </div>
             <div class="table-responsive">
                 <table class="table table-hover table-bordered table-condensed">
                     <thead>
@@ -80,7 +147,12 @@
                             <td><p> {{ key }}</p></td>
                             <td><p>{{ value.name }}</p></td>
                             <td><p> {{ value.content }} </p></td>
-                            <td><p> {{ value.time }}</p></td>
+                            <td class="text-center"><p> {{ value.time }}</p></td>
+                            <td style="width:20px">
+                                <a class="btn btn-primary btn-xs" href="{{ path('edit_step', { 'idClass': class.id, 'idLess': value.lesson.id, 'idStep': value.id }) }}">
+                                    <i style="color:white" class="glyphicon glyphicon-pencil"></i>
+                                </a>
+                            </td>
                         </tr>
                     {% endfor %}
                 </table>

@@ -38,7 +38,7 @@ $app->match('/class/{idClass}/lessons/{idLess}', "Classy\Controller\HomeControll
 
 // Subject Management
 $app->match('/class/{id}/subject', "Classy\Controller\HomeController::subjectManagementAction")
-->bind('add_subject');
+->bind('sub_manag');
 
 // Select Subject
 $app->match('/class/{idClass}/subject/new_lesson', "Classy\Controller\HomeController::selectSubjectAction")
@@ -58,7 +58,7 @@ $app->match('/class/{idClass}/subject/{idSub}/chapter/{idChap}/lesson/{idLess}/a
 
 // Navigation
 $app->match('/class/{idClass}/add_test_select', "Classy\Controller\HomeController::navigationAction")
-->bind('add_test_select');
+->bind('navigation');
 
 // Add L_test
 $app->match('/class/{idClass}/lesson/{idLess}/test', "Classy\Controller\TestController::addL_TestAction")
@@ -91,7 +91,7 @@ $app->match('/class/{idClass}/programm/{idPeriod}/periode', "Classy\Controller\P
 
 // Lesson PDF
 $app->match('/class/{idClass}/pdf/{idLess}', "Classy\Controller\TestController::pdfAction")
-->bind('snappy');
+->bind('lesson_PDF');
 
 
 //===============================
@@ -130,3 +130,12 @@ $app->match('/class/{idClass}/subject/{idSub}/edit', "Classy\Controller\EditCont
 // Edit chap
 $app->match('/class/{idClass}/subject/{idSub}/chapter/{idChap}/edit', "Classy\Controller\EditController::editChapterAction")
 ->bind('edit_chap');
+
+// Edit Lesson
+$app->match('/class/{idClass}/lesson/{idLess}/edit', "Classy\Controller\EditController::editLessonAction")
+->bind('edit_less');
+
+// Edit Step
+$app->match('/class/{idClass}/lesson/{idLess}/step/{idStep}/edit', "Classy\Controller\EditController::editStepAction")
+->bind('edit_step');
+
