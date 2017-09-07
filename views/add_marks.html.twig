@@ -14,30 +14,46 @@
 
         <div class="page_block_title col-md-12">
             <h3>Notes de l'évaluation</h3>
+            <p><strong>Domaine : </strong>{{test.lesson.chapter.subject.name}}<strong style="margin-left:20px">Séquence : </strong>{{test.lesson.chapter.name}}</p>
             <p>Renseignez les différentes note</p>
         </div>
 
-        <div class="page_block_content col-md-12">
+    </div>
+    <div class="page_block_content row">
+
+        <div class="page_block_content col-md-7">
             {{ form_start(form) }}
 
-                <h3 id="test_title_block">Nom de l'évaluation {{form_row(form.name)}}</h3>
+                <div class="form-group">
+                    {{ form_label(form.name) }}
+                    {{ form_errors(form.name) }}
+                    {{ form_widget(form.name, { 'attr':  {
+                        'rows': '4',
+                        'class': 'form-control',
+                        'placeholder': 'Titre'
+                    }}) }}
+                </div>
 
-                <div class="col-md-2">
+                
+        </div>
+        <div class="page_block_content col-md-12">
+
+                <div class="col-md-offset-1 col-md-4">
                         
                     
-                        {% for student in students %}
-                            <p style="line-height:27px; margin:0">{{ student.name }} - {{ student.firstname}}</p>
-                        {% endfor %}
+                {% for student in students %}
+                    <p style="line-height:27px; margin:0">{{ student.name }} - {{ student.firstname}}</p>
+                {% endfor %}
                     
                     
                 </div>
 
-                <div class="col-md-10">
+                <div class="col-md-6">
                         
                     
-                        {% for mark in form.marks %}
-                            {{ form_row(mark.value) }}
-                        {% endfor %}
+                    {% for mark in form.marks %}
+                        {{ form_row(mark.value) }}
+                    {% endfor %}
                     
 
                 </div>

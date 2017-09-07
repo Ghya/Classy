@@ -444,15 +444,15 @@ class HomeController {
              ]));
         }   
 
-            return $app['twig']->render('add_step.html.twig', array(
-                'class' => $class,
-                'classes' => $classes,
-                'subject' => $subject,
-                'chapter' => $chapter,
-                'step' => $step,
-                'steps' => $steps,
-                'stepForm' => $stepFormView
-            ));
+        return $app['twig']->render('add_step.html.twig', array(
+            'class' => $class,
+            'classes' => $classes,
+            'subject' => $subject,
+            'chapter' => $chapter,
+            'step' => $step,
+            'steps' => $steps,
+            'stepForm' => $stepFormView
+        ));
 
         
     }
@@ -466,20 +466,18 @@ class HomeController {
     public function lessonAction($idClass, $idLess,  Request $request, Application $app) {
         
         $lesson = $app['dao.lesson']->find($idLess);
-        $chapter = $lesson->getchapter();
-        $subject = $chapter->getSubject();
-        $class = $subject->getClass();
+        $class = $app['dao.class']->find($idClass);
         $classes = $app['dao.class']->findAll();
         $steps = $app['dao.step']->findAllByLesson($idLess);
+        $tests = $app['dao.l_test']->findAllByLesson($idLess);
 
 
             return $app['twig']->render('lesson.html.twig', array(
                 'class' => $class,
                 'classes' => $classes,
-                'subject' => $subject,
                 'lesson' => $lesson,
-                'chapter' => $chapter,
-                'steps' => $steps
+                'steps' => $steps,
+                'tests' => $tests
             ));
 
         

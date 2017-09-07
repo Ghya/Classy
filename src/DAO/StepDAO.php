@@ -104,7 +104,7 @@ class StepDAO extends DAO
 
         if ($step->getId()) {
             // The step has already been saved : update it
-            $this->getDb()->update('step', $stepData);
+            $this->getDb()->update('step', $stepData, array('step_id' => $step->getId()));
         } else {
             // The step has never been saved : insert it
             $this->getDb()->insert('step', $stepData);
