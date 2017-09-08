@@ -68,7 +68,7 @@ $app->match('/class/{idClass}/lesson/{idLess}/test', "Classy\Controller\TestCont
 $app->match('/class/{id}/test_select', "Classy\Controller\TestController::selectTestAction")
 ->bind('select_test');
 
-// Show test 
+// Show l_test 
 $app->match('/class/{idClass}/test/{idTest}/show_test', "Classy\Controller\TestController::showTestAction")
 ->bind('test');
 
