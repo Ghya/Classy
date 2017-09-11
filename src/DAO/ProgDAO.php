@@ -16,21 +16,12 @@ class ProgDAO extends DAO
     }
 
     /**
-     * @var \Classy\DAO\ClasseDAO
-     */
-    private $subjectDAO;
-
-    public function setSubjectDAO(SubjectDAO $subjectDAO) {
-        $this->subjectDAO = $subjectDAO;
-    }
-
-    /**
      * Return a array with a list of all prog, sorted by id
      *
      * @return array A list of all prog.
      */
     public function findAll() {
-        $sql = "SELECT * FROM prog ORDER BY prog_id";
+        $sql = "SELECT * FROM programm ORDER BY prog_id";
         $result = $this->getDb()->fetchAll($sql);
 
         // Convert query result to an array of domain objects
@@ -68,7 +59,7 @@ class ProgDAO extends DAO
      * @return \Classy\Domain\prog|throws an exception if no matching prog is found
      */
     public function find($id) {
-        $sql = "SELECT * FROM prog WHERE prog_id=?";
+        $sql = "SELECT * FROM programm WHERE prog_id=?";
         $row = $this->getDb()->fetchAssoc($sql, array($id));
 
         if ($row)
@@ -82,9 +73,9 @@ class ProgDAO extends DAO
      *
      * @param \Classy\Domain\prog $prog The prog to save
      */
-    public function save(prog $prog) {
+    public function save(Prog $prog) {
         $progData = array(
-            'prog_sub_id' => $prog->getSubject()->getId(),
+            'prog_sub' => $prog->getSubject(),
             'prog_class_id' => $prog->getClass()->getId(),
             'prog_content' => $prog->getContent(),
             'prog_period' => $prog->getPeriod()
@@ -92,10 +83,10 @@ class ProgDAO extends DAO
 
         if ($prog->getId()) {
             // The prog has already been saved : update it
-            $this->getDb()->update('prog', $progData);
+            $this->getDb()->update('programm', $progData, array('prog_id' => $prog->getId()));
         } else {
             // The prog has never been saved : insert it
-            $this->getDb()->insert('prog', $progData);
+            $this->getDb()->insert('programm', $progData);
             // Get the id of the newly created prog and set it on the entity.
             $id = $this->getDb()->lastInsertId();
             $prog->setId($id);
@@ -108,19 +99,20 @@ class ProgDAO extends DAO
     * @param integer $id The id of the prog
     */
     public function delete($id) {
-        $this->getDb()->delete('prog', array('prog_id' => $id));
+        $this->getDb()->delete('programm', array('prog_id' => $id));
     }
 
 
     /**
-     * Creates a proge object based on a DB row.
+     * Creates a prog object based on a DB row.
      *
      * @param array $row The DB row containing proge data.
-     * @return \Classy\Domain\prog
+     * @return \Classy\Domain\Prog
      */
     protected function buildDomainObject(array $row) {
         $prog = new Prog();
         $prog->setId($row['prog_id']);
+        $prog->setSubject($row['prog_sub']);
         $prog->setContent($row['prog_content']);
         $prog->setPeriod($row['prog_period']);
 
@@ -129,13 +121,6 @@ class ProgDAO extends DAO
             $classId = $row['prog_class_id'];
             $class = $this->classDAO->find($classId);
             $prog->setClass($class);
-        }
-
-        if (array_key_exists('prog_sub_id', $row)) {
-            // Find and set the associated subject
-            $subjectId = $row['prog_sub_id'];
-            $subject = $this->subjectDAO->find($subjectId);
-            $prog->setSubject($subject);
         }
         
         return $prog;

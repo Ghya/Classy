@@ -10,20 +10,51 @@
 
 <div class="container">
 
-    <div class="row">
+    <div class="page_block_title row">
     
-        <div style="margin-bottom:5px" class="page_block_title col-md-12">
-            <h3>Evaluation : {{ test.name }}</h3>
-            <p>Domaine : {{ test.lesson.chapter.subject.name }}</p>
-            <p>Séquence : {{ test.lesson.chapter.name }}</p>
-            <p>Séance : {{ test.lesson.title }}</p>
+        <div style="margin-bottom:5px" class="test_title_block col-md-12">
+            <div>
+                <h3>Evaluation : {{ test.name }}</h3>
+                <p>Domaine : {{ test.lesson.chapter.subject.name }}</p>
+                <p>Séquence : {{ test.lesson.chapter.name }}</p>
+                <p>Séance : {{ test.lesson.title }}</p>
+            </div>
+            <div>
+                <a href="{{ path('edit_test', { 'idClass': class.id, 'idTest': test.id, 'idLess': test.lesson.id}) }}" class="btn btn-primary">
+                    <i class="glyphicon glyphicon-pencil"></i>
+                    Modifier les notes
+                </a>
+                <button type="button" class="btn btn-danger" title="Supprimer" data-toggle="modal" data-target="#testDelete{{ test.id }}">
+                    <i class="glyphicon glyphicon-trash"></i>
+                    Supprimer l'évaluation
+                </button>
+            </div>
+
+            <div class="modal fade" id="testDelete{{ test.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title" id="myModalLabel">Confirmation de suppression</h4>
+                        </div>
+                        <div class="modal-body">
+                            Voulez-vous vraiment supprimer l'évaluation : {{test.name}}  ? </br>
+                            (Attention ! Cette action est irréversible et entrainera la suppression de toutes les notes associés à l'évaluation)
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                            <a href="{{ path('delete_test', { 'idClass': class.id, 'idTest': test.id }) }}" class="btn btn-danger">Confimer suppression</a>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal --> 
         </div>
         
     </div>
 
-    <div class="row">
+    <div class="page_block_content row">
     
-        <div style="margin-bottom:5px" class="page_block_content col-md-12">
+        <div style="margin-bottom:5px" class="col-md-offset-2 col-md-8">
             <h3>Notes de l'évaluation</h3>
             <div class="table-responsive">
                 <table class="table table-hover table-bordered table-condensed">
@@ -37,7 +68,7 @@
                     {% for mark in marks %}
                         <tr>
                             <td><p> {{ mark.student.name }} - {{ mark.student.firstname }} </p></td>
-                            <td><p> {{ mark.value }}</p></td>
+                            <td class="text-center"><p> {{ mark.value }}</p></td>
                         </tr>
                     {% endfor %}
                 </table>
@@ -76,8 +107,8 @@
 
 
 
-<div id="markStud">{{markStud}}</div>
-<div id="markValue">{{markValue}}</div>
+<div class="none" id="markStud">{{markStud}}</div>
+<div class="none" id="markValue">{{markValue}}</div>
 
     
 

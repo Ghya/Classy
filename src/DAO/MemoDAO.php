@@ -29,7 +29,7 @@ class MemoDAO extends DAO
      * @return object last memo
      */
     public function findLast() {
-        $sql = "SELECT * FROM memo ORDER BY memo_id DESC LIMIT 0,1";
+        $sql = "SELECT * FROM memo ORDER BY memo_date DESC LIMIT 0,1";
         $row = $this->getDb()->fetchAssoc($sql);
 
         if ($row)

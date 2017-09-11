@@ -12,9 +12,15 @@ class StepType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', TextType::class)
-            ->add('content', TextAreaType::class)
-            ->add('time', TextType::class);
+            ->add('name', TextType::class, array(
+                'label' => 'Titre de l\'étape'
+            ))
+            ->add('content', TextAreaType::class, array(
+                'label' => 'Contenu de l\'étape'
+            ))
+            ->add('time', TextType::class, array(
+                'label' => 'Durée éstimée'
+            ));
     }
 
     public function getName()

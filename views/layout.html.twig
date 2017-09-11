@@ -66,10 +66,10 @@
                 {% if app.user and is_granted('ROLE_ADMIN') %}
 
                     <li>
-                        <a href="{{ path('board') }}"><i class="fa fa-fw fa-user-plus"></i> Accueil</a>
+                        <a href="{{ path('board') }}"><i class="ico_menu fa fa-home fa-2x" aria-hidden="true"></i> Accueil</a>
                     </li>
                     <li>
-                        <a href="#" data-toggle="collapse" data-target="#submenu-1"><i class="fa fa-fw fa-search"></i> CLASSE <i class="fa fa-fw fa-angle-down pull-right"></i></a>
+                        <a href="#" data-toggle="collapse" data-target="#submenu-1"><i class="ico_menu fa fa-user-circle-o fa-2x" aria-hidden="true"></i> Classe <i class="fa fa-fw fa-angle-down pull-right"></i></a>
                         <ul id="submenu-1" class="collapse">
 
                         {% for class in classes %}
@@ -100,21 +100,26 @@
     <script src="{{ asset('/lib/bootstrap/js/bootstrap.min.js') }}"></script>
     <!-- carousel plugin -->
     <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
-    <!-- TinyMCE plugin -->
-    <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
-    <script>tinymce.init({ selector:'textarea.chapter' });</script>
     <!-- Charts script -->
     <script src="{{ asset('/lib/js/echarts.js') }}"></script>
     <!-- View controller script -->
     <script src="{{ asset('/lib/js/view.js') }}"></script>
-    <!-- My charts script -->
-    <script src="{{ asset('/lib/js/charts.js') }}"></script>
+    <!-- test charts script -->
+    <script src="{{ asset('/lib/js/testCharts.js') }}"></script>
+    <!-- class charts script -->
+    <script src="{{ asset('/lib/js/classCharts.js') }}"></script>
     <!-- Ajax function script -->
     <script src="{{ asset('/lib/js/ajax.js') }}"></script>
     <!-- API mmanger script -->
     <script src="{{ asset('/lib/js/apiManager.js') }}"></script>
     <!-- calendar script -->
     <script src="{{ asset('/lib/js/calendar.js') }}"></script>
+    <!-- model script -->
+    <script src="{{ asset('/lib/js/model.js') }}"></script>
+    
+    <!-- TinyMCE plugin -->
+    <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+
     <!-- Main script -->
     <script src="{{ asset('/lib/js/main.js') }}"></script>
 </body>

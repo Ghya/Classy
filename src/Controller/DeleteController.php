@@ -103,7 +103,7 @@ class DeleteController {
 
         $app['session']->getFlashBag()->add('success', 'Le chapitre a été supprimé.');
 
-        return $app->redirect($app['url_generator']->generate('add_test_select', [
+        return $app->redirect($app['url_generator']->generate('navigation', [
             "idClass" => $class->getId()
         ]));
     }
@@ -133,7 +133,7 @@ class DeleteController {
     * @param integer $idTest lesson id
     * @param Application $app Silex application
     */
-    public function deleteL_TestAction($idClass, $idTest, Application $app) {
+    public function deleteTestAction($idClass, $idTest, Application $app) {
         
         $class = $app['dao.class']->find($idClass);
 
@@ -143,8 +143,31 @@ class DeleteController {
 
         $app['session']->getFlashBag()->add('success', 'Le chapitre a été supprimé.');
 
-        return $app->redirect($app['url_generator']->generate('add_test_select', [
+        return $app->redirect($app['url_generator']->generate('navigation', [
             "idClass" => $class->getId()
+        ]));
+    }
+
+    /**
+    * Delete programm controller.
+    *
+    * @param integer $id chapter id and $idProg the prog id
+    * @param Application $app Silex application
+    */
+    public function deleteProgAction($idClass, $idProg, Application $app) {
+        
+        $class = $app['dao.class']->find($idClass);
+        $prog = $app['dao.prog']->find($idProg);
+        $idPeriod = $prog->getPeriod();
+
+        $prog = $app['dao.prog']->delete($idProg);
+        
+
+        $app['session']->getFlashBag()->add('success', 'La programmation a été supprimé.');
+
+        return $app->redirect($app['url_generator']->generate('show_programm', [
+            "idClass" => $class->getId(),
+            "idPeriod" => $idPeriod
         ]));
     }
 }

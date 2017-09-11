@@ -1,11 +1,10 @@
-<li id="btn_class_board" style="color:white">
+<li id="btn_class_board" >
     <a href="{{ path('class', { 'id': class.id }) }}">
-        <p>{{ class.lvl }}</p>
-        <p>{{ class.etab }}</p>
+        <p style="color:white"><i style="color:white" class="ico_menu fa fa-tachometer fa-2x" aria-hidden="true"></i>{{ class.lvl }}</p>
     </a>
 </li>
 <li>
-    <a href="#" data-toggle="collapse" data-target="#submenu-2"><i class="fa fa-fw fa-star"></i>Cours<i class="fa fa-fw fa-angle-down pull-right"></i></a>
+    <a href="#" data-toggle="collapse" data-target="#submenu-2"><i class="ico_menu fa fa-book fa-2x" aria-hidden="true"></i>Cours<i class="fa fa-fw fa-angle-down pull-right"></i></a>
     <ul id="submenu-2" class="collapse">
         <li><a href="{{ path('sub_manag', { 'id': class.id }) }}"><i class="fa fa-angle-double-right"></i> Gestion des domaines</a></li>
         <li><a href="{{ path('navigation', { 'idClass': class.id }) }}"><i class="fa fa-angle-double-right"></i>Navigation</a></li>
@@ -13,21 +12,21 @@
     </ul>
 </li>
 <li>
-    <a href="#" data-toggle="collapse" data-target="#submenu-3"><i class="fa fa-fw fa-star"></i>Elève<i class="fa fa-fw fa-angle-down pull-right"></i></a>
+    <a href="#" data-toggle="collapse" data-target="#submenu-3"><i class="ico_menu fa fa-users fa-2x" aria-hidden="true"></i>Elève<i class="fa fa-fw fa-angle-down pull-right"></i></a>
     <ul id="submenu-3" class="collapse">
         <li><a href="{{ path('list', { 'id': class.id }) }}"><i class="fa fa-angle-double-right"></i>Registre</a></li>
         <li><a href="{{ path('add_student', { 'id': class.id}) }}"><i class="fa fa-angle-double-right"></i>Ajouter</a></li>
     </ul>
 </li>
 <li>
-    <a href="#" data-toggle="collapse" data-target="#submenu-5"><i class="fa fa-fw fa-star"></i>Evaluation<i class="fa fa-fw fa-angle-down pull-right"></i></a>
+    <a href="#" data-toggle="collapse" data-target="#submenu-5"><i class="ico_menu fa fa-cog fa-2x" aria-hidden="true"></i>Statistiques<i class="fa fa-fw fa-angle-down pull-right"></i></a>
     <ul id="submenu-5" class="collapse">
-        <li><a href="{{ path('list', { 'id': class.id }) }}"><i class="fa fa-angle-double-right"></i>Registre</a></li>
-        <li><a href="{{ path('add_student', { 'id': class.id}) }}"><i class="fa fa-angle-double-right"></i>Ajouter</a></li>
+        <li><a href="{{ path('test_stat', { 'idClass': class.id }) }}"><i class="fa fa-angle-double-right"></i>Evaluation</a></li>
+        <li><a href="{{ path('class_stat', { 'idClass': class.id}) }}"><i class="fa fa-angle-double-right"></i>Classe</a></li>
     </ul>
 </li>
 <li>
-    <a href="#" data-toggle="collapse" data-target="#submenu-4"><i class="fa fa-fw fa-star"></i>Promgramme<i class="fa fa-fw fa-angle-down pull-right"></i></a>
+    <a href="#" data-toggle="collapse" data-target="#submenu-4"><i class="ico_menu fa fa-book fa-2x" aria-hidden="true"></i>Programme<i class="fa fa-fw fa-angle-down pull-right"></i></a>
     <ul id="submenu-4" class="collapse">
         <li><a href="{{ path('programm', { 'idClass': class.id }) }}"><i class="fa fa-angle-double-right"></i>Périodes</a></li>
         <li><a href="{{ path('calendar', { 'idClass': class.id }) }}"><i class="fa fa-angle-double-right"></i>Calendrier</a></li>

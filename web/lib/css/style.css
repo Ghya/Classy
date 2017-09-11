@@ -38,6 +38,11 @@ body {
     color: black;
 }
 
+.ico_menu {
+    margin-right: 20px;
+    color: #8E8E8E;
+}
+
 #step_button_block {
     display: flex;
     justify-content: space-between;
@@ -60,6 +65,20 @@ body {
     margin-top: 200px;
 }
 
+.none {
+    display: none;
+}
+
+#memo_zone {
+    background-color: #E2E267;
+    height: 307px;
+    overflow: scroll;
+}
+
+#memo {
+    border: 1px dotted #945E31;
+}
+
 #selecting_container {
     width: 100%;
     background-color: #AFE2E7;
@@ -69,6 +88,16 @@ body {
     border-radius: 4px;
     display: flex;
     justify-content: space-between;
+}
+
+.block_stat  {
+    border: 1px solid #CBCBCB;
+    margin: 20px 0;
+    padding: 20px;
+}
+
+.block_stat p  {
+    font-size: 1.5em;
 }
 
 /*==== fin class général ======*/
@@ -110,11 +139,38 @@ body {
 /*==== Calendrier ======*/
 
 .calendar_block {
-    border: 1px solid black;
-    margin-bottom: 20px;
+    border: 1px solid #C7C7C7;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.zone {
+    background-color: #E8AE47;
+}
+
+.zoneA {
+    background-color: #476ADC;
+}
+
+.zoneB {
+    background-color: #3BC14F;
+}
+
+.zoneC {
+    background-color: #D63A3A;
 }
 
 /*==== Fin Calendrier ======*/
+
+/*==== test page ======*/
+
+.test_title_block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/*==== Fin test page ======*/
 
 /*==== Page lesson ======*/
 
@@ -266,6 +322,16 @@ body {
     background-color: #EAEAEA
 }
 
+#prog_block_title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.programm_cell {
+    padding: 10px 20px;
+}
+
 /*==== Fin Programme ======*/
 
 
@@ -284,6 +350,7 @@ body {
 #detail_stud_block,
 #note_stud_block {
     border: 1px solid black;
+    border-radius: 4px;
     margin-bottom: 15px;
 }
 
@@ -334,6 +401,10 @@ body {
 #note_info {
     min-height: 100px;
     padding: 15px;
+}
+
+#student_container {
+    background-color: #FFFFFF;
 }
 
 /*==== Fin fiche élève ======*/

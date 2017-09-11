@@ -1,0 +1,61 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Board{% endblock %}
+
+{% block nav %}{% include 'nav_options.html.twig' %}{% endblock %}
+
+{% block content %} 
+
+
+
+<div class="container">
+
+    <div class="row">
+
+        <div class="page_block_title col-md-12">
+            <h3>Ajout d'une programmation pour la période {{period}}</h3>
+        </div>
+
+    </div>
+
+    <div class="page_block_content row">
+
+        <div class="col-md-12">
+            {{ form_start(progForm) }}
+
+                <div class="form-group">
+                    {{ form_label(progForm.subject) }}
+                    {{ form_errors(progForm.subject) }}
+                    {{ form_widget(progForm.subject, { 'attr':  {
+                        'rows': '4',
+                        'class': 'form-control',
+                        'placeholder': 'Domaine'
+                    }}) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(progForm.content) }}
+                    {{ form_errors(progForm.content) }}
+                    {{ form_widget(progForm.content, { 'attr':  {
+                        'rows': '10',
+                        'class': 'form-control chapter',
+                        'placeholder': 'Contenu'
+                    }}) }}
+                </div>
+
+                <!-- submit form -->
+                    
+                <div id="step_button_block" class="form-group">
+                    <input type="submit" class="btn btn-primary" value="Enregistrer" />
+                    <a href="{{ path('show_programm', { 'idClass': class.id, 'idPeriod': period }) }}" class="btn btn-danger">Annuler</a>
+                </div>
+
+            {{ form_end(progForm) }}
+        </div>
+    </div>
+
+</div>
+
+    
+
+{% endblock %}

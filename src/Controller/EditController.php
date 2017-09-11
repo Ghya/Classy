@@ -8,6 +8,8 @@ use Classy\Form\Type\SubjectType;
 use Classy\Form\Type\ChapterType;
 use Classy\Form\Type\LessonType;
 use Classy\Form\Type\StepType;
+use Classy\Form\Type\ProgType;
+use Classy\Form\Type\L_TestType;
 
 class EditController {
     /**
@@ -165,6 +167,95 @@ class EditController {
             'steps' => $steps,
             'stepForm' => $stepFormView
         ));
+        
+    }
+
+    /**
+     * Edit subject page controller.
+     *
+     * @param Application $app Silex application
+     * @param Request $request
+     * @param idClass, $idSub
+     */
+
+     public function editProgAction($idClass, $idProg, Request $request, Application $app) {
+        
+        $class = $app['dao.class']->find($idClass);
+        $classes = $app['dao.class']->findAll();
+
+        $prog = $app['dao.prog']->find($idProg);
+
+        $progForm = $app['form.factory']->create(ProgType::class, $prog);
+        $progForm->handleRequest($request);
+        $progFormView = $progForm->createView(); 
+
+        if ($progForm->isSubmitted() && $progForm->isValid()) {
+            $app['dao.prog']->save($prog);
+            $app['session']->getFlashBag()->add('success', 'Votre programmation a été ajouté');
+
+            return $app->redirect($app['url_generator']->generate('show_programm', [
+                "idClass" => $class->getId(),
+                "idPeriod" => $prog->getPeriod()
+            ]));
+        }   
+
+        return $app['twig']->render('edit_prog.html.twig', array(
+            'class' => $class,
+            'classes' => $classes,
+            'prog' => $prog,
+            'progForm' => $progFormView
+        ));
+        
+    }
+
+    /**
+     * add subject page controller.
+     *
+     * @param Application $app Silex application
+     */
+
+     public function editTestAction($idClass, $idTest, $idLess, Request $request, Application $app) {
+        
+        $class = $app['dao.class']->find($idClass);
+        $classes = $app['dao.class']->findAll();
+        $lesson = $app['dao.lesson']->find($idLess);
+        $students = $app['dao.student']->findAllByClass($idClass);
+
+
+
+        $test = $app['dao.l_test']->find($idTest);
+
+
+
+        $marks = $app['dao.l_mark']->findAllByTest($idTest);
+        foreach ($marks as $mark) {
+            $test->getMarks()->add($mark);
+        }
+        
+
+        $l_markForm = $app['form.factory']->create(L_TestType::class, $test);
+
+        $l_markForm->handleRequest($request);
+
+        $l_markFormView = $l_markForm->createView(); 
+
+        if ($l_markForm->isSubmitted() && $l_markForm->isValid()) {
+            $app['dao.l_test']->saveTestMarks($test, $test->getMarks());            
+
+            return $app->redirect($app['url_generator']->generate('test', [
+                "idClass" => $idClass,
+                "idTest" => $idTest
+            ]));
+        }
+
+        return $app['twig']->render('add_marks.html.twig', array(
+            'class' => $class,
+            'classes' => $classes,
+            'test' => $test,
+            'students' => $students,
+            'form' => $l_markFormView
+        ));
+
         
     }
 }

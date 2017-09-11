@@ -21,52 +21,57 @@
                 </div>
             {% endfor %}
 
+            <div class="page_block_title">
+                <h3><strong>Bienvenue</strong> sur Classy</h3>
+                <p>Choisissez une classe dans le menu pour commencer la gestion</p>
+                <i class="fa fa-hand-o-left fa-3x" aria-hidden="true"></i>
 
-            <h3>Classy</h3>
-            <p>Choisissez une classe dans le menu pour commencer la gestion</p>
-            <p>ou</p> 
+            </div>
 
-            {{ form_start(classForm) }}
+            <div class="page_block_content">
 
-                    <!-- title form -->
+                {{ form_start(classForm) }}
 
-                    <h3>Créer une Classe</h3>
+                <!-- title form -->
 
-                        <p>Choix du niveau</p>
-                        <div class="form-group">
-                            {{ form_errors(classForm.lvl) }}
-                            {{ form_widget(classForm.lvl, { 'attr':  {
-                                'class': 'form-control'
-                            }}) }}
-                        </div>
+                <h3>Créer une Classe</h3>
+
+                    <p>Choix du niveau</p>
+                    <div class="form-group">
+                        {{ form_errors(classForm.lvl) }}
+                        {{ form_widget(classForm.lvl, { 'attr':  {
+                            'class': 'form-control'
+                        }}) }}
+                    </div>
+                
+                <!-- content form -->
+
+                    <p>Nom de l'établissement</p>
+                    <div class="form-group">
+                        {{ form_errors(classForm.etab) }}
+                        {{ form_widget(classForm.etab, { 'attr':  {
+                            'class': 'form-control',
+                            'placeholder': 'Nom de l\'établissement'
+                        }}) }}
+                    </div>
+
+                    <p>Zone</p>
+                    <div class="form-group">
+                        {{ form_errors(classForm.zone) }}
+                        {{ form_widget(classForm.zone, { 'attr':  {
+                            'class': 'form-control',
+                            'placeholder': 'Zone'
+                        }}) }}
+                    </div>
+
+                <!-- submit form -->
                     
-                    <!-- content form -->
+                    <div style="margin-top:70px" class="form-group">
+                        <input type="submit" class="btn btn-primary" value="Enregistrer classe" />
+                    </div>
 
-                        <p>Nom de l'établissement</p>
-                        <div class="form-group">
-                            {{ form_errors(classForm.etab) }}
-                            {{ form_widget(classForm.etab, { 'attr':  {
-                                'class': 'form-control',
-                                'placeholder': 'Nom de l\'établissement'
-                            }}) }}
-                        </div>
-
-                        <p>Zone</p>
-                        <div class="form-group">
-                            {{ form_errors(classForm.zone) }}
-                            {{ form_widget(classForm.zone, { 'attr':  {
-                                'class': 'form-control',
-                                'placeholder': 'Zone'
-                            }}) }}
-                        </div>
-
-                    <!-- submit form -->
-                        
-                        <div class="form-group">
-                            <input type="submit" class="btn btn-primary" value="Enregistrer" />
-                        </div>
-
-                    {{ form_end(classForm) }}
+                {{ form_end(classForm) }}
+            </div>
         </div>
         
 
@@ -81,62 +86,67 @@
                 
                     {% if memoForm %}
 
-                    <h3>Mémos</h3>
+                        <div id="memo_zone">
 
-                        {% for memo in memos %}
+                            {% for memo in memos %}
 
-                            <div id="user_comment_container">
-                                <strong>{{ memo.title }}</strong>
-                                <p>{{ memo.content }}</p>
-                                <p>le : {{ memo.date }}</p>
-                            </div>
+                                <div id="memo">
+                                    <strong>{{ memo.title }}</strong>
+                                    <p>{{ memo.content }}</p>
+                                    <p>le : {{ memo.date }}</p>
+                                </div>
 
-                        {% else %}
+                            {% else %}
 
-                            Vous n'avez aucun Mémo
+                                Vous n'avez aucun Mémo
 
-                        {% endfor %}
+                            {% endfor %}
+
+                        </div>
                     
 
                     {{ form_start(memoForm) }}
 
                     <!-- title form -->
 
-                    <h3>Ajouter un Memo</h3>
+                    <div class="page_block_content">
 
-                        <div class="form-group">
-                            {{ form_errors(memoForm.title) }}
-                            {{ form_widget(memoForm.title, { 'attr':  {
-                                'rows': '4',
-                                'class': 'form-control',
-                                'placeholder': 'Nom du Mémo'
-                            }}) }}
-                        </div>
-                    
-                    <!-- content form -->
+                        <h3>Ajouter un Memo</h3>
 
-                        <div class="form-group">
-                            {{ form_errors(memoForm.content) }}
-                            {{ form_widget(memoForm.content, { 'attr':  {
-                                'rows': '4',
-                                'class': 'form-control',
-                                'placeholder': 'Tapez votre memo'
-                            }}) }}
-                        </div>
-
-                    <!-- submit form -->
+                            <div class="form-group">
+                                {{ form_errors(memoForm.title) }}
+                                {{ form_widget(memoForm.title, { 'attr':  {
+                                    'class': 'form-control',
+                                    'placeholder': 'Nom du Mémo'
+                                }}) }}
+                            </div>
                         
-                        <div class="form-group">
-                            <input type="submit" class="btn btn-primary" value="Enregistrer" />
-                        </div>
+                        <!-- content form -->
 
-                    {{ form_end(memoForm) }}
+                            <div class="form-group">
+                                {{ form_errors(memoForm.content) }}
+                                {{ form_widget(memoForm.content, { 'attr':  {
+                                    'rows': '2',
+                                    'class': 'form-control',
+                                    'placeholder': 'Tapez votre memo'
+                                }}) }}
+                            </div>
 
-                    {% else %}
+                        <!-- submit form -->
+                            
+                            <div class="form-group">
+                                <input type="submit" class="btn btn-primary" value="Enregistrer mémo" />
+                            </div>
 
-                        <a href="{{ path('login') }} ">Connectez-vous</a> pour ajouter un memo.
+                        {{ form_end(memoForm) }}
 
-                    {% endif %}
+                        {% else %}
+
+                            <a href="{{ path('login') }} ">Connectez-vous</a> pour ajouter un memo.
+
+                        {% endif %}
+
+                    </div>
                 
                 </div>
             </div>            

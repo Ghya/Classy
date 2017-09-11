@@ -1,4 +1,4 @@
-class Charts {
+class ChartsTest {
 
     constructor(studentsList, values) {
         this.studentsList = studentsList;

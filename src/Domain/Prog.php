@@ -12,9 +12,9 @@ class Prog
     private $id;
 
     /**
-     * prog subject.
+     * prog subject name.
      *
-     * @var \Classy\Domain\Subject
+     * @var string
      */
     private $subject;
 
@@ -52,7 +52,7 @@ class Prog
         return $this->subject;
     }
 
-    public function setSubject(Subject $subject) {
+    public function setSubject($subject) {
         $this->subject = $subject;
         return $this;
     }

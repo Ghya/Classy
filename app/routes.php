@@ -76,6 +76,11 @@ $app->match('/class/{idClass}/test/{idTest}/show_test', "Classy\Controller\TestC
 $app->match('/class/{idClass}/calendar', "Classy\Controller\CalendarController::calendarAction")
 ->bind('calendar');
 
+
+//===============================
+//      Route for Programm
+//===============================
+
 // Programm 
 $app->match('/class/{idClass}/programm', "Classy\Controller\ProgrammController::programmAction")
 ->bind('programm');
@@ -83,6 +88,10 @@ $app->match('/class/{idClass}/programm', "Classy\Controller\ProgrammController::
 // Show Programm 
 $app->match('/class/{idClass}/programm/{idPeriod}/periode', "Classy\Controller\ProgrammController::ShowProgrammAction")
 ->bind('show_programm');
+
+// Show Programm 
+$app->match('/class/{idClass}/programm/{idPeriod}/periode/add_new', "Classy\Controller\ProgrammController::addProgAction")
+->bind('add_prog');
 
 
 //===============================
@@ -118,6 +127,14 @@ $app->match('/class/{idClass}/step/{idStep}', "Classy\Controller\DeleteControlle
 $app->match('/class/{idClass}/subject/{idTest}', "Classy\Controller\DeleteController::deleteL_TestAction")
 ->bind('delete_test');
 
+// Delete Programm
+$app->match('/class/{idClass}/programm/{idProg}', "Classy\Controller\DeleteController::deleteProgAction")
+->bind('delete_prog');
+
+// Delete test
+$app->match('/class/{idClass}/test/{idTest}', "Classy\Controller\DeleteController::deleteTestAction")
+->bind('delete_test');
+
 
 //===============================
 //      Route for edit
@@ -138,4 +155,26 @@ $app->match('/class/{idClass}/lesson/{idLess}/edit', "Classy\Controller\EditCont
 // Edit Step
 $app->match('/class/{idClass}/lesson/{idLess}/step/{idStep}/edit', "Classy\Controller\EditController::editStepAction")
 ->bind('edit_step');
+
+// Edit Programm
+$app->match('/class/{idClass}/programm/{idProg}/edit', "Classy\Controller\EditController::editProgAction")
+->bind('edit_prog');
+
+// Edit test mark
+$app->match('/class/{idClass}/test/{idLess}/{idTest}/edit', "Classy\Controller\EditController::editTestAction")
+->bind('edit_test');
+
+//=========================================
+//      Route for class evaluation
+//=========================================
+
+// Class test stat 
+$app->match('/class/{idClass}/stat', "Classy\Controller\TestController::statTestAction")
+->bind('test_stat');
+
+// Class stat 
+$app->match('/class/{idClass}/stat/class', "Classy\Controller\TestController::statClassAction")
+->bind('class_stat');
+
+
 

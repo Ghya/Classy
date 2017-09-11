@@ -41,6 +41,27 @@ class L_Test
      */
     private $marks;
 
+    /**
+     * test date
+     *
+     * @var date
+     */
+     private $date;
+
+    /**
+     * Test average.
+     *
+     * @var integer
+     */
+     private $average;
+
+     /**
+     * Class average after this test
+     *
+     * @var integer
+     */
+     private $classAvg;
+
     public function __construct()
     {
         $this->marks = new ArrayCollection();
@@ -75,6 +96,33 @@ class L_Test
 
     public function setClassId($classId) {
         $this->classId = $classId;
+        return $this;
+    }
+
+    public function getAverage() {
+        return $this->average;
+    }
+
+    public function setAverage($average) {
+        $this->average = $average;
+        return $this;
+    }
+    
+    public function getDate() {
+        return $this->date;
+    }
+
+    public function setDate($date) {
+        $this->date = $date;
+        return $this;
+    }
+    
+    public function getClassAvg() {
+        return $this->classAvg;
+    }
+
+    public function setClassAvg($classAvg) {
+        $this->classAvg = $classAvg;
         return $this;
     }
 

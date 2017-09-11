@@ -23,11 +23,12 @@
 
             <h4> Etapes {{(steps | length)+ 1}} : </h4>
 
-             {{ form_start(stepForm) }}
+            {{ form_start(stepForm) }}
 
                 <!-- name form -->
 
                 <div class="form-group">
+                    {{ form_label(stepForm.name) }}
                     {{ form_errors(stepForm.name) }}
                     {{ form_widget(stepForm.name, { 'attr':  {
                         'rows': '4',
@@ -37,6 +38,7 @@
                 </div>
 
                 <div class="form-group">
+                    {{ form_label(stepForm.content) }}
                     {{ form_errors(stepForm.content) }}
                     {{ form_widget(stepForm.content, { 'attr':  {
                         'rows': '4',
@@ -46,6 +48,7 @@
                 </div>
 
                 <div class="form-group">
+                    {{ form_label(stepForm.time) }}
                     {{ form_errors(stepForm.time) }}
                     {{ form_widget(stepForm.time, { 'attr':  {
                         'rows': '4',

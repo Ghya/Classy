@@ -128,6 +128,5 @@ $app['dao.l_mark'] = function ($app) {
 $app['dao.prog'] = function ($app) {
     $progDAO = new Classy\DAO\ProgDAO($app['db']);
     $progDAO->setClassDAO($app['dao.class']);
-    $progDAO->setSubjectDAO($app['dao.subject']);
     return $progDAO;
 };

@@ -36,6 +36,18 @@ class LessonDAO extends DAO
     }
 
     /**
+     * Count number of lesson by class
+     *
+     * @return int nbr of lesson
+     */
+     public function count($idClass) {
+        $sql = "SELECT COUNT(less_id) FROM lesson WHERE less_class_id=?";
+        $result = $this->getDb()->fetchArray($sql, array($idClass));
+        
+        return $result[0];
+    }
+
+    /**
      * Returns a lesson matching the supplied id.
      *
      * @param integer $id

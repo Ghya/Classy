@@ -12,13 +12,19 @@
 
     <div class="row">
 
-        <div class="col-md-12">
+        <div class="page_block_title col-md-12">
             <h3>Programmation pour la période {{period}}</h3>
+            <div id="prog_block_title">
+                <p>Enregistrer vos différentes programmations par domaine</p>
+                <a href="{{ path('add_prog', { 'idClass': class.id, 'idPeriod': period }) }}" class="btn btn-primary">
+                    Ajouter une programmation
+                </a>
+            </div>
         </div>
 
     </div>
 
-    <div class="row">
+    <div class="page_block_content row">
 
         <div class="col-md-12">
 
@@ -33,8 +39,45 @@
 
                     {% for prog in progs %}
                         <tr>
-                            <td><p> {{ prog.subject.name }}</p></td>
-                            <td><p> {{ prog.content }}</p></td>
+                            <td>
+                                <p class="programm_cell"> <strong> {{ prog.subject }} </strong></p>
+                            </td>
+                            <td>
+                                <div class="programm_cell">
+                                    <p> {{ prog.content | raw }}</p>
+                                </div>
+                            </td>
+                                
+                            <td style="width:20px">
+                                <a class="btn btn-primary btn-xs" href="{{ path('edit_prog', { 'idClass': class.id, 'idProg': prog.id }) }}">
+                                    <i style="color:white" class="glyphicon glyphicon-pencil"></i>
+                                </a>
+                                <button id="delete_chapter_btn" type="button" class="btn btn-danger btn-xs" title="Supprimer" data-toggle="modal" data-target="#progDelete{{ prog.id }}">
+                                    <i class="glyphicon glyphicon-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                            <div class="modal fade" id="progDelete{{ prog.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                            <h4 class="modal-title" id="myModalLabel">Confirmation de suppression</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            Voulez-vous vraiment supprimer la programmation {{ prog.subject }} ? </br>
+                                            (Attention ! Cette action est irréversible et entrainera la suppression de toutes les données de la programmation)
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                                            <a href="{{ path('delete_prog', { 'idClass': class.id, 'idProg': prog.id }) }}" class="btn btn-danger">Confimer suppression</a>
+                                        </div>
+                                    </div><!-- /.modal-content -->
+                                </div><!-- /.modal-dialog -->
+                            </div><!-- /.modal -->
+                    {% else %}
+                        <tr style="width:100%">
+                            <td><p> Vous n'avez pas encore enregistré de programmation</p></td>
                         </tr>
                     {% endfor %}
 

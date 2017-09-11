@@ -8,6 +8,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class L_TestType extends AbstractType
@@ -17,6 +18,10 @@ class L_TestType extends AbstractType
         $builder
             ->add('name',  Texttype::class, array(
                 'label' => 'Nom de l\'évaluation'
+            ))
+            ->add('date',  Datetype::class, array(
+                'label' => 'Date',
+                'input' => 'string'
             ));
         
         $builder->add('marks', CollectionType::class, array(

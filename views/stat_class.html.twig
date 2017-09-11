@@ -1,0 +1,62 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Board{% endblock %}
+
+{% block nav %}{% include 'nav_options.html.twig' %}{% endblock %}
+
+{% block content %} 
+
+
+
+<div class="container">
+
+    <div class="row">
+
+        <div class="page_block_title col-md-12">
+            <h3>Statistique de la classe</h3>
+            
+        </div>
+
+    </div>
+
+    <div class="page_block_content row">
+
+        <div class="block_stat text-center col-md-6">
+            <p>Elève : {{students | length}}</p>
+        </div>
+        <div class="block_stat text-center col-md-3">
+            <p>Fille : {{girl}}</p>
+        </div>
+        <div class="block_stat text-center col-md-3">
+            <p>Garçon : {{boy}}</p>
+        </div>
+    
+    </div>
+
+    <div class="page_block_content row">
+
+        <div class="block_stat text-center col-md-6">
+            <p>Domaine d'apprentissage : {{subjects | length}}</p>
+        </div>
+        <div class="block_stat text-center col-md-6">
+            <p>Séances: {{lesson}}</p>
+        </div>
+    
+    </div>
+
+    <div class="page_block_content row">
+
+        <div class="block_stat text-center col-md-6">
+            <p>Evaluation: {{test}}</p>
+        </div>
+        <div class="block_stat text-center col-md-6">
+            <p>Moyenne de la classe: {{avg}}</p>
+        </div>
+    
+    </div>
+
+</div>
+
+
+
+{% endblock %}

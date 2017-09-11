@@ -26,19 +26,25 @@
                 </div>
             </a>            
 
-            <div class="dash_block col-md-4">
-                <div id="add_lesson_block">
-                    <i class="fa fa-5x fa-tasks" aria-hidden="true"></i>
-                    <p>Navigation</p>
+            <a href="{{ path('navigation', { 'idClass': class.id }) }}"> 
+                <div class="dash_block col-md-4">
+                    <div id="add_lesson_block">
+                        <i class="fa fa-5x fa-tasks" aria-hidden="true"></i>
+                        <p>Navigation</p>
+                    </div>
                 </div>
-            </div>
+            </a>
 
-            <div class="dash_block col-md-4">
-                <div id="add_lesson_block">
-                    <i class="fa fa-5x fa-users" aria-hidden="true"></i>
-                    <p>Registre</p>
+            <a href="{{ path('list', { 'id': class.id }) }}"> 
+                <div class="dash_block col-md-4">
+                    <div id="add_lesson_block">
+                        <i class="fa fa-5x fa-users" aria-hidden="true"></i>
+                        <p>Registre</p>
+                    </div>
                 </div>
-            </div>
+            </a>
+
+            
 
         </div>
 
@@ -47,25 +53,32 @@
             <div class="dash_block col-md-4">
                 <a href="{{ path('calendar', { 'idClass': class.id }) }}">
                     <div id="add_lesson_block">
-                        <i class="fa fa-5x fa-pencil-square-o" aria-hidden="true"></i>
+                        <i class="fa fa-5x fa-calendar" aria-hidden="true"></i>
                         <p>Calendrier</p>
                     </div>
                 </a>
             </div>
 
+            
+
             <div class="dash_block col-md-4">
-                <div id="add_lesson_block">
-                    <i class="fa fa-5x fa-tasks" aria-hidden="true"></i>
-                    <p>Navigation</p>
-                </div>
+                <a href="{{ path('programm', { 'idClass': class.id }) }}">
+                    <div id="add_lesson_block">
+                        <i class="fa fa-5x fa-book" aria-hidden="true"></i>
+                        <p>Programme</p>
+                    </div>
+                </a>
             </div>
 
             <div class="dash_block col-md-4">
-                <div id="add_lesson_block">
-                    <i class="fa fa-5x fa-users" aria-hidden="true"></i>
-                    <p>Registre</p>
-                </div>
+                <a href="{{ path('test_stat', { 'idClass': class.id }) }}">
+                    <div id="add_lesson_block">
+                        <i class="fa fa-5x fa-cog" aria-hidden="true"></i>
+                        <p>Statistiques</p>
+                    </div>
+                </a>
             </div>
+            
 
         </div>
     </div>

@@ -14,6 +14,12 @@
                     <div class="col-md-12">
                         <div id="header_stud_block">
 
+                            <div>
+                                <a href="{{ path('list', { 'id': class.id }) }}" class="btn btn-primary">
+                                    Retour
+                                </a>
+                            </div>
+
                             <div id="stud_img_name">
                                 {% if student.gender == 1 %}
                                     <div id="header_img">
@@ -56,6 +62,8 @@
                                     </div>
                                 </div>
                             </div>
+
+                            
                             
                         </div>
                     </div>

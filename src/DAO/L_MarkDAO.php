@@ -71,6 +71,38 @@ class L_MarkDAO extends DAO
     }
 
     /**
+     * Return a array with a list of all l_mark associated to a test order ASC
+     *
+     * @return array A list of all l_mark associated to a test order ASC
+     */
+     public function findAllByTestASC($testId) {
+        $sql = "SELECT * FROM l_mark WHERE l_mark_test_id=? ORDER BY l_mark_value ASC";
+        $result = $this->getDb()->fetchAll($sql, array($testId));
+
+        // Convert query result to an array of domain objects
+        $l_marks = array();
+        foreach ($result as $row) {
+            $l_markId = $row['l_mark_id'];
+            $l_marks[$l_markId] = $this->buildDomainObject($row);
+        }
+        return $l_marks;
+    }
+
+    /**
+     * Return the average of marks by test
+     *
+     * @return int mark average by test
+     */
+     public function avgByTest($testId) {
+        $sql = "SELECT AVG(l_mark_value) FROM l_mark WHERE l_mark_test_id=?";
+        $result = $this->getDb()->fetchAll($sql, array($testId));
+
+        $avg = $result[0];
+
+        return $avg;
+    }
+
+    /**
      * Saves an l_mark into the database.
      *
      * @param \Classy\Domain\l_mark $l_mark The l_mark to save

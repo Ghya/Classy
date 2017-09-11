@@ -1,0 +1,61 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Board{% endblock %}
+
+{% block nav %}{% include 'nav_options.html.twig' %}{% endblock %}
+
+{% block content %} 
+
+
+
+<div class="container">
+
+    <div class="row">
+
+        <div class="page_block_title col-md-12">
+            <h3>Statistique des évaluations</h3>
+            
+        </div>
+
+    </div>
+
+</div>
+
+<div class="container">
+
+    <div class="page_block_content row">
+
+        <div class="col-md-12">
+            <div id="testChart" style="width: 100%;height:400px;"></div>
+        </div>
+    
+    </div>
+
+    <div class="page_block_content row">
+
+        <div class="col-md-12">
+            <div id="classChart" style="width: 100%;height:400px;"></div>
+        </div>
+    
+    </div>
+
+    <div class="page_block_content row">
+
+        <div class="col-md-12">
+            <div id="avgChart" style="width: 100%;height:600px;"></div>
+        </div>
+    
+    </div>
+
+</div>
+
+<div class="none" id="testDate">{{testDate}}</div>
+<div class="none" id="testAvg">{{testAvg}}</div>
+
+<div class="none" id="classDate">{{classDate}}</div>
+<div class="none" id="classAvg">{{classAvg}}</div>
+
+<div class="none" id="avgPlus">{{avgPlus}}</div>
+<div class="none" id="avgMinus">{{avgMinus}}</div>
+
+{% endblock %}

@@ -43,7 +43,10 @@ class TestController {
         if ($l_markForm->isSubmitted() && $l_markForm->isValid()) {
             $app['dao.l_test']->saveTestMarks($test, $test->getMarks());            
 
-             return $this->navigationAction($idClass, $request, $app);
+            return $app->redirect($app['url_generator']->generate('test', [
+                "idClass" => $class->getId(),
+                "idTest" => $test->getId()
+            ]));
         }
 
             return $app['twig']->render('add_marks.html.twig', array(
@@ -69,13 +72,14 @@ class TestController {
         $classes = $app['dao.class']->findAll();
         $test = $app['dao.l_test']->find($idTest);
         $marks = $app['dao.l_mark']->findAllByTest($idTest);
+        $marksASC = $app['dao.l_mark']->findAllByTestASC($idTest);
 
         $markStud = array();
         $markValue = array();
 
-        foreach ($marks as $mark) {
-                array_push($markStud, $mark->getStudent()->getName());
-                array_push($markValue, $mark->getValue());
+        foreach ($marksASC as $markASC) {
+                array_push($markStud, $markASC->getStudent()->getName());
+                array_push($markValue, $markASC->getValue());
         }
 
         return $app['twig']->render('test.html.twig', array(
@@ -147,6 +151,105 @@ class TestController {
         $pdf->writeHTML($html);
         $pdf->Output($idPDF);
 
+        
+    }
+
+    /**
+     * Show test mark page controller.
+     *
+     * @param Application $app Silex application
+     * @param Request $request
+     * @param class id $idclass
+     */
+
+     public function statTestAction($idClass,  Request $request, Application $app) {
+        
+        $class = $app['dao.class']->find($idClass);
+        $classes = $app['dao.class']->findAll();
+        $tests = $app['dao.l_test']->findAllByClass($idClass);
+
+        $classAvg = array();
+        $classDate = array();
+        $avgPlus = 0;
+        $avgMinus = 0;
+        
+        foreach ($tests as $test) {
+            array_push($classAvg, $test->getClassAvg());
+            array_push($classDate, $test->getDate());
+                
+            
+            if ($test->getAverage() >= 5) {
+                $avgPlus ++;
+            } else {
+                $avgMinus ++;
+            }
+            
+        }
+
+        $testNbr = count($test);
+
+        $stats = $app['dao.l_test']->avgDateTest($idClass);
+
+        $testAvg = array();
+        $testDate = array();
+        
+        foreach ($stats as $stat) {
+            array_push($testDate, $stat->getName());
+            array_push($testAvg, $stat->getAverage());
+        }
+
+        return $app['twig']->render('stat_board.html.twig', array(
+            'class' => $class,
+            'classes' => $classes,
+            'testAvg' => json_encode($testAvg),
+            'testDate' => json_encode($testDate),
+            'classAvg' => json_encode($classAvg),
+            'classDate' => json_encode($classDate),
+            'avgPlus' => $avgPlus,
+            'avgMinus' => $avgMinus
+        ));
+        
+    }
+
+    /**
+     * Show class stat page controller.
+     *
+     * @param Application $app Silex application
+     */
+
+     public function statClassAction($idClass,  Request $request, Application $app) {
+
+        $class = $app['dao.class']->find($idClass);
+        $classes = $app['dao.class']->findAll();
+        $students = $app['dao.student']->findAllByClass($idClass);
+        $subjects = $app['dao.subject']->findAllByClass($idClass);
+        $lesson = $app['dao.lesson']->count($idClass);
+        $test = $app['dao.l_test']->count($idClass);
+        $avg = $app['dao.l_test']->avg($idClass);
+        $avgRounded = round($avg, 2);
+
+        $boy = 0;
+        $girl = 0;
+
+        foreach ($students as $student) {
+            if ($student->getGender() == 1) {
+                $boy ++;
+            } else {
+                $girl ++;
+            }
+        };
+
+        return $app['twig']->render('stat_class.html.twig', array(
+            'class' => $class,
+            'classes' => $classes,
+            'students' => $students,
+            'lesson' => $lesson,
+            'test' => $test,
+            'avg' => $avgRounded,
+            'subjects' => $subjects,
+            'boy' => $boy,
+            'girl' => $girl
+        ));
         
     }
 
