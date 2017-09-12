@@ -1,5 +1,9 @@
 <?php
 
+//===============================
+//      Home routes
+//===============================
+
 // Home page
 $app->match('/', "Classy\Controller\HomeController::homeAction")
 ->bind('home');
@@ -19,6 +23,10 @@ $app->match('/signin', "Classy\Controller\HomeController::signinAction")
 // Class details
 $app->match('/class/{id}', "Classy\Controller\HomeController::classAction")
 ->bind('class');
+
+//===============================
+//      Route to add elmt
+//===============================
 
 // Student List
 $app->match('/class/{id}/list', "Classy\Controller\HomeController::studentListAction")
@@ -56,10 +64,6 @@ $app->match('/class/{idClass}/subject/{idSub}/chapter/{idChap}/add_lesson', "Cla
 $app->match('/class/{idClass}/subject/{idSub}/chapter/{idChap}/lesson/{idLess}/add_step', "Classy\Controller\HomeController::addStepAction")
 ->bind('add_step');
 
-// Navigation
-$app->match('/class/{idClass}/add_test_select', "Classy\Controller\HomeController::navigationAction")
-->bind('navigation');
-
 // Add L_test
 $app->match('/class/{idClass}/lesson/{idLess}/test', "Classy\Controller\TestController::addL_TestAction")
 ->bind('add_test');
@@ -76,9 +80,25 @@ $app->match('/class/{idClass}/test/{idTest}/show_test', "Classy\Controller\TestC
 $app->match('/class/{idClass}/calendar', "Classy\Controller\CalendarController::calendarAction")
 ->bind('calendar');
 
+//===============================
+//      Route to Navigation
+//===============================
+
+// Navigation SUB
+$app->match('/class/{idClass}/navigation', "Classy\Controller\HomeController::navigationSubAction")
+->bind('nav_sub');
+
+// Navigation CHAP
+$app->match('/class/{idClass}/subject/{idSub}/navigation', "Classy\Controller\HomeController::navigationChapAction")
+->bind('nav_chap');
+
+// Navigation LESS
+$app->match('/class/{idClass}/subject/{idSub}/chapter/{idChap}/navigation', "Classy\Controller\HomeController::navigationLessAction")
+->bind('nav_less');
+
 
 //===============================
-//      Route for Programm
+//      Route to Programm
 //===============================
 
 // Programm 
@@ -95,7 +115,7 @@ $app->match('/class/{idClass}/programm/{idPeriod}/periode/add_new', "Classy\Cont
 
 
 //===============================
-//      Route for PDF
+//      Route to PDF
 //===============================
 
 // Lesson PDF
@@ -104,7 +124,7 @@ $app->match('/class/{idClass}/pdf/{idLess}', "Classy\Controller\TestController::
 
 
 //===============================
-//      Route for delete
+//      Route to delete
 //===============================
 
 // Delete Sub
@@ -137,7 +157,7 @@ $app->match('/class/{idClass}/test/{idTest}', "Classy\Controller\DeleteControlle
 
 
 //===============================
-//      Route for edit
+//      Route to edit
 //===============================
 
 // Edit Sub
@@ -164,8 +184,12 @@ $app->match('/class/{idClass}/programm/{idProg}/edit', "Classy\Controller\EditCo
 $app->match('/class/{idClass}/test/{idLess}/{idTest}/edit', "Classy\Controller\EditController::editTestAction")
 ->bind('edit_test');
 
+// Edit test mark
+$app->match('/class/{idClass}/student/{idStud}/edit', "Classy\Controller\EditController::editStudentAction")
+->bind('edit_stud');
+
 //=========================================
-//      Route for class evaluation
+//      Route to class stats
 //=========================================
 
 // Class test stat 

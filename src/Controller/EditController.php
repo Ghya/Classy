@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Classy\Form\Type\SubjectType;
 use Classy\Form\Type\ChapterType;
 use Classy\Form\Type\LessonType;
+use Classy\Form\Type\StudentType;
 use Classy\Form\Type\StepType;
 use Classy\Form\Type\ProgType;
 use Classy\Form\Type\L_TestType;
@@ -256,6 +257,44 @@ class EditController {
             'form' => $l_markFormView
         ));
 
+        
+    }
+
+    /**
+     * Edit student page controller.
+     *
+     * @param Application $app Silex application
+     * @param Request $request
+     * @param idClass stud id
+     * @param idStud stud id
+     */
+
+     public function editStudentAction($idClass, $idStud, Request $request, Application $app) {
+        
+        $class = $app['dao.class']->find($idClass);
+        $classes = $app['dao.class']->findAll();
+
+        $student = $app['dao.student']->find($idStud);
+
+        $studentForm = $app['form.factory']->create(StudentType::class, $student);
+        $studentForm->handleRequest($request);
+        $studentFormView = $studentForm->createView(); 
+
+        if ($studentForm->isSubmitted() && $studentForm->isValid()) {
+            $app['dao.student']->save($student);
+
+             return $app->redirect($app['url_generator']->generate('student', [
+                "idClass" => $class->getId(),
+                "idStud" => $student->getId()
+             ]));
+        }   
+
+        return $app['twig']->render('edit_student.html.twig', array(
+            'class' => $class,
+            'classes' => $classes,
+            'student' => $student,
+            'studentForm' => $studentFormView
+        ));
         
     }
 }

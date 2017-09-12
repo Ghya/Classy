@@ -97,7 +97,7 @@ class StudentDAO extends DAO
 
         if ($student->getId()) {
             // The student has already been saved : update it
-            $this->getDb()->update('student', $studentData);
+            $this->getDb()->update('student', $studentData, array('stud_id' => $student->getId()));
         } else {
             // The student has never been saved : insert it
             $this->getDb()->insert('student', $studentData);

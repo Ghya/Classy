@@ -7,7 +7,7 @@ $(function () {
     tinymce.init({ selector:'textarea.chapter' });
 
     // API Manager
-    //loadApi.loadCalendarData();
+    loadApi.loadCalendarData();
 
     // Charts
     var model = new Model();  

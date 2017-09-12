@@ -1,13 +1,18 @@
 <li id="btn_class_board" >
     <a href="{{ path('class', { 'id': class.id }) }}">
-        <p style="color:white"><i style="color:white" class="ico_menu fa fa-tachometer fa-2x" aria-hidden="true"></i>{{ class.lvl }}</p>
+        <p style="color:white">
+            <i style="color:white" class="ico_menu fa fa-tachometer fa-2x" aria-hidden="true"></i>{{ class.lvl }} 
+        </p>
+        <p>
+            <em style="margin-top:10px;color:white">Tableau de bord</em>
+        </p>
     </a>
 </li>
 <li>
     <a href="#" data-toggle="collapse" data-target="#submenu-2"><i class="ico_menu fa fa-book fa-2x" aria-hidden="true"></i>Cours<i class="fa fa-fw fa-angle-down pull-right"></i></a>
     <ul id="submenu-2" class="collapse">
         <li><a href="{{ path('sub_manag', { 'id': class.id }) }}"><i class="fa fa-angle-double-right"></i> Gestion des domaines</a></li>
-        <li><a href="{{ path('navigation', { 'idClass': class.id }) }}"><i class="fa fa-angle-double-right"></i>Navigation</a></li>
+        <li><a href="{{ path('nav_sub', { 'idClass': class.id }) }}"><i class="fa fa-angle-double-right"></i>Navigation</a></li>
         <li><a href="{{ path('new_lesson', { 'idClass': class.id }) }}"><i class="fa fa-angle-double-right"></i> Créer</a></li>
     </ul>
 </li>

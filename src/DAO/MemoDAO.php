@@ -2,7 +2,7 @@
 
 namespace Classy\DAO;
 
-use Classy\Domain\memo;
+use Classy\Domain\Memo;
 
 class MemoDAO extends DAO
 {

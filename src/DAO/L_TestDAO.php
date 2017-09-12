@@ -203,7 +203,7 @@ class L_TestDAO extends DAO
                 'l_test_class_id' => $l_test->getLesson()->getChapter()->getSubject()->getClass()->getId(),
                 'l_test_date' => $l_test->getDate(),
                 'l_test_avg' => $this->average($marks),
-                'l_class_avg' => ( $this->sumClassTest($l_test->getClassId(), $l_test->getDate()) ) / ( $this->numClassTest($l_test->getClassId(), $l_test->getDate()) )
+                'l_class_avg' => ( $this->sumClassTest($l_test->getLesson()->getChapter()->getSubject()->getClass()->getId(), $l_test->getDate()) ) / ( $this->numClassTest($l_test->getLesson()->getChapter()->getSubject()->getClass()->getId(), $l_test->getDate()) )
             );
 
         if ($l_test->getId()) {

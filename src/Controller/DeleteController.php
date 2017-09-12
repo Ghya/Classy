@@ -40,9 +40,7 @@ class DeleteController {
         $app['dao.chapter']->deleteAllBySubject($idSub);
         $app['dao.subject']->delete($idSub);
 
-        $app['session']->getFlashBag()->add('success', 'Le chapitre a été supprimé.');
-
-        return $app->redirect($app['url_generator']->generate('add_subject', [
+        return $app->redirect($app['url_generator']->generate('sub_manag', [
             "id" => $class->getId()
         ]));
     }
@@ -74,8 +72,6 @@ class DeleteController {
         $app['dao.lesson']->deleteAllByChapter($idChap);
         $app['dao.chapter']->delete($idChap);
 
-        $app['session']->getFlashBag()->add('success', 'Le chapitre a été supprimé.');
-
         return $app->redirect($app['url_generator']->generate('add_test_select', [
             "idClass" => $class->getId()
         ]));
@@ -101,9 +97,7 @@ class DeleteController {
         $app['dao.l_test']->deleteAllByLesson($idLess);
         $app['dao.lesson']->delete($idLess);
 
-        $app['session']->getFlashBag()->add('success', 'Le chapitre a été supprimé.');
-
-        return $app->redirect($app['url_generator']->generate('navigation', [
+        return $app->redirect($app['url_generator']->generate('nav_sub', [
             "idClass" => $class->getId()
         ]));
     }
@@ -119,8 +113,6 @@ class DeleteController {
         $class = $app['dao.class']->find($idClass);
 
         $steps = $app['dao.step']->delete($idStep);
-
-        $app['session']->getFlashBag()->add('success', 'Le chapitre a été supprimé.');
 
         return $app->redirect($app['url_generator']->generate('add_test_select', [
             "idClass" => $class->getId()
@@ -141,9 +133,7 @@ class DeleteController {
 
         $l_test = $app['dao.l_test']->delete($idTest);
 
-        $app['session']->getFlashBag()->add('success', 'Le chapitre a été supprimé.');
-
-        return $app->redirect($app['url_generator']->generate('navigation', [
+        return $app->redirect($app['url_generator']->generate('nav_sub', [
             "idClass" => $class->getId()
         ]));
     }
@@ -161,9 +151,6 @@ class DeleteController {
         $idPeriod = $prog->getPeriod();
 
         $prog = $app['dao.prog']->delete($idProg);
-        
-
-        $app['session']->getFlashBag()->add('success', 'La programmation a été supprimé.');
 
         return $app->redirect($app['url_generator']->generate('show_programm', [
             "idClass" => $class->getId(),

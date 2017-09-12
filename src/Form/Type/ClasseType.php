@@ -14,9 +14,9 @@ class ClasseType extends AbstractType
         $builder
             ->add('lvl', ChoiceType::class, array(
                 "choices" => array(
-                    "Petite Setion" => "Petite Section",
-                    "Moyenne Setion" => "Moyenne Section",
-                    "Grande Setion" => "Grande Section",
+                    "Petite Section" => "Petite Section",
+                    "Moyenne Section" => "Moyenne Section",
+                    "Grande Section" => "Grande Section",
                     "CP" => "CP",
                     "CE1" => "CE1",
                     "CE2" => "CE2",

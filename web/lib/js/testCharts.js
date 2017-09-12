@@ -214,7 +214,7 @@ class ChartsTest {
         var option3 = {
 
             title: {
-                text: 'Combien de chaques notes'
+                text: 'Nombre de chaques notes'
             },
             tooltip: {},
             legend: {

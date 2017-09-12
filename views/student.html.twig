@@ -1,6 +1,6 @@
 {% extends 'layout.html.twig' %}
 
-{% block title %}Board{% endblock %}
+{% block title %}Elève{% endblock %}
 
 {% block nav %}{% include 'nav_options.html.twig' %}{% endblock %}
 
@@ -15,8 +15,11 @@
                         <div id="header_stud_block">
 
                             <div>
-                                <a href="{{ path('list', { 'id': class.id }) }}" class="btn btn-primary">
+                                <a href="{{ path('list', { 'id': class.id }) }}" class="btn btn-warning">
                                     Retour
+                                </a>
+                                <a href="{{ path('edit_stud', { 'idClass': class.id, 'idStud': student.id }) }}" style="margin-top:10px" class="btn btn-primary">
+                                    Modifier
                                 </a>
                             </div>
 
@@ -76,12 +79,22 @@
                                 <p>Informations parents</p>
                             </div>
                             <div id="parent_info">
-                                <p><strong>Mère : </strong>{{ student.momName }}</p>
-                                <p><strong>Père : </strong>{{ student.dadName }}</p>
-                                <p><strong>Tel : </strong>{{ student.tel }}</p>
-                                <p><strong>Adresse : </strong>{{ student.adress }}</p>
-                                <p><strong>Code Postal : </strong>{{ student.cp }}</p>
-                                <p><strong>Ville : </strong>{{ student.city }}</p>
+                                <div id="title_info_parent">
+                                    <p><strong>Mère : </strong></p>
+                                    <p><strong>Père : </strong></p>
+                                    <p><strong>Tel : </strong></p>
+                                    <p><strong>Adresse : </strong></p>
+                                    <p><strong>Code Postal : </strong></p>
+                                    <p><strong>Ville : </strong></p>
+                                </div>
+                                <div>
+                                    <p>{{ student.momName }}</p>
+                                    <p>{{ student.dadName }}</p>
+                                    <p>{{ student.tel }}</p>
+                                    <p>{{ student.adress }}</p>
+                                    <p>{{ student.cp }}</p>
+                                    <p>{{ student.city }}</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -94,45 +107,53 @@
                                 <p>A propos</p>
                             </div>
                             <div id="detail_info">
-                                <p>PPRE : 
+                                <div class="ppre">
+                                <p><strong>PPRE : </strong>
                                     {% if student.ppre == 1 %}
                                     Oui</p>
-                                    <div id="ppre_note">
+                                    <div>
                                         <p>{{student.ppreNote}}</p>
                                     </div>
                                     {% else %}
                                     Non</p>
                                     {% endif %}
+                                </div>
 
-                                <p>RASED : 
+                                <div class="ppre">
+                                <p><strong>RASED : </strong>
                                     {% if student.rased == 1 %}
                                     Oui</p>
-                                    <div id="rased_note">
+                                    <div>
                                         <p>{{student.rasedNote}}</p>
                                     </div>
                                     {% else %}
                                     Non</p>
                                     {% endif %}
+                                </div>
 
-                                <p>PAI : 
+                                <div class="ppre">
+                                <p><strong>PAI : </strong>
                                     {% if student.pai == 1 %}
                                     Oui</p>
-                                    <div id="pai_note">
+                                    <div>
                                         <p>{{student.paiNote}}</p>
                                     </div>
                                     {% else %}
                                     Non</p>
                                     {% endif %}
+                                </div>
 
-                                <p>APC : 
+                                <div class="ppre">
+                                <p><strong>APC : </strong>
                                     {% if student.apc == 1 %}
                                     Oui</p>
-                                    <div id="apc_note">
+                                    <div>
                                         <p>{{student.apcNote}}</p>
                                     </div>
                                     {% else %}
                                     Non</p>
                                     {% endif %}
+                                </div>
 
                             </div>
                         </div>

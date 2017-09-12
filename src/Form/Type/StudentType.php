@@ -59,20 +59,32 @@ class StudentType extends AbstractType
                 'label' => 'Etablissement précédent',
                 'required' => false
             ))
-            ->add('ppre', CheckboxType::class, array(
+            ->add('ppre', ChoiceType::class, array(
                 'label' => 'PPRE',
+                'choices'  => array(
+                    'Non' => '0',
+                    'Oui' => '1'),
                 'required' => false
             ))
-            ->add('rased', CheckboxType::class, array(
+            ->add('rased', ChoiceType::class, array(
                 'label' => 'RASED',
+                'choices'  => array(
+                    'Non' => '0',
+                    'Oui' => '1'),
                 'required' => false
             ))
-            ->add('pai', CheckboxType::class, array(
+            ->add('pai', ChoiceType::class, array(
                 'label' => 'PAI',
+                'choices'  => array(
+                    'Non' => '0',
+                    'Oui' => '1'),
                 'required' => false
             ))
-            ->add('apc', CheckboxType::class, array(
+            ->add('apc', ChoiceType::class, array(
                 'label' => 'APC',
+                'choices'  => array(
+                    'Non' => '0',
+                    'Oui' => '1'),
                 'required' => false
             ))
             ->add('ppreNote', TextType::class, array(
@@ -91,12 +103,18 @@ class StudentType extends AbstractType
                 'label' => 'Note sur l\'APC',
                 'required' => false
             ))
-            ->add('coop', CheckboxType::class, array(
+            ->add('coop', ChoiceType::class, array(
                 'label' => 'Coopérative',
+                'choices'  => array(
+                    'Non' => '0',
+                    'Oui' => '1'),
                 'required' => false
             ))
-            ->add('coll', CheckboxType::class, array(
+            ->add('coll', ChoiceType::class, array(
                 'label' => 'Gouter collectif',
+                'choices'  => array(
+                    'Non' => '0',
+                    'Oui' => '1'),
                 'required' => false
             ))
             ->add('note', TextAreaType::class, array(

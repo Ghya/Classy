@@ -29,18 +29,11 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="{{path('home')}}">
-                <img src="" alt="LOGO">
+                <img style="height:100%; margin-left:20%" src="{{ asset('/img/logo.png') }}" alt="LOGO">
             </a>
         </div>
         <!-- Top Menu Items -->
         <ul class="nav navbar-right top-nav">
-            <li><a href="#" data-placement="bottom" data-toggle="tooltip" href="#" data-original-title="Stats"><i class="fa fa-bar-chart-o"></i>
-                </a>
-            </li>
-
-            {% if app.user and is_granted('ROLE_ADMIN') %}
-                <li class=""><a href=""><span style="margin-right:7px" class="glyphicon glyphicon-cog"></span> Administration</a></li>
-            {% endif %}
 
             {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                 <li class="dropdown">

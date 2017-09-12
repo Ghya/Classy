@@ -1,0 +1,43 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Navigation{% endblock %}
+
+{% block nav %}{% include 'nav_options.html.twig' %}{% endblock %}
+
+{% block content %} 
+
+<div class="container">    
+    <div class="page_block_title row">                    
+        <div class="col-md-12" > 
+            <h3>Navigation</h3>
+            <p>Retrouvez ici toutes vos séances classées par domaines et séquences</p>
+        </div>  
+    </div>
+
+    <div class="page_block_content row">                    
+        <div class="col-md-4" >
+
+            <div id="sub_title" class="nav_title_block">
+                <i class="glyphicon glyphicon-folder-open"></i>
+                <p><em style="">...</em>Domaines</p>
+            </div>
+
+            <div id="nav_sub_block">
+                {% for subject in subjects %}
+                    <a href="{{ path('nav_chap', { 'idClass': class.id, 'idSub': subject.id }) }}">
+                        <div class="nav_block">
+                            <p>{{subject.name}}</p>
+                            <i class="glyphicon glyphicon-chevron-right"></i>
+                        </div>
+                    </a>
+                {% else %}
+                    <em> Aucun domaine </em>
+                {% endfor %}
+            </div>
+
+        </div>  
+    </div> 
+
+</div>  
+
+{% endblock %}

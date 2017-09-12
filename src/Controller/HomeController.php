@@ -111,30 +111,75 @@ class HomeController {
     }
 
     /**
-     * Navigation page Controller
+     * Navigation SUBJECT page Controller
      *
      * @param Application $app Silex application
+     * @param $idClass class id
      */
 
-     public function navigationAction($idClass, Request $request, Application $app) {
+     public function navigationSubAction($idClass, Request $request, Application $app) {
         
         $class = $app['dao.class']->find($idClass);
         $classes = $app['dao.class']->findAll();
         $subjects = $app['dao.subject']->findAllByClass($idClass);
-        $chapters = $app['dao.chapter']->findAllByClass($idClass);
-        $lessons = $app['dao.lesson']->findAllByClass($idClass);
-        $tests = $app['dao.l_test']->findAllByClass($idClass);
 
-            return $app['twig']->render('navigation.html.twig', array(
-                'class' => $class,
-                'classes' => $classes,
-                'subjects' => $subjects,
-                'chapters' => $chapters,
-                'lessons' => $lessons,
-                'tests' => $tests
-            ));
+        return $app['twig']->render('nav_sub.html.twig', array(
+            'class' => $class,
+            'classes' => $classes,
+            'subjects' => $subjects
+        ));
 
         
+    }
+
+    /**
+     * Navigation CHAPTER page Controller
+     *
+     * @param Application $app Silex application
+     * @param $idClass Class id
+     * @param $idSub Subject id
+     */
+
+    public function navigationChapAction($idClass, $idSub, Request $request, Application $app) {
+    
+        $class = $app['dao.class']->find($idClass);
+        $classes = $app['dao.class']->findAll();
+        $subjects = $app['dao.subject']->findAllByClass($idClass);
+        $chapters = $app['dao.chapter']->findAllBySubject($idSub);
+
+        return $app['twig']->render('nav_chap.html.twig', array(
+            'class' => $class,
+            'classes' => $classes,
+            'subjects' => $subjects,
+            'chapters' => $chapters
+        ));
+
+        
+    }
+
+    /**
+     * Navigation LESSON page Controller
+     *
+     * @param Application $app Silex application
+     * @param $idChap chapter id
+     */
+
+     public function navigationLessAction($idClass, $idSub, $idChap, Request $request, Application $app) {
+        
+        $class = $app['dao.class']->find($idClass);
+        $classes = $app['dao.class']->findAll();
+        $subjects = $app['dao.subject']->findAllByClass($idClass);
+        $chapters = $app['dao.chapter']->findAllBySubject($idSub);
+        $lessons = $app['dao.lesson']->findAllByChapter($idChap);
+
+        return $app['twig']->render('nav_less.html.twig', array(
+            'class' => $class,
+            'classes' => $classes,
+            'subjects' => $subjects,
+            'chapters' => $chapters,
+            'lessons' => $lessons
+        ));    
+            
     }
 
     /**
@@ -288,9 +333,8 @@ class HomeController {
 
         if ($subjectForm->isSubmitted() && $subjectForm->isValid()) {
             $app['dao.subject']->save($subject);
-            $app['session']->getFlashBag()->add('success', 'Votre memo a été ajouté');
 
-             return $app->redirect($app['url_generator']->generate('add_subject', [
+             return $app->redirect($app['url_generator']->generate('sub_manag', [
                  "id" => $class->getId()
              ]));
         }   

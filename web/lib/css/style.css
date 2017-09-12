@@ -70,13 +70,14 @@ body {
 }
 
 #memo_zone {
-    background-color: #E2E267;
+    background-color: #FFFFB0;
     height: 307px;
     overflow: scroll;
 }
 
 #memo {
     border: 1px dotted #945E31;
+    padding: 5px 20px;
 }
 
 #selecting_container {
@@ -398,6 +399,25 @@ body {
     padding: 15px;
 }
 
+.ppre {
+    border-bottom: 1px dotted #B4B4B4;
+}
+
+#detail_info {
+    padding-left: 10%;
+}
+
+#parent_info {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 10%;
+}
+
+#title_info_parent {
+    margin-right: 10%;
+}
+
 #note_info {
     min-height: 100px;
     padding: 15px;
@@ -538,7 +558,66 @@ body {
 
 /*==== Fin Navigation======*/
 
+/*==== Début Navigation======*/
 
+#nav_sub_block {
+    height: 350px;
+    border: 1px dotted grey;
+    overflow: scroll;
+}
+
+#nav_sub_block em {
+    margin: 20px;
+}
+
+.nav_block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    padding-left: 30px;
+}
+
+.nav_block:hover {
+    background-color: #E4E4E4;
+}
+
+.nav_title_block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #C6C6C6;
+    margin-bottom: 8px;
+    padding: 15px;
+    border-radius: 5px;
+    background-color: #E8E8E8;
+}
+
+.eye {
+    color: white;
+}
+
+.nav_title_block p {
+    margin: 0;
+    margin-left: 10px;
+}
+
+.nav_title_block em {
+    font-size: 1.5em;
+    margin-right: 20px;
+}
+#sub_title {
+    background-color: #4C5AF3;
+}
+
+#chap_title {
+    background-color: #7882F4;
+}
+#less_title {
+    background-color: #A5ABED;
+}
+
+/*==== Fin Navigation======*/
 
 
 
